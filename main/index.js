@@ -128,6 +128,7 @@ const ctx = {
   toggleOpenAtLogin: () => { throw new Error('never get here') },
   isOpenAtLogin: () => { throw new Error('never get here') },
   exportSeedPhrase: () => { throw new Error('never get here') },
+  importSeedPhrase: () => { throw new Error('never get here') },
   showUI: () => { throw new Error('never get here') },
   isShowingUI: false,
   loadWebUIFromDist: serve({
