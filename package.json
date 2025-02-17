@@ -2,7 +2,7 @@
   "name": "filecoin-station",
   "productName": "Filecoin Station",
   "private": true,
-  "version": "2.3.15",
+  "version": "2.3.16",
   "description": "Desktop application for Filecoin Retrieval Markets",
   "main": "main/index.js",
   "scripts": {
