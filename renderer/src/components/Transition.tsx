@@ -40,7 +40,7 @@ const Transition = <C extends ElementType = typeof DEFAULT_ELEMENT>({
   const Component = as || DEFAULT_ELEMENT
 
   const [shouldRender, setShouldRender] = useState(on)
-  const timeout = useRef<ReturnType<typeof setTimeout>>()
+  const timeout = useRef<ReturnType<typeof setTimeout>>(undefined)
 
   useEffect(() => {
     if (!on) {

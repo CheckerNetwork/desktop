@@ -15,7 +15,6 @@ jobs:
           - graphql
           - dayjs
           - autoprefixer
-          - react-helmet-async
           - tailwindcss
           - '@glif/'
           - '@filecoin-station/core'
