@@ -73,7 +73,7 @@ export function showTermsOfService (): void {
 }
 
 export function openDocsLink () {
-  return window.electron.checkerConfig.openExternalURL('https://docs.filstation.app/your-station-wallet')
+  return window.electron.checkerConfig.openExternalURL('https://docs.checker.network/your-checker-wallet')
 }
 
 export function toggleOpenAtLogin () {
