@@ -1,6 +1,14 @@
 'use strict'
 
+import mixCssColor from 'mix-css-color'
+
 /** @type {import('tailwindcss').Config} */
+
+const colors = {
+  neptuneBlue: '#4a7dff',
+  neptuneBlueDark: '#2057e3',
+  neptuneBlueLight: '#94b2ff'
+}
 
 module.exports = {
   content: [
@@ -113,13 +121,14 @@ module.exports = {
     colors: {
       white: '#fff',
       black: '#000',
-      primary: '#2a1cf7',
-      'primary-hover': '#1A1199',
-      'primary-click': '#2317CC',
+      primary: colors.neptuneBlue,
+      'primary-hover': colors.neptuneBlueDark,
+      'primary-click':
+        mixCssColor(colors.neptuneBlue, colors.neptuneBlueDark).hex,
       blue: {
-        50: '#E9EFFF',
-        300: '#8BA4FF',
-        700: '#2A1CF7'
+        50: colors.neptuneBlueLight,
+        300: mixCssColor(colors.neptuneBlue, colors.neptuneBlueLight).hex,
+        700: colors.neptuneBlue
       },
       grayscale: {
         100: '#f0f0f0',
