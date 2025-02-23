@@ -42,7 +42,7 @@ module.exports = {
     },
     fontFamily: {
       title: ['SuisseIntl', 'sans-serif'],
-      body: ['SpaceGrotesk', 'serif'],
+      body: ['Lato', 'serif'],
       mono: ['IBMPlexMono', 'monospace']
     },
     fontWeight: {

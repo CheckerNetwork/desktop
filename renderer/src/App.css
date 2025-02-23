@@ -9,13 +9,13 @@
     src: url('assets/fonts/SuisseIntl/SuisseIntl-Regular.ttf');
   }
   @font-face {
-    font-family: "SpaceGrotesk";
-    src: url('assets/fonts/SpaceGrotesk/SpaceGrotesk-Regular.ttf');
+    font-family: "Lato";
+    src: url('assets/fonts/Lato/Lato-Regular.ttf');
   }
   @font-face {
-    font-family: "SpaceGrotesk";
+    font-family: "Lato";
     font-weight: 500;
-    src: url('assets/fonts/SpaceGrotesk/SpaceGrotesk-Medium.ttf');
+    src: url('assets/fonts/Lato/Lato-Bold.ttf');
   }
   @font-face {
     font-family: "IBMPlexMono";

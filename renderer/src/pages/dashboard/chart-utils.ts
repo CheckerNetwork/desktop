@@ -19,7 +19,7 @@ export const colors = {
 }
 
 export const fonts = {
-  body: 'SpaceGrotesk, serif',
+  body: 'Lato, serif',
   mono: 'IBMPlexMono, mono'
 }
 
