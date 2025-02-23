@@ -20,7 +20,7 @@ export const colors = {
 
 export const fonts = {
   body: 'SpaceGrotesk, serif',
-  mono: 'SpaceMono, mono'
+  mono: 'IBMPlexMono, mono'
 }
 
 export const chartPadding = {

@@ -18,14 +18,14 @@
     src: url('assets/fonts/SpaceGrotesk/SpaceGrotesk-Medium.ttf');
   }
   @font-face {
-    font-family: "SpaceMono";
+    font-family: "IBMPlexMono";
     font-weight: 400;
-    src: url('assets/fonts/SpaceMono/SpaceMono-Regular.ttf');
+    src: url('assets/fonts/IBMPlexMono/IBMPlexMono-Regular.ttf');
   }
   @font-face {
-    font-family: "SpaceMono";
+    font-family: "IBMPlexMono";
     font-weight: 700;
-    src: url('assets/fonts/SpaceMono/SpaceMono-Bold.ttf');
+    src: url('assets/fonts/IBMPlexMono/IBMPlexMono-Bold.ttf');
   }
 
   body {

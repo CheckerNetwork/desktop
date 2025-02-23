@@ -43,7 +43,7 @@ module.exports = {
     fontFamily: {
       title: ['SuisseIntl', 'sans-serif'],
       body: ['SpaceGrotesk', 'serif'],
-      mono: ['SpaceMono', 'monospace']
+      mono: ['IBMPlexMono', 'monospace']
     },
     fontWeight: {
       normal: 400,
