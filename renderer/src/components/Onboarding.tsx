@@ -20,7 +20,7 @@ const Footer: FC<FooterProps> = ({ page, pages, next, prev }) => {
         onClick={prev}
         type="button"
       >
-        <i><Back className="btn-icon-primary-small" fill={page === 0 ? '#b3b3b3' : '#2a1cf7'} /></i>
+        <i><Back className="btn-icon-primary-small" fill={page === 0 ? '#b3b3b3' : '#4a7dff'} /></i>
         <span>Back</span>
       </button>
       <div className='flex flex-row items-center space-between gap-3'>
@@ -136,7 +136,7 @@ const Onboarding: FC<OnboardingProps> = ({ onFinish }) => {
                   title="previous"
                   onClick={prev}
                 >
-                  <i><Back className="btn-icon-primary-small" fill='#2a1cf7' /></i>
+                  <i><Back className="btn-icon-primary-small" fill='#4a7dff' /></i>
                   <span>Back</span>
                 </button>
                 <button

@@ -12,7 +12,7 @@ export const colors = {
   white: '#000',
   xLine: '#D9D9E4',
   xAxisText: '#5F5A73',
-  totalRewardsLine: '#2A1CF7',
+  totalRewardsLine: '#4a7dff',
   totalRewardsBg: '#b5b2f6',
   scheduledBg: '#dddcf5',
   crossLine: '#A0A1BA'
