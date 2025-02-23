@@ -134,11 +134,6 @@
     @apply fill-white
   }
 
-  .icon-warning path {
-    @apply fill-orange-200 group-hover:fill-orange-200 group-visited:fill-orange-200
-    group-disabled:fill-grayscale-500
-  }
-
   .icon-error path {
     @apply fill-red-200 group-hover:fill-red-200 group-visited:fill-red-200
     group-disabled:fill-grayscale-500

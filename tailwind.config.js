@@ -153,10 +153,6 @@ module.exports = {
         200: '#ff4d81',
         400: '#DC2E1B'
       },
-      orange: {
-        100: '#f5c451',
-        200: '#f76003'
-      },
       transparent: '#ffffff00'
     }
   },
