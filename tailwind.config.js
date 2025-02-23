@@ -7,7 +7,10 @@ import mixCssColor from 'mix-css-color'
 const colors = {
   neptuneBlue: '#4a7dff',
   neptuneBlueDark: '#2057e3',
-  neptuneBlueLight: '#94b2ff'
+  neptuneBlueLight: '#94b2ff',
+  cassioPeiaPink: '#ed158a',
+  cassioPeiaPinkDark: '#be106e',
+  cassioPeiaPinkLight: '#fc6cba'
 }
 
 module.exports = {
@@ -148,9 +151,9 @@ module.exports = {
         800: '#5F5A73'
       },
       red: {
-        100: '#ce5347',
-        200: '#ff4d81',
-        400: '#DC2E1B'
+        100: colors.cassioPeiaPinkLight,
+        200: colors.cassioPeiaPink,
+        400: colors.cassioPeiaPinkDark
       },
       transparent: '#ffffff00'
     }
