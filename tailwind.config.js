@@ -86,7 +86,7 @@ module.exports = {
       fradeFromBlue: {
         from: {
           background: '#E9EFFF',
-          color: '#2a1cf7'
+          color: colors.neptuneBlue
         },
         to: {
           background: 'transparent',
