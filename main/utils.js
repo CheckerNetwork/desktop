@@ -22,6 +22,7 @@ const allowedURLs = [
   'https://beryx.io',
   'https://pl-strflt.notion.site/Station-Terms-Conditions-e97da76bb89f49e280c2897aebe4c41f?pvs=4',
   'https://checker.network',
+  'https://docs.checker.network',
   'https://blog.checker.network/posts/why-web3-needs-the-checker-network'
 ].map(str => new URL(str))
 
