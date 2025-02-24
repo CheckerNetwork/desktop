@@ -10,12 +10,12 @@ type DateTimeFormat = keyof typeof dateTimeFormatters
 export const colors = {
   black: '#000',
   white: '#000',
-  xLine: '#D9D9E4',
-  xAxisText: '#5F5A73',
-  totalRewardsLine: '#4a7dff',
-  totalRewardsBg: '#b5b2f6',
-  scheduledBg: '#dddcf5',
-  crossLine: '#A0A1BA'
+  xLine: '#D9D9E4', // slate-200
+  xAxisText: '#5F5A73', // slate-800
+  totalRewardsLine: '#4a7dff', // Neptune Blue
+  totalRewardsBg: '#b0c4f5', // Variant of Neptune Blue
+  scheduledBg: '#dfe4f2', // Variant of Neptune Blue
+  crossLine: '#A0A1BA' // slate-400
 }
 
 export const fonts = {
