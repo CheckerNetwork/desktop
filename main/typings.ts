@@ -54,6 +54,7 @@ export interface Context {
   toggleOpenAtLogin: () => void;
   isOpenAtLogin: () => boolean;
   exportSeedPhrase: () => void;
+  importSeedPhrase: () => void;
 }
 
 export interface WalletSeed {
