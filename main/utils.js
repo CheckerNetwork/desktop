@@ -20,7 +20,7 @@ const allowedURLs = [
   'https://github.com/CheckerNetwork/voyager',
   'https://github.com/CheckerNetwork/spark',
   'https://beryx.io',
-  'https://pl-strflt.notion.site/Station-Terms-Conditions-e97da76bb89f49e280c2897aebe4c41f?pvs=4',
+  'https://docs.checker.network/checker-network-terms-conditions',
   'https://checker.network',
   'https://docs.checker.network',
   'https://blog.checker.network/posts/why-web3-needs-the-checker-network'

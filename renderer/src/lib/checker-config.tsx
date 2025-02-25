@@ -69,7 +69,7 @@ export function openBeryx (): void {
 }
 
 export function showTermsOfService (): void {
-  return window.electron.checkerConfig.openExternalURL('https://pl-strflt.notion.site/Station-Terms-Conditions-e97da76bb89f49e280c2897aebe4c41f?pvs=4')
+  return window.electron.checkerConfig.openExternalURL('https://docs.checker.network/checker-network-terms-conditions')
 }
 
 export function openDocsLink () {
