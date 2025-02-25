@@ -4,6 +4,7 @@ import ChartController from './ChartController'
 import useCheckerRewards from 'src/hooks/CheckerRewards'
 import RewardsInfo from './RewardsInfo'
 import { bigIntFilToNumber } from 'src/lib/utils'
+import type { JSX } from 'react'
 
 const Dashboard = (): JSX.Element => {
   const { historicalRewards, totalRewardsReceived, scheduledRewards } = useCheckerRewards()
