@@ -148,10 +148,7 @@ async function start (ctx) {
   childProcess.stderr.setEncoding('utf8')
   childProcess.stderr
     .pipe(split2())
-    .on('data', line => {
-      logs.pushLine(line)
-      console.error(line)
-    })
+    .on('data', line => logs.pushLine(line))
 
   const onBeforeQuit = () => childProcess.kill()
   app.on('before-quit', onBeforeQuit)
