@@ -29,7 +29,7 @@ exports.default = async function (context) {
     {
       cwd: join(
         context.appOutDir,
-        'Filecoin Station.app',
+        'Checker.app',
         'Contents',
         'Resources',
         'core'

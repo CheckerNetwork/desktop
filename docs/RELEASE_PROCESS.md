@@ -1,6 +1,6 @@
 ## Overview
 
-Filecoin Station uses
+Checker uses
 [electron-build/auto-update](https://www.electron.build/auto-update) and a
 modified flow from
 [Electron Builder Action](https://github.com/samuelmeuli/action-electron-builder#electron-builder-action):
@@ -38,12 +38,12 @@ modified flow from
    ```
 
 1. Wait for GitHub Actions CI to upload the binaries to a draft release
-   [here](https://github.com/filecoin-station/desktop/releases) (a new
+   [here](https://github.com/CheckerNetwork/app/releases) (a new
    one will be created if you haven't drafted one).
 1. Review and publish the release draft.
    - Once a release is published, users will receive the app update
    - The `latest.yml, latest-mac.yml, latest-linux.yml` files attached to
-     [/releases](https://github.com/filecoin-station/desktop/releases)
+     [/releases](https://github.com/CheckerNetwork/app/releases)
      are used by the desktop app to determine when an app update is available.
 1. Done!
 
@@ -56,12 +56,12 @@ modified flow from
 4. Publish local changes and the tag to the GitHub repo:
    `git push && git push origin vA.B.C`.
 5. Wait for GitHub Actions CI to upload the binaries to a draft release
-   [here](https://github.com/filecoin-station/desktop/releases) (a new
+   [here](https://github.com/CheckerNetwork/app/releases) (a new
    one will be created if you haven't drafted one).
 6. Review and publish the release draft.
    - Once a release is published, users will receive the app update
    - The `latest.yml, latest-mac.yml, latest-linux.yml` files attached to
-     [/releases](https://github.com/filecoin-station/desktop/releases)
+     [/releases](https://github.com/CheckerNetwork/app/releases)
      are used by the desktop app to determine when an app update is available.
 7. Done!
 

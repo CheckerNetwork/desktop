@@ -1,7 +1,7 @@
 import Button from 'src/components/Button'
 import Text from 'src/components/Text'
 import { formatFilValue, truncateString } from 'src/lib/utils'
-import { Wallet } from 'src/hooks/StationWallet'
+import { Wallet } from 'src/hooks/CheckerWallet'
 import Tooltip from 'src/components/Tooltip'
 import { ReactNode, useState } from 'react'
 import Transition from 'src/components/Transition'

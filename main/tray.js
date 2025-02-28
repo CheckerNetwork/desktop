@@ -1,6 +1,6 @@
 'use strict'
 
-const { IS_MAC, STATION_VERSION } = require('./consts')
+const { IS_MAC, CHECKER_VERSION } = require('./consts')
 const { Menu, Tray, app, ipcMain, nativeImage } = require('electron')
 const { ipcMainEvents } = require('./ipc')
 const path = require('path')
@@ -48,11 +48,11 @@ function getTrayIcon (readyToUpdate, isOnline) {
 const createContextMenu = (/** @type {Context} */ ctx) => {
   const contextMenu = Menu.buildFromTemplate([
     {
-      label: `Filecoin Station v${STATION_VERSION}`,
+      label: `Checker v${CHECKER_VERSION}`,
       enabled: false
     },
     {
-      label: 'Open Station',
+      label: 'Open Checker',
       click: () => ctx.showUI()
     },
     { type: 'separator' },
@@ -77,7 +77,7 @@ const createContextMenu = (/** @type {Context} */ ctx) => {
     },
     { type: 'separator' },
     {
-      label: 'Quit Station',
+      label: 'Quit Checker',
       click: () => app.quit(),
       accelerator: IS_MAC ? 'Command+Q' : undefined
     }
@@ -89,7 +89,7 @@ module.exports = async function (/** @type {Context} */ ctx) {
   tray = new Tray(getTrayIcon(false, core.isOnline()))
 
   const contextMenu = createContextMenu(ctx)
-  tray.setToolTip('Filecoin Station')
+  tray.setToolTip('Checker')
   tray.setContextMenu(contextMenu)
 
   setupIpcEventListeners(ctx)

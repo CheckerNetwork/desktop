@@ -1,7 +1,7 @@
 import { beforeEach, describe, expect, test, vi } from 'vitest'
 import { act, fireEvent, render, screen, waitFor } from '@testing-library/react'
 
-import { getOnboardingCompleted, setOnboardingCompleted, showTermsOfService } from 'src/lib/station-config'
+import { getOnboardingCompleted, setOnboardingCompleted, showTermsOfService } from 'src/lib/checker-config'
 import Onboarding from 'src/pages/onboarding/Onboarding'
 import { BrowserRouter } from 'react-router'
 
@@ -11,7 +11,7 @@ const mocks = vi.hoisted(() => {
   }
 })
 
-vi.mock('src/lib/station-config')
+vi.mock('src/lib/checker-config')
 vi.mock('react-router', async () => {
   const router = await vi.importActual('react-router')
 

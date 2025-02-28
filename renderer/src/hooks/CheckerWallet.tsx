@@ -2,11 +2,11 @@ import { useState, useEffect, useCallback, useRef } from 'react'
 import {
   getDestinationWalletAddress,
   setDestinationWalletAddress,
-  getStationWalletAddress,
-  getStationWalletBalance,
-  getStationWalletTransactionsHistory,
+  getCheckerWalletAddress,
+  getCheckerWalletBalance,
+  getCheckerWalletTransactionsHistory,
   transferAllFundsToDestinationWallet
-} from 'src/lib/station-config'
+} from 'src/lib/checker-config'
 import {
   FILTransaction,
   FILTransactionProcessing,
@@ -16,8 +16,8 @@ import {
 import { ethAddressFromDelegated } from '@glif/filecoin-address'
 
 export interface Wallet {
-  stationAddress: string;
-  stationAddress0x: string;
+  checkerAddress: string;
+  checkerAddress0x: string;
   destinationFilAddress: string | undefined;
   walletBalance: string | undefined;
   walletTransactions: FILTransaction[] | undefined;
@@ -28,7 +28,7 @@ export interface Wallet {
 }
 
 const useWallet = (): Wallet => {
-  const [stationAddress, setStationAddress] = useState<string>('')
+  const [checkerAddress, setCheckerAddress] = useState<string>('')
   const [destinationFilAddress, setDestinationFilAddress] = useState<string>()
   const [walletBalance, setWalletBalance] = useState<string>()
   const [walletTransactions, setWalletTransactions] = useState<FILTransaction[]>()
@@ -87,21 +87,21 @@ const useWallet = (): Wallet => {
 
   useEffect(() => {
     const loadStoredInfo = async () => {
-      setStationAddress(await getStationWalletAddress())
+      setCheckerAddress(await getCheckerWalletAddress())
     }
     loadStoredInfo()
-  }, [stationAddress])
+  }, [checkerAddress])
 
   useEffect(() => {
     const loadStoredInfo = async () => {
-      setWalletBalance(await getStationWalletBalance())
+      setWalletBalance(await getCheckerWalletBalance())
     }
     loadStoredInfo()
   }, [])
 
   useEffect(() => {
     const loadStoredInfo = async () => {
-      setTransactions(await getStationWalletTransactionsHistory())
+      setTransactions(await getCheckerWalletTransactionsHistory())
     }
     loadStoredInfo()
   }, [setTransactions])
@@ -109,7 +109,7 @@ const useWallet = (): Wallet => {
   // Subscribe to events
 
   useEffect(() => {
-    const unsubscribeOnTransactionUpdate = window.electron.stationEvents.onTransactionUpdate(
+    const unsubscribeOnTransactionUpdate = window.electron.checkerEvents.onTransactionUpdate(
       setTransactions
     )
     return () => {
@@ -118,7 +118,7 @@ const useWallet = (): Wallet => {
   }, [setTransactions])
 
   useEffect(() => {
-    const unsubscribeOnBalanceUpdate = window.electron.stationEvents.onBalanceUpdate(balance => {
+    const unsubscribeOnBalanceUpdate = window.electron.checkerEvents.onBalanceUpdate(balance => {
       setWalletBalance(balance)
     })
     return () => {
@@ -127,9 +127,9 @@ const useWallet = (): Wallet => {
   }, [walletBalance])
 
   return {
-    stationAddress,
-    stationAddress0x: stationAddress !== ''
-      ? ethAddressFromDelegated(stationAddress)
+    checkerAddress,
+    checkerAddress0x: checkerAddress !== ''
+      ? ethAddressFromDelegated(checkerAddress)
       : '',
     destinationFilAddress,
     walletBalance,

@@ -33,4 +33,4 @@ as a security vulnerability, .
 ## Reporting a non security bug
 
 For non-security bugs, please simply file a GitHub
-[issue](https://github.com/filecoin-station/desktop/issues/new).
+[issue](https://github.com/CheckerNetwork/app/issues/new).

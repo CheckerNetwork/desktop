@@ -3,7 +3,7 @@
 const { app } = require('electron')
 const { InfluxDB, Point } = require('@influxdata/influxdb-client')
 const { createHash } = require('node:crypto')
-const { getDestinationWalletAddress } = require('./station-config')
+const { getDestinationWalletAddress } = require('./checker-config')
 const wallet = require('./wallet')
 const Sentry = require('@sentry/node')
 const { platform, arch } = require('node:os')
@@ -47,7 +47,7 @@ async function setup () {
     point.tag('platform', platform())
     // `os.arch()` returns `x64` when running in a translated environment on
     // ARM64 machine, e.g. via macOS Rosetta. We don't provide Apple `arm64`
-    // builds yet. As a result, Stations running on Apple Silicon were reporting
+    // builds yet. As a result, Checkers running on Apple Silicon were reporting
     // `x64` arch. To fix the problem, we detect `arm64` translation and report
     // a different architecture.
     point.tag('arch', app?.runningUnderARM64Translation ? 'arm64' : arch())

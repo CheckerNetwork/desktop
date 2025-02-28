@@ -39,7 +39,7 @@ const RewardsInfo = ({
               }
               style={{ maxWidth: '230px' }}
               content={`This is the reward total you have accrued since your last payout.
-              Scheduled earning will be sent to your Station Wallet approximately once a week,
+              Scheduled earning will be sent to your Checker Wallet approximately once a week,
               provided you have earned more than the payout threshold.`}
             />
 

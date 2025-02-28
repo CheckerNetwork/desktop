@@ -1,6 +1,6 @@
 import BorderedBox from 'src/components/BorderedBox'
 import Text from 'src/components/Text'
-import useStationActivity from 'src/hooks/StationActivity'
+import useCheckerActivity from 'src/hooks/CheckerActivity'
 import WarningIcon from 'src/assets/img/icons/warning.svg?react'
 import JobIcon from 'src/assets/img/icons/job.svg?react'
 import { Activity } from 'shared/typings'
@@ -24,7 +24,7 @@ const ActivityItem = ({ activity }: {activity: Activity}) => {
 }
 
 const ActivityInfo = () => {
-  const { totalJobs, activities } = useStationActivity()
+  const { totalJobs, activities } = useCheckerActivity()
 
   const activitiesByDate = useMemo(() => activities
     .sort((x, y) => y.timestamp.getTime() - x.timestamp.getTime())

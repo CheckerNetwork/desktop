@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import Text from 'src/components/Text'
 import TextInput from 'src/components/TextInput'
-import useWallet from 'src/hooks/StationWallet'
+import useWallet from 'src/hooks/CheckerWallet'
 import EditIcon from 'src/assets/img/icons/edit.svg?react'
 import Button from 'src/components/Button'
 import useAddressValidation from 'src/hooks/useAddressValidation'

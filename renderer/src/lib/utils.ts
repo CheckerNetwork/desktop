@@ -1,5 +1,5 @@
 import { BigNumber, FilecoinNumber } from '@glif/filecoin-number'
-import { browseTransactionTracker } from './station-config'
+import { browseTransactionTracker } from './checker-config'
 import { delegatedFromEthAddress, ethAddressFromDelegated, newFromString } from '@glif/filecoin-address'
 
 export function truncateString (value: string, size = 6) {

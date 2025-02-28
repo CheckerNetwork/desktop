@@ -2,7 +2,7 @@ import Button from 'src/components/Button'
 import Text from 'src/components/Text'
 import TextInput from 'src/components/TextInput'
 import Transition from 'src/components/Transition'
-import { Wallet } from 'src/hooks/StationWallet'
+import { Wallet } from 'src/hooks/CheckerWallet'
 import useAddressValidation from 'src/hooks/useAddressValidation'
 
 const DestinationAddressForm = ({
