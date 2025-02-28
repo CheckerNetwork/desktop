@@ -18,7 +18,7 @@ const TransactionHistory = ({
   const [completeTransactions, setCompleteTransactions] = useState<
   Array<FILTransaction & { isNew?: boolean }>
   >()
-  const transactionsRef = useRef<string[]>()
+  const transactionsRef = useRef<string[]>(undefined)
 
   useEffect(() => {
     const complete = walletTransactions?.filter(tx => tx.status !== 'processing')
