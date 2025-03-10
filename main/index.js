@@ -28,7 +28,7 @@ const { ipcMainEvents, setupIpcMain } = require('./ipc')
 const { BUILD_VERSION } = require('./consts')
 const { ipcMain } = require('electron/main')
 const os = require('os')
-const core = require('./core')
+const checkerNode = require('./checker-node')
 const wallet = require('./wallet')
 const settings = require('./settings')
 const serve = require('electron-serve')
@@ -99,13 +99,13 @@ app.on('second-instance', () => {
 
 /** @type {import('./typings').Context} */
 const ctx = {
-  getActivities: () => core.getActivities(),
+  getActivities: () => checkerNode.getActivities(),
 
   recordActivity: activity => {
     ipcMain.emit(ipcMainEvents.ACTIVITY_LOGGED, activity)
   },
 
-  getTotalJobsCompleted: () => core.getTotalJobsCompleted(),
+  getTotalJobsCompleted: () => checkerNode.getTotalJobsCompleted(),
   setTotalJobsCompleted: (count) => {
     ipcMain.emit(
       ipcMainEvents.JOB_STATS_UPDATED,
@@ -179,10 +179,10 @@ async function run () {
 
     await wallet.setup(ctx)
     await telemetry.setup()
-    await core.setup(ctx)
+    await checkerNode.setup(ctx)
     await settings.setup(ctx)
 
-    await core.run(ctx)
+    await checkerNode.run(ctx)
   } catch (e) {
     handleError(e)
   }

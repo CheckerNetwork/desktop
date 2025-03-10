@@ -1,4 +1,4 @@
-import { ActivityEvent } from '@filecoin-station/core/dist/lib/activity'
+import { ActivityEvent } from '@checkernetwork/node/dist/lib/activity'
 
 export type FILTransactionStatus = 'succeeded' | 'processing' | 'failed'
 

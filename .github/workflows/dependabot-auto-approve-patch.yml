@@ -17,7 +17,7 @@ jobs:
           - autoprefixer
           - tailwindcss
           - '@glif/'
-          - '@filecoin-station/core'
+          - '@checkernetwork/node'
           - npm
           - ejs
           - '@electron/notarize'
