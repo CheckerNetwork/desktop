@@ -35,9 +35,9 @@ let totalJobsCompleted = 0
  * @param {Context} ctx
  */
 async function setup (ctx) {
-  ctx.saveModuleLogsAs = async () => {
+  ctx.saveSubnetLogsAs = async () => {
     const opts = {
-      defaultPath: `station-modules-${(new Date()).getTime()}.log`
+      defaultPath: `checker-subnets-${(new Date()).getTime()}.log`
     }
     // The dialog might not show if the UI is hidden
     ctx.showUI()
@@ -67,7 +67,7 @@ function maybeReportErrorToSentry (err, scopeFn) {
   if (now - lastCrashReportedAt < 4 /* HOURS */ * 3600_000) return
   lastCrashReportedAt = now
   log.error(
-    'Reporting the problem to Sentry for inspection by the Station team.'
+    'Reporting the problem to Sentry for inspection by the Checker team.'
   )
   Sentry.captureException(err, scopeFn)
 }

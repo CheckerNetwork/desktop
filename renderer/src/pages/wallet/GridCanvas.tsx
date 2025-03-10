@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef } from 'react'
-import { Wallet } from 'src/hooks/StationWallet'
+import { Wallet } from 'src/hooks/CheckerWallet'
 import { Grid, getGridConfigForBalance } from 'src/lib/grid'
 import { FILTransactionProcessing } from 'shared/typings'
 

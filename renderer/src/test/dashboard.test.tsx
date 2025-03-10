@@ -5,22 +5,22 @@ import {
   getActivities,
   getDestinationWalletAddress,
   getScheduledRewards,
-  getStationWalletAddress,
-  getStationWalletBalance,
-  getStationWalletTransactionsHistory
-} from 'src/lib/station-config'
+  getCheckerWalletAddress,
+  getCheckerWalletBalance,
+  getCheckerWalletTransactionsHistory
+} from 'src/lib/checker-config'
 import Dashboard from 'src/pages/dashboard/Dashboard'
-import useWallet from 'src/hooks/StationWallet'
-import useStationActivity from 'src/hooks/StationActivity'
+import useWallet from 'src/hooks/CheckerWallet'
+import useCheckerActivity from 'src/hooks/CheckerActivity'
 import { Activity } from '../../../shared/typings'
-import useStationRewards from 'src/hooks/StationRewards'
+import useCheckerRewards from 'src/hooks/CheckerRewards'
 import { stubGlobalElectron, renderApp } from './helpers'
 import { useEffect, useState } from 'react'
 
-vi.mock('src/hooks/StationWallet')
-vi.mock('src/hooks/StationActivity')
-vi.mock('src/hooks/StationRewards')
-vi.mock('src/lib/station-config')
+vi.mock('src/hooks/CheckerWallet')
+vi.mock('src/hooks/CheckerActivity')
+vi.mock('src/hooks/CheckerRewards')
+vi.mock('src/lib/checker-config')
 
 stubGlobalElectron()
 
@@ -31,9 +31,9 @@ describe('Dashboard page', () => {
 
   describe('Unpopulated', () => {
     beforeAll(() => {
-      vi.mocked(getStationWalletBalance).mockReturnValue(Promise.resolve('0'))
-      vi.mocked(getStationWalletTransactionsHistory).mockReturnValue(Promise.resolve([]))
-      vi.mocked(getStationWalletAddress).mockReturnValue(
+      vi.mocked(getCheckerWalletBalance).mockReturnValue(Promise.resolve('0'))
+      vi.mocked(getCheckerWalletTransactionsHistory).mockReturnValue(Promise.resolve([]))
+      vi.mocked(getCheckerWalletAddress).mockReturnValue(
         Promise.resolve('f16m5slrkc6zumruuhdzn557a5sdkbkiellron4qa')
       )
       vi.mocked(getDestinationWalletAddress).mockReturnValue(Promise.resolve(''))
@@ -43,8 +43,8 @@ describe('Dashboard page', () => {
 
     beforeEach(() => {
       vi.mocked(useWallet).mockReturnValue({
-        stationAddress: 'f16m5slrkc6zumruuhdzn557a5sdkbkiellron4qa',
-        stationAddress0x: '0x000000000000000000000000000000000000dEaD',
+        checkerAddress: 'f16m5slrkc6zumruuhdzn557a5sdkbkiellron4qa',
+        checkerAddress0x: '0x000000000000000000000000000000000000dEaD',
         destinationFilAddress: '',
         walletBalance: '0',
         walletTransactions: [],
@@ -54,11 +54,11 @@ describe('Dashboard page', () => {
         processingTransaction: undefined
       })
 
-      vi.mocked(useStationActivity).mockReturnValue({
+      vi.mocked(useCheckerActivity).mockReturnValue({
         totalJobs: 0,
         activities: []
       })
-      vi.mocked(useStationRewards).mockReturnValue({
+      vi.mocked(useCheckerRewards).mockReturnValue({
         totalRewardsReceived: BigInt(1e18),
         scheduledRewards: BigInt(100 * 1e18),
         historicalRewards: []
@@ -85,8 +85,8 @@ describe('Dashboard page', () => {
       vi.useFakeTimers()
 
       vi.mocked(useWallet).mockReturnValue({
-        stationAddress: 'f16m5slrkc6zumruuhdzn557a5sdkbkiellron4qa',
-        stationAddress0x: '0x000000000000000000000000000000000000dEaD',
+        checkerAddress: 'f16m5slrkc6zumruuhdzn557a5sdkbkiellron4qa',
+        checkerAddress0x: '0x000000000000000000000000000000000000dEaD',
         destinationFilAddress: 'f16m5slrkc6zumruuhdzn557a5sdkbkiellfff2rg',
         walletBalance: '0',
         walletTransactions: [],
@@ -96,7 +96,7 @@ describe('Dashboard page', () => {
         processingTransaction: undefined
       })
 
-      vi.mocked(useStationRewards).mockImplementation(() => {
+      vi.mocked(useCheckerRewards).mockImplementation(() => {
         const [mockedRewards, setMockedRewards] = useState(0n)
 
         useEffect(() => {
@@ -112,7 +112,7 @@ describe('Dashboard page', () => {
         }
       })
 
-      vi.mocked(useStationActivity).mockImplementation(() => {
+      vi.mocked(useCheckerActivity).mockImplementation(() => {
         const [mockedActivities, setMockedActivities] = useState<Activity[]>([])
         const [mockedJobs, setMockedJobs] = useState(100)
 

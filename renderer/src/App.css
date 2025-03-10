@@ -9,23 +9,23 @@
     src: url('assets/fonts/SuisseIntl/SuisseIntl-Regular.ttf');
   }
   @font-face {
-    font-family: "SpaceGrotesk";
-    src: url('assets/fonts/SpaceGrotesk/SpaceGrotesk-Regular.ttf');
+    font-family: "Lato";
+    src: url('assets/fonts/Lato/Lato-Regular.ttf');
   }
   @font-face {
-    font-family: "SpaceGrotesk";
+    font-family: "Lato";
     font-weight: 500;
-    src: url('assets/fonts/SpaceGrotesk/SpaceGrotesk-Medium.ttf');
+    src: url('assets/fonts/Lato/Lato-Bold.ttf');
   }
   @font-face {
-    font-family: "SpaceMono";
+    font-family: "IBMPlexMono";
     font-weight: 400;
-    src: url('assets/fonts/SpaceMono/SpaceMono-Regular.ttf');
+    src: url('assets/fonts/IBMPlexMono/IBMPlexMono-Regular.ttf');
   }
   @font-face {
-    font-family: "SpaceMono";
+    font-family: "IBMPlexMono";
     font-weight: 700;
-    src: url('assets/fonts/SpaceMono/SpaceMono-Bold.ttf');
+    src: url('assets/fonts/IBMPlexMono/IBMPlexMono-Bold.ttf');
   }
 
   body {
@@ -132,11 +132,6 @@
 
   .icon-primary-white path {
     @apply fill-white
-  }
-
-  .icon-warning path {
-    @apply fill-orange-200 group-hover:fill-orange-200 group-visited:fill-orange-200
-    group-disabled:fill-grayscale-500
   }
 
   .icon-error path {

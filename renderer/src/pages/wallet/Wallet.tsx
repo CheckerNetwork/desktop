@@ -1,4 +1,4 @@
-import useWallet from 'src/hooks/StationWallet'
+import useWallet from 'src/hooks/CheckerWallet'
 import { formatFilValue, openExplorerLink } from 'src/lib/utils'
 import TransactionHistory from './TransactionHistory'
 import BorderedBox from 'src/components/BorderedBox'
@@ -10,8 +10,8 @@ import TransferWrapper from './TransferWrapper'
 const Wallet = () => {
   const {
     walletBalance,
-    stationAddress,
-    stationAddress0x,
+    checkerAddress,
+    checkerAddress0x,
     walletTransactions,
     destinationFilAddress,
     editDestinationAddress,
@@ -24,19 +24,19 @@ const Wallet = () => {
       <div className='px-9 mt-28 flex flex-col gap-5 animate-fadeIn'>
         <BorderedBox className='p-5 flex flex-col gap-2'>
           <Text font='mono' size='3xs' color='primary' uppercase>
-              &#47;&#47; Station wallet balance ... :
+              &#47;&#47; Checker wallet balance ... :
           </Text>
           <Text font='mono' size='s'>{formatFilValue(walletBalance)}{' '}FIL</Text>
         </BorderedBox>
         <BorderedBox className='p-5 flex flex-col gap-2'>
-          <Text font='mono' size='3xs' color='primary' uppercase>&#47;&#47; Station address ... :</Text>
+          <Text font='mono' size='3xs' color='primary' uppercase>&#47;&#47; Checker address ... :</Text>
           <div className='flex gap-5 items-center'>
-            <Address address={stationAddress} />
-            <Address address={stationAddress0x} />
+            <Address address={checkerAddress} />
+            <Address address={checkerAddress0x} />
             <button
               type='button'
               className='text-primary ml-auto focus:outline-slate-400 w-5 h-5'
-              onClick={() => openExplorerLink(stationAddress)}
+              onClick={() => openExplorerLink(checkerAddress)}
             >
               <LinkOut />
             </button>
@@ -49,7 +49,7 @@ const Wallet = () => {
         destinationFilAddress={destinationFilAddress}
         editDestinationAddress={editDestinationAddress}
         transferAllFundsToDestinationWallet={transferAllFundsToDestinationWallet}
-        stationAddress={stationAddress}
+        checkerAddress={checkerAddress}
         processingTransaction={processingTransaction}
       />
 

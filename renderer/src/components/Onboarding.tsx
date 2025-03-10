@@ -2,7 +2,7 @@ import { FC, useState } from 'react'
 import Back from 'src/assets/img/icons/arrow-left.svg?react'
 import Page from 'src/assets/img/icons/paginator-page.svg?react'
 import CurrentPage from 'src/assets/img/icons/paginator-current.svg?react'
-import { showTermsOfService } from 'src/lib/station-config'
+import { showTermsOfService } from 'src/lib/checker-config'
 
 interface FooterProps {
   page: number;
@@ -20,7 +20,7 @@ const Footer: FC<FooterProps> = ({ page, pages, next, prev }) => {
         onClick={prev}
         type="button"
       >
-        <i><Back className="btn-icon-primary-small" fill={page === 0 ? '#b3b3b3' : '#2a1cf7'} /></i>
+        <i><Back className="btn-icon-primary-small" fill={page === 0 ? '#b3b3b3' : '#4a7dff'} /></i>
         <span>Back</span>
       </button>
       <div className='flex flex-row items-center space-between gap-3'>
@@ -58,15 +58,14 @@ const Onboarding: FC<OnboardingProps> = ({ onFinish }) => {
         >
           <div className='bg-black px-20 py-16  rounded-t-[10px] min-h-[276px] flex'>
             <h1 className="font-title text-white leading-[3.25rem] text-header-m my-auto">
-              Join the Filecoin Economy.
+              Join the Checker Network.
             </h1>
           </div>
           <div className='min-h-[372px]'>
             <div className='pb-20 px-20 pt-16 min-h-[250px]'>
               <p className="text-body-s my-3">
-                Station securely connects your computer to Filecoin&apos;s global peer-to-peer network, which
-                rewards you for your participation. Once you&apos;ve connected, you will begin completing network
-                jobs.
+                Checker securely connects your computer to the global peer-to-peer Checker Network, which rewards
+                you for your participation. Once you&apos;ve connected, you will begin completing checker jobs.
               </p>
             </div>
             <div className='pb-20 bottom-0 px-20'>
@@ -113,14 +112,14 @@ const Onboarding: FC<OnboardingProps> = ({ onFinish }) => {
           <div className='min-h-[372px]'>
             <div className='pb-8 px-20 pt-8 min-h-[250px]'>
               <p className="text-body-s my-3">
-                Station asks for your consent to use your personal data to store and/or access information on a
+                Checker asks for your consent to use your personal data to store and/or access information on a
                 device. Your personal data will be processed and information from your device (cookies, unique
                 identifiers, and other device data) may be stored by, accessed by and shared with third party
                 vendors, or used specifically by this app.
               </p>
               <p className="text-body-s my-3">
                 By clicking {'"'}Create Wallet{'"'} or otherwise continuing to use this service, you agree, you
-                have read, understand and accept Station&apos;s
+                have read, understand and accept Checker&apos;s
                 {' '}
                 <span
                   className="text-primary cursor-pointer"
@@ -137,7 +136,7 @@ const Onboarding: FC<OnboardingProps> = ({ onFinish }) => {
                   title="previous"
                   onClick={prev}
                 >
-                  <i><Back className="btn-icon-primary-small" fill='#2a1cf7' /></i>
+                  <i><Back className="btn-icon-primary-small" fill='#4a7dff' /></i>
                   <span>Back</span>
                 </button>
                 <button

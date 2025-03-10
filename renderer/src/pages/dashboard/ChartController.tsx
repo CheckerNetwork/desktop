@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react'
-import { RewardsRecord } from 'src/hooks/StationRewards'
+import { RewardsRecord } from 'src/hooks/CheckerRewards'
 import Chart from './Chart'
 import { Select, SelectItem } from 'src/components/Select'
 import { ToggleGroup, ToggleGroupButton } from 'src/components/ToggleGroup'
@@ -26,19 +26,19 @@ function getDataInTimeRange (data: RewardsRecord[], timeRange: TimeRange) {
 
 const ChartController = ({ historicalRewards }: {historicalRewards: RewardsRecord[]}) => {
   const [timeRange, setTimeRange] = useState<TimeRange>('7d')
-  const [moduleId, setModuleId] = useState('all')
+  const [subnetId, setSubnetId] = useState('all')
 
   const filteredHistoricalRewards = useMemo(
     () => getDataInTimeRange(historicalRewards, timeRange),
     [timeRange, historicalRewards]
   )
 
-  const moduleIdsInRange = useMemo(
+  const subnetIdsInRange = useMemo(
     () => filteredHistoricalRewards.reduce<string[]>(
       (acc, record) => [
         ...acc,
         ...Object.keys(record.totalScheduledRewards).filter((id) => !acc.includes(id))
-      ], ['All modules']
+      ], ['All subnets']
     ), [filteredHistoricalRewards])
 
   return (
@@ -61,13 +61,13 @@ const ChartController = ({ historicalRewards }: {historicalRewards: RewardsRecor
           ))}
         </ToggleGroup>
         <Select
-          label='Module'
+          label='Subnet'
           onValueChange={(value) => {
-            setModuleId(value === 'All modules' ? 'all' : value)
+            setSubnetId(value === 'All subnets' ? 'all' : value)
           }}
-          defaultValue='All modules'
+          defaultValue='All subnets'
         >
-          {moduleIdsInRange.map((id) => (
+          {subnetIdsInRange.map((id) => (
             <SelectItem
               label={id}
               value={id}
@@ -77,7 +77,7 @@ const ChartController = ({ historicalRewards }: {historicalRewards: RewardsRecor
         </Select>
       </div>
       <section className='px-2 flex-1 flex'>
-        <Chart historicalRewards={filteredHistoricalRewards} moduleId={moduleId} timeRange={timeRange} />
+        <Chart historicalRewards={filteredHistoricalRewards} subnetId={subnetId} timeRange={timeRange} />
       </section>
     </div>
   )

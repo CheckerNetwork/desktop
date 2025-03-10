@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react'
-import { getScheduledRewards } from 'src/lib/station-config'
-import useWallet from 'src/hooks/StationWallet'
+import { getScheduledRewards } from 'src/lib/checker-config'
+import useWallet from 'src/hooks/CheckerWallet'
 import { formattedFilToBigInt } from 'src/lib/utils'
 import { voyagerAirdrop } from './voyagerAirdrop'
 
@@ -116,7 +116,7 @@ export function sumAllRewards (data: RewardsRecord['totalRewardsReceived']) {
   return Object.values(data).reduce((acc, val) => acc + val, 0n)
 }
 
-const useStationRewards = () => {
+const useCheckerRewards = () => {
   const wallet = useWallet()
   const [scheduledRewards, setScheduledRewards] = useState<bigint>()
   const [historicalRewards, setHistoricalRewards] = useState<RewardsRecord[]>([])
@@ -128,9 +128,9 @@ const useStationRewards = () => {
 
   useEffect(() => {
     async function loadStoredInfo () {
-      if (!wallet.stationAddress0x || document.hidden) return
+      if (!wallet.checkerAddress0x || document.hidden) return
       setHistoricalRewards(
-        await getHistoricalRewardsData(wallet.stationAddress0x)
+        await getHistoricalRewardsData(wallet.checkerAddress0x)
       )
     }
     loadStoredInfo()
@@ -140,7 +140,7 @@ const useStationRewards = () => {
       clearInterval(id)
       document.removeEventListener('visibilitychange', loadStoredInfo)
     }
-  }, [wallet.stationAddress0x])
+  }, [wallet.checkerAddress0x])
 
   useEffect(() => {
     async function loadStoredInfo () {
@@ -154,10 +154,10 @@ const useStationRewards = () => {
       clearInterval(id)
       document.removeEventListener('visibilitychange', loadStoredInfo)
     }
-  }, [wallet.stationAddress0x])
+  }, [wallet.checkerAddress0x])
 
   useEffect(() => {
-    const unsubscribeOnScheduledRewardsUpdate = window.electron.stationEvents.onScheduledRewardsUpdate(balance => {
+    const unsubscribeOnScheduledRewardsUpdate = window.electron.checkerEvents.onScheduledRewardsUpdate(balance => {
       setScheduledRewards(formattedFilToBigInt(balance))
     })
     return () => {
@@ -200,4 +200,4 @@ const useStationRewards = () => {
   }
 }
 
-export default useStationRewards
+export default useCheckerRewards

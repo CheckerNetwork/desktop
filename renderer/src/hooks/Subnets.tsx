@@ -4,7 +4,7 @@ import SparkLogo from 'src/assets/img/icons/spark-logo.png'
 import SaturnLogo from 'src/assets/img/icons/saturn-logo.svg'
 
 /**
- * @returns {Promise<string>} The contract address of the Spark module
+ * @returns {Promise<string>} The contract address of the Spark subnet
  */
 async function getSparkContractAddress () {
   const name = Name.parse(
@@ -82,7 +82,7 @@ async function getSparkTransfersFromStats () {
 }
 
 /**
- * @returns {Promise<number>} The total rewards of the Spark module
+ * @returns {Promise<number>} The total rewards of the Spark subnet
  */
 async function getSparkTotalRewards () {
   const [balanceHeld, transfersFromStats] = await Promise.all([
@@ -94,7 +94,7 @@ async function getSparkTotalRewards () {
 }
 
 /* eslint-disable max-len */
-export const modules = {
+export const subnets = {
   spark: {
     name: 'Spark',
     description: 'Spark is a trustless protocol for sampling retrievals from Filecoin Storage Providers. Spark aims to drive improvements in the retrievability of data stored on Filecoin.',
@@ -131,9 +131,9 @@ export const modules = {
   }
 } as const
 
-export type Module = (typeof modules)[keyof typeof modules] & {id: string}
+export type Subnet = (typeof subnets)[keyof typeof subnets] & {id: string}
 
-export const useModules = () => {
+export const useSubnets = () => {
   const [sparkContractAddress, setSparkContractAddress] = useState<string>()
   const [sparkTotalRewards, setSparkTotalRewards] = useState<number>(0)
 
@@ -151,19 +151,19 @@ export const useModules = () => {
     load()
   }, [])
 
-  const modulesUpdated = {
-    ...modules,
+  const subnetsUpdated = {
+    ...subnets,
     spark: {
-      ...modules.spark,
+      ...subnets.spark,
       contractAddress: sparkContractAddress,
       stats: {
-        ...modules.spark.stats,
+        ...subnets.spark.stats,
         totalRewards: sparkTotalRewards
       }
     }
   }
 
   return {
-    modules: Object.entries(modulesUpdated).map(([id, mod]) => ({ ...mod, id })) as Module[]
+    subnets: Object.entries(subnetsUpdated).map(([id, subnet]) => ({ ...subnet, id })) as Subnet[]
   }
 }

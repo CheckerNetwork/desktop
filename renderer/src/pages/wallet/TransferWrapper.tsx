@@ -1,17 +1,17 @@
 import Text from 'src/components/Text'
-import { Wallet } from 'src/hooks/StationWallet'
+import { Wallet } from 'src/hooks/CheckerWallet'
 import DestinationAddressForm from './DestinationAddressForm'
 import BalanceControl from './BalanceControl'
 import EditDestinationAddressForm from './EditDestinationAddressForm'
 import { CSSProperties, useEffect, useRef, useState } from 'react'
 import Transition from 'src/components/Transition'
 import GridCanvas from './GridCanvas'
-import { openDocsLink } from 'src/lib/station-config'
+import { openDocsLink } from 'src/lib/checker-config'
 
 const SEND_THRESHOLD = 0.01
 
 const TransferWrapper = ({
-  stationAddress,
+  checkerAddress,
   destinationFilAddress,
   processingTransaction,
   walletBalance,
@@ -20,7 +20,7 @@ const TransferWrapper = ({
 }: {
   walletBalance: Wallet['walletBalance'];
   destinationFilAddress?: Wallet['destinationFilAddress'];
-  stationAddress?: Wallet['stationAddress'];
+  checkerAddress?: Wallet['checkerAddress'];
   processingTransaction: Wallet['processingTransaction'];
   editDestinationAddress: Wallet['editDestinationAddress'];
   transferAllFundsToDestinationWallet: Wallet['transferAllFundsToDestinationWallet'];
@@ -45,7 +45,7 @@ const TransferWrapper = ({
         destinationFilAddress={destinationFilAddress}
         processingTransaction={processingTransaction}
       />
-      {stationAddress && (
+      {checkerAddress && (
         <>
           <Transition
             on={!destinationFilAddress}
@@ -100,7 +100,7 @@ const TransferWrapper = ({
           onClick={() => openDocsLink()}
           className='focus-visible:outline-slate-400'
         >
-          Learn more about your Station wallet
+          Learn more about your Checker wallet
         </Text>
       </footer>
     </section>

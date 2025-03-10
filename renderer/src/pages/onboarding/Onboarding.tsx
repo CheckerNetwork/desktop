@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from 'react'
 import type { JSX } from 'react'
 import { useNavigate } from 'react-router'
-import { getOnboardingCompleted, setOnboardingCompleted } from 'src/lib/station-config'
+import { getOnboardingCompleted, setOnboardingCompleted } from 'src/lib/checker-config'
 import Onboarding from 'src/components/Onboarding'
 import StationLogoLight from 'src/assets/img/station-logo-light.svg?react'
 import { ROUTES } from 'src/lib/routes'
