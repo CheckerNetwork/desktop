@@ -16,15 +16,15 @@ const { parseEther } = require('ethers/lib/utils')
 const { once } = require('node:events')
 const { format } = require('node:util')
 
-const log = require('electron-log').scope('checker')
+const log = require('electron-log').scope('checker-node')
 
 /** @typedef {import('./typings').Context} Context */
 
 // Checker Node is installed separately from `node_modules`, since it needs a
 // self-contained dependency tree outside the asar archive.
 const checkerNodePath = app.isPackaged
-  ? join(process.resourcesPath, 'checker', 'bin', 'checker.js')
-  : join(__dirname, '..', 'checker', 'bin', 'checker.js')
+  ? join(process.resourcesPath, 'checker-node', 'bin', 'checker.js')
+  : join(__dirname, '..', 'checker-node', 'bin', 'checker.js')
 log.info(format('Checker Node binary: %s', checkerNodePath))
 
 const logs = new Logs()
@@ -76,7 +76,7 @@ function maybeReportErrorToSentry (err, scopeFn) {
  * @param {Context} ctx
  */
 async function start (ctx) {
-  log.info('Starting Checker...')
+  log.info('Starting Checker Node...')
 
   const childProcess = fork(
     checkerNodePath,

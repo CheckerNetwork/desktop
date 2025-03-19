@@ -33,4 +33,4 @@ dev-app-update.yml
 *.sw?
 .tool-versions
 
-checker
+checker-node

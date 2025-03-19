@@ -32,7 +32,7 @@ exports.default = async function (context) {
         'Filecoin Station.app',
         'Contents',
         'Resources',
-        'checker'
+        'checker-node'
       ),
       env: {
         ...process.env,

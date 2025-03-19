@@ -19,7 +19,7 @@
     "vitest:ui": "vitest --ui",
     "postinstall": "run-s install-*",
     "install-app-deps": "electron-builder install-app-deps",
-    "install-checker": "shx rm -rf checker && shx cp -R node_modules/@checkernetwork/node checker && cd checker && npm install --omit=dev",
+    "install-checker-node": "shx rm -rf checker-node && shx cp -R node_modules/@checkernetwork/node checker-node && cd checker-node && npm install --omit=dev",
     "clean": "shx rm -rf dist/",
     "build": "run-s clean build:*",
     "build:webui": "vite build",
