@@ -60,6 +60,7 @@ class WalletBackend {
     this.transactions = []
     this.disableKeytar = disableKeytar
     this.onTransactionUpdate = onTransactionUpdate
+    this.keytarService = 'filecoin-station-wallet-0x'
   }
 
   /**
@@ -104,12 +105,11 @@ class WalletBackend {
    * @returns {Promise<WalletSeed>}
    */
   async getSeedPhrase () {
-    const service = 'filecoin-station-wallet-0x'
     let seed
     if (!this.disableKeytar) {
       log.info('Reading the seed phrase from the keychain...')
       try {
-        seed = await keytar.getPassword(service, 'seed')
+        seed = await keytar.getPassword(this.keytarService, 'seed')
       } catch (err) {
         throw new Error(
           'Cannot read the seed phrase - did the user grant access?',
@@ -123,10 +123,18 @@ class WalletBackend {
     }
 
     seed = ethers.Wallet.createRandom().mnemonic.phrase
-    if (!this.disableKeytar) {
-      await keytar.setPassword(service, 'seed', seed)
-    }
+    await this.setSeedPhrase(seed)
     return { seed, isNew: true }
+  }
+
+  /**
+   * @param {string} seed
+   */
+  async setSeedPhrase (seed) {
+    ethers.Wallet.fromMnemonic(seed)
+    if (!this.disableKeytar) {
+      await keytar.setPassword(this.keytarService, 'seed', seed)
+    }
   }
 
   async fetchBalance () {

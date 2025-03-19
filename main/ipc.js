@@ -88,6 +88,10 @@ function setupIpcMain (/** @type {Context} */ ctx) {
     (_events) => ctx.exportSeedPhrase()
   )
   ipcMain.handle(
+    'station:importSeedPhrase',
+    (_events) => ctx.importSeedPhrase()
+  )
+  ipcMain.handle(
     'station:saveModuleLogsAs',
     (_events) => ctx.saveModuleLogsAs()
   )
