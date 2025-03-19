@@ -85,7 +85,10 @@ async function start (ctx) {
       env: {
         ...process.env,
         FIL_WALLET_ADDRESS: await wallet.getAddress(),
-        PASSPHRASE: await wallet.signMessage('checker node passhprase'),
+        // "Station core" is a legacy term, from before this product was
+        // renamed to Checker. We're continuing to use it as the passphrase, in
+        // order to prevent all nodes from getting a new ID.
+        PASSPHRASE: await wallet.signMessage('station core passhprase'),
         CACHE_ROOT: consts.CACHE_ROOT,
         STATE_ROOT: consts.STATE_ROOT,
         DEPLOYMENT_TYPE: 'checker-app'
