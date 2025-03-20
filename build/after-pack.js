@@ -22,7 +22,7 @@ exports.default = async function (context) {
         : null
   if (arch === 'universal') return
   assert(arch, `Unknown architecture id: ${context.arch}`)
-  console.log(`Rebuild Station Core for arch=${arch}`)
+  console.log(`Rebuild Checker Node for arch=${arch}`)
   const ps = spawn(
     'node',
     ['scripts/post-install.js'],
@@ -32,7 +32,7 @@ exports.default = async function (context) {
         'Filecoin Station.app',
         'Contents',
         'Resources',
-        'core'
+        'checker-node'
       ),
       env: {
         ...process.env,

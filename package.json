@@ -19,7 +19,7 @@
     "vitest:ui": "vitest --ui",
     "postinstall": "run-s install-*",
     "install-app-deps": "electron-builder install-app-deps",
-    "install-core": "shx rm -rf core && shx cp -R node_modules/@filecoin-station/core core && cd core && npm install --omit=dev",
+    "install-checker-node": "shx rm -rf checker-node && shx cp -R node_modules/@checkernetwork/node checker-node && cd checker-node && npm install --omit=dev",
     "clean": "shx rm -rf dist/",
     "build": "run-s clean build:*",
     "build:webui": "vite build",
@@ -39,7 +39,7 @@
   },
   "homepage": "https://github.com/filecoin-station/desktop#readme",
   "dependencies": {
-    "@filecoin-station/core": "^21.2.6",
+    "@checkernetwork/node": "^22.0.0",
     "@filecoin-station/spark-impact-evaluator": "^1.2.4",
     "@glif/filecoin-address": "3.0.12",
     "@glif/filecoin-message": "^3.0.5",

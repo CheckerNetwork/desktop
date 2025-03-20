@@ -16,16 +16,16 @@ const { parseEther } = require('ethers/lib/utils')
 const { once } = require('node:events')
 const { format } = require('node:util')
 
-const log = require('electron-log').scope('core')
+const log = require('electron-log').scope('checker-node')
 
 /** @typedef {import('./typings').Context} Context */
 
-// Core is installed separately from `node_modules`, since it needs a
+// Checker Node is installed separately from `node_modules`, since it needs a
 // self-contained dependency tree outside the asar archive.
-const corePath = app.isPackaged
-  ? join(process.resourcesPath, 'core', 'bin', 'station.js')
-  : join(__dirname, '..', 'core', 'bin', 'station.js')
-log.info(format('Core binary: %s', corePath))
+const checkerNodePath = app.isPackaged
+  ? join(process.resourcesPath, 'checker-node', 'bin', 'checker.js')
+  : join(__dirname, '..', 'checker-node', 'bin', 'checker.js')
+log.info(format('Checker Node binary: %s', checkerNodePath))
 
 const logs = new Logs()
 const activities = new Activities()
@@ -76,24 +76,27 @@ function maybeReportErrorToSentry (err, scopeFn) {
  * @param {Context} ctx
  */
 async function start (ctx) {
-  log.info('Starting Core...')
+  log.info('Starting Checker Node...')
 
   const childProcess = fork(
-    corePath,
-    ['--json', '--recreateStationIdOnError'],
+    checkerNodePath,
+    ['--json', '--recreateCheckerIdOnError'],
     {
       env: {
         ...process.env,
         FIL_WALLET_ADDRESS: await wallet.getAddress(),
+        // "Station core" is a legacy term, from before this product was
+        // renamed to Checker. We're continuing to use it as the passphrase, in
+        // order to prevent all nodes from getting a new ID.
         PASSPHRASE: await wallet.signMessage('station core passhprase'),
         CACHE_ROOT: consts.CACHE_ROOT,
         STATE_ROOT: consts.STATE_ROOT,
-        DEPLOYMENT_TYPE: 'station-desktop'
+        DEPLOYMENT_TYPE: 'checker-app'
       },
       stdio: ['pipe', 'pipe', 'pipe', 'ipc']
     }
   )
-  log.info(format('Core pid:', childProcess.pid))
+  log.info(format('Checker Node pid:', childProcess.pid))
 
   assert(childProcess.stdout)
   childProcess.stdout.setEncoding('utf8')
@@ -105,12 +108,12 @@ async function start (ctx) {
       try {
         event = JSON.parse(line)
       } catch (_err) {
-        const err = new Error(`Failed to parse core event: ${line}`)
+        const err = new Error(`Failed to parse checker node event: ${line}`)
         err.cause = _err
         if (!line.includes('failed to detect network')) {
           Sentry.captureException(err)
         }
-        log.error(format('Cannot parse Core stdout:', err))
+        log.error(format('Cannot parse Checker Node stdout:', err))
         return
       }
       switch (event.type) {
@@ -136,7 +139,7 @@ async function start (ctx) {
         }
         default: {
           const err = new Error(
-            `Unknown Station Core event type "${event.type}": ${line}`
+            `Unknown Station Checker Node event type "${event.type}": ${line}`
           )
           log.error(format(err))
           Sentry.captureException(err)
@@ -161,12 +164,14 @@ async function start (ctx) {
   const reason = exitSignal
     ? `via signal ${exitSignal}`
     : `with code: ${exitCode}`
-  const msg = `Core exited ${reason}`
+  const msg = `Checker Node exited ${reason}`
   log.info(msg)
   const exitReason = exitSignal || exitCode ? reason : null
 
   const [closeCode] = await onceClosed
-  log.info(`Core closed all stdio with code ${closeCode ?? '<no code>'}`)
+  log.info(
+    `Checker Node closed all stdio with code ${closeCode ?? '<no code>'}`
+  )
 
   if (closeCode === 2) {
     // FIL_WALLET_ADDRESS did not pass our screening. There is not much
@@ -175,12 +180,15 @@ async function start (ctx) {
     throw new Error('Invalid Filecoin wallet address')
   }
 
-  maybeReportErrorToSentry('Core exited', (/** @type {any} */ scope) => {
-    // Sentry UI can't show the full 100 lines
-    scope.setExtra('logs', logs.getLastLines(20))
-    scope.setExtra('reason', exitReason)
-    return scope
-  })
+  maybeReportErrorToSentry(
+    'Checker Node exited',
+    (/** @type {any} */ scope) => {
+      // Sentry UI can't show the full 100 lines
+      scope.setExtra('logs', logs.getLastLines(20))
+      scope.setExtra('reason', exitReason)
+      return scope
+    }
+  )
 }
 
 module.exports = {
