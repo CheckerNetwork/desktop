@@ -7,7 +7,7 @@ const log = require('electron-log').scope('config')
 const ConfigKeys = {
   OnboardingCompleted: 'station.OnboardingCompleted',
   TrayOperationExplained: 'station.TrayOperationExplained',
-  StationID: 'station.StationID',
+  CheckerID: 'station.CheckerID',
   FilAddress: 'station.FilAddress',
   DestinationFilAddress: 'station.DestinationFilAddress'
 }
