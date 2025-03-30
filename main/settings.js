@@ -31,6 +31,19 @@ async function setup (ctx) {
       clipboard.writeText(await wallet.getSeedPhrase())
     }
   }
+
+  ctx.importSeedPhrase = async () => {
+    const button = showDialogSync({
+      title: 'Import Seed Phrase',
+      // eslint-disable-next-line max-len
+      message: 'The seed phrase is used in order to back up your wallet, or move it to a different machine. Please copy it to your clipboard before proceeding. Please be cautious, as this will overwrite the seed phrase currently used, which will be permanently lost.',
+      type: 'info',
+      buttons: ['Cancel', 'Import from Clipboard and Restart']
+    })
+    if (button === 1) {
+      await wallet.setSeedPhrase(clipboard.readText())
+    }
+  }
 }
 
 module.exports = {

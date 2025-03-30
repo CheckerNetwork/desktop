@@ -3,6 +3,7 @@ import Text from 'src/components/Text'
 import {
   checkForUpdates,
   exportSeedPhrase,
+  importSeedPhrase,
   isOpenAtLogin,
   saveModuleLogsAs,
   toggleOpenAtLogin
@@ -13,6 +14,7 @@ import Button from 'src/components/Button'
 import UpdateIcon from 'src/assets/img/icons/update.svg?react'
 import SaveIcon from 'src/assets/img/icons/save.svg?react'
 import ExportIcon from 'src/assets/img/icons/export.svg?react'
+import ImportIcon from 'src/assets/img/icons/import.svg?react'
 
 const Settings = () => {
   const [isOpenAtLoginChecked, setIsOpenAtLoginChecked] = useState<boolean>()
@@ -79,7 +81,7 @@ const Settings = () => {
         </SettingsGroup>
         <SettingsGroup name='Security'>
           <SettingsGroupItem
-            title='Seed phrase'
+            title='Backup'
             description={`Export your seed phrase for safekeeping, 
               allowing you to recover your cryptocurrency assets if necessary.`}
             input={
@@ -90,6 +92,20 @@ const Settings = () => {
                 onClick={exportSeedPhrase}
               >
                     Export seed phrase
+              </Button>
+            }
+          />
+          <SettingsGroupItem
+            title='Restore'
+            description={'Import your seed phrase from a previous export.'}
+            input={
+              <Button
+                type='button'
+                variant='secondary'
+                icon={<ImportIcon />}
+                onClick={importSeedPhrase}
+              >
+                    Import seed phrase
               </Button>
             }
           />
