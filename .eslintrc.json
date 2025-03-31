@@ -27,7 +27,7 @@
     "assets/",
     "dist/",
     "@types/",
-    "core/"
+    "checker-node/"
   ],
   "overrides": [
     {

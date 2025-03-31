@@ -13,7 +13,7 @@ files:
     - package.json
 
 extraResources:
-  - 'core/**'
+  - 'checker-node/**'
 
 beforePack: './build/before-pack.js'
 afterPack: './build/after-pack.js'

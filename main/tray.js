@@ -5,7 +5,7 @@ const { Menu, Tray, app, ipcMain, nativeImage } = require('electron')
 const { ipcMainEvents } = require('./ipc')
 const path = require('path')
 const assert = require('node:assert')
-const core = require('./core')
+const checkerNode = require('./checker-node')
 const { formatTokenValue } = require('./utils')
 
 /** @typedef {import('./typings').Context} Context */
@@ -86,7 +86,7 @@ const createContextMenu = (/** @type {Context} */ ctx) => {
 }
 
 module.exports = async function (/** @type {Context} */ ctx) {
-  tray = new Tray(getTrayIcon(false, core.isOnline()))
+  tray = new Tray(getTrayIcon(false, checkerNode.isOnline()))
 
   const contextMenu = createContextMenu(ctx)
   tray.setToolTip('Checker')
@@ -108,7 +108,7 @@ function setupIpcEventListeners (ctx) {
   function updateTray () {
     assert(tray)
     tray.setImage(
-      getTrayIcon(ctx.getUpdaterStatus().readyToUpdate, core.isOnline())
+      getTrayIcon(ctx.getUpdaterStatus().readyToUpdate, checkerNode.isOnline())
     )
     const contextMenu = createContextMenu(ctx)
     tray.setContextMenu(contextMenu)
