@@ -1,6 +1,6 @@
 import { FC, useState, PropsWithChildren } from 'react'
 import Back from 'src/assets/img/icons/arrow-left.svg?react'
-import Page from 'src/assets/img/icons/paginator-page.svg?react'
+import PaginatorPage from 'src/assets/img/icons/paginator-page.svg?react'
 import CurrentPage from 'src/assets/img/icons/paginator-current.svg?react'
 import { showTermsOfService } from 'src/lib/checker-config'
 
@@ -25,7 +25,7 @@ const Footer: FC<FooterProps> = ({ page, pages, next, prev }) => {
       </button>
       <div className='flex flex-row items-center space-between gap-3'>
         {[...Array(pages - 1).keys()].map((_, index) => {
-          return index === page ? <CurrentPage key={index} /> : <Page key={index} />
+          return index === page ? <CurrentPage key={index} /> : <PaginatorPage key={index} />
         })}
       </div>
       <button
@@ -54,6 +54,19 @@ const Paragraph = (props: PropsWithChildren) => {
   )
 }
 
+const Page = (props: PropsWithChildren<{ page: number; maxWidth?: number }>) => {
+  return (
+    <div
+      className={`
+        w-[100%] max-w-[${props.maxWidth || 640}px] bg-white rounded-[10px]
+        shadow-[0px_5px_25px_rgba(0,0,0,0.1)] onboarding-${props.page}
+      `}
+    >
+      {props.children}
+    </div>
+  )
+}
+
 interface OnboardingProps {
   onFinish: () => void;
 }
@@ -67,11 +80,7 @@ const Onboarding: FC<OnboardingProps> = ({ onFinish }) => {
   return (
     <div className="onboarding">
       {page === 0 &&
-        <div
-          className={`
-            w-[100%] max-w-[640px] bg-white rounded-[10px] shadow-[0px_5px_25px_rgba(0,0,0,0.1)] onboarding-${page}
-          `}
-        >
+        <Page page={page}>
           <div className='bg-black px-20 py-16  rounded-t-[10px] min-h-[276px] flex'>
             <Title>
               Join the Checker Network.
@@ -88,15 +97,11 @@ const Onboarding: FC<OnboardingProps> = ({ onFinish }) => {
               <Footer page={page} pages={pages} next={next} prev={prev} />
             </div>
           </div>
-        </div>
+        </Page>
       }
 
       {page === 1 &&
-        <div
-          className={`
-            w-[100%] max-w-[640px] bg-white rounded-[10px] shadow-[0px_5px_25px_rgba(0,0,0,0.1)] onboarding-${page}
-          `}
-        >
+        <Page page={page}>
           <div className='bg-black px-20 py-16  rounded-t-[10px] min-h-[276px] flex'>
             <Title>Rewards</Title>
           </div>
@@ -113,15 +118,11 @@ const Onboarding: FC<OnboardingProps> = ({ onFinish }) => {
               <Footer page={page} pages={pages} next={next} prev={prev} />
             </div>
           </div>
-        </div>
+        </Page>
       }
 
       {page === 2 &&
-        <div
-          className={`
-            w-[100%] max-w-[940px] bg-white rounded-[10px] shadow-[0px_5px_25px_rgba(0,0,0,0.1)] onboarding-${page}
-          `}
-        >
+        <Page page={page} maxWidth={940}>
           <div className='bg-black px-20 py-16  rounded-t-[10px] min-h-[276px] flex'>
             <Title>Before we launch.</Title>
           </div>
@@ -164,7 +165,7 @@ const Onboarding: FC<OnboardingProps> = ({ onFinish }) => {
               </div>
             </div>
           </div>
-        </div>
+        </Page>
       }
 
     </div>
