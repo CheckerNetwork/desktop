@@ -48,7 +48,7 @@ const Title = (props: PropsWithChildren) => {
 
 const Paragraph = (props: PropsWithChildren) => {
   return (
-    <p className="text-body-m my-3 tracking-[0.01em]">
+    <p className="text-body-m my-3 tracking-[0.01em] text-justify">
       {props.children}
     </p>
   )
