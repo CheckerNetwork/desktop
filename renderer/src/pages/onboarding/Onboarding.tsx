@@ -5,6 +5,7 @@ import { getOnboardingCompleted, setOnboardingCompleted } from 'src/lib/checker-
 import Onboarding from 'src/components/Onboarding'
 import StationLogoLight from 'src/assets/img/station-logo-light.svg?react'
 import { ROUTES } from 'src/lib/routes'
+import CheckerLogo from 'src/assets/img/checker-logo.svg?react'
 
 const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms))
 
@@ -48,6 +49,7 @@ const OnboardingPage = (): JSX.Element => {
 
   return (
     <div className="fixed bg-grayscale-200 w-full h-full top-0 left-0">
+      <CheckerLogo className="absolute top-[82px] left-[82px] w-[238px]" />
       <div className="flex justify-center items-center h-full">
         <Onboarding onFinish={onFinishOnboarding} />
       </div>
