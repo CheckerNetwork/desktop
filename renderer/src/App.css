@@ -5,10 +5,6 @@
 @layer base {
 
   @font-face {
-    font-family: "SuisseIntl";
-    src: url('assets/fonts/SuisseIntl/SuisseIntl-Regular.ttf');
-  }
-  @font-face {
     font-family: "Lato";
     src: url('assets/fonts/Lato/Lato-Regular.ttf');
   }
@@ -26,6 +22,12 @@
     font-family: "IBMPlexMono";
     font-weight: 700;
     src: url('assets/fonts/IBMPlexMono/IBMPlexMono-Bold.ttf');
+  }
+  @font-face {
+    font-family: 'ClashDisplay-Variable';
+    src: url('assets/fonts/ClashDisplay_Complete/Fonts/TTF/ClashDisplay-Variable.ttf');
+    font-display: swap;
+    font-style: normal;
   }
 
   body {

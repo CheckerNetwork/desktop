@@ -41,7 +41,7 @@ module.exports = {
       'mono-2xl': ['2.75rem', '3.25rem']
     },
     fontFamily: {
-      title: ['SuisseIntl', 'sans-serif'],
+      title: ['ClashDisplay-Variable', 'sans-serif'],
       body: ['Lato', 'serif'],
       mono: ['IBMPlexMono', 'monospace']
     },
