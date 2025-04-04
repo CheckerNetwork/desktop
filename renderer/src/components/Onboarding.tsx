@@ -149,7 +149,7 @@ const Onboarding: FC<OnboardingProps> = ({ onFinish }) => {
             <div className='pb-20 bottom-0 px-20'>
               <div className="flex flex-row gap-3 justify-between">
                 <button
-                  className="btn-secondary-small flex items-center group border-none underline underline-offset-4"
+                  className="btn-secondary-small flex items-center group border-none"
                   title="previous"
                   onClick={prev}
                 >
