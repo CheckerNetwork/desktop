@@ -1,4 +1,4 @@
-import { FC, useState } from 'react'
+import { FC, useState, PropsWithChildren } from 'react'
 import Back from 'src/assets/img/icons/arrow-left.svg?react'
 import Page from 'src/assets/img/icons/paginator-page.svg?react'
 import CurrentPage from 'src/assets/img/icons/paginator-current.svg?react'
@@ -38,11 +38,19 @@ const Footer: FC<FooterProps> = ({ page, pages, next, prev }) => {
   )
 }
 
-const Title: FC<{ children: string }> = ({ children }) => {
+const Title = (props: PropsWithChildren) => {
   return (
     <h1 className="font-title text-white leading-[3.25rem] text-title-l my-auto">
-      {children}
+      {props.children}
     </h1>
+  )
+}
+
+const Paragraph = (props: PropsWithChildren) => {
+  return (
+    <p className="text-body-m my-3 tracking-[0.01em]">
+      {props.children}
+    </p>
   )
 }
 
@@ -71,10 +79,10 @@ const Onboarding: FC<OnboardingProps> = ({ onFinish }) => {
           </div>
           <div className='min-h-[372px]'>
             <div className='pb-20 px-20 pt-16 min-h-[250px]'>
-              <p className="text-body-s my-3">
+              <Paragraph>
                 Checker securely connects your computer to the global peer-to-peer Checker Network, which rewards
                 you for your participation. Once you&apos;ve connected, you will begin completing checker jobs.
-              </p>
+              </Paragraph>
             </div>
             <div className='pb-20 bottom-0 px-20'>
               <Footer page={page} pages={pages} next={next} prev={prev} />
@@ -94,12 +102,12 @@ const Onboarding: FC<OnboardingProps> = ({ onFinish }) => {
           </div>
           <div className='min-h-[372px]'>
             <div className='pb-20 px-20 pt-16 min-h-[250px]'>
-              <p className="text-body-s my-3">
+              <Paragraph>
                 To get you set up, you will create a new Filecoin Wallet, controlled just by you.
-              </p>
-              <p className="text-body-s my-3">
+              </Paragraph>
+              <Paragraph>
                 FIL will be transferred to your wallet according to your participation in the economy.
-              </p>
+              </Paragraph>
             </div>
             <div className='pb-20 bottom-0 px-20'>
               <Footer page={page} pages={pages} next={next} prev={prev} />
@@ -119,13 +127,13 @@ const Onboarding: FC<OnboardingProps> = ({ onFinish }) => {
           </div>
           <div className='min-h-[372px]'>
             <div className='pb-8 px-20 pt-8 min-h-[250px]'>
-              <p className="text-body-s my-3">
+              <Paragraph>
                 Checker asks for your consent to use your personal data to store and/or access information on a
                 device. Your personal data will be processed and information from your device (cookies, unique
                 identifiers, and other device data) may be stored by, accessed by and shared with third party
                 vendors, or used specifically by this app.
-              </p>
-              <p className="text-body-s my-3">
+              </Paragraph>
+              <Paragraph>
                 By clicking {'"'}Create Wallet{'"'} or otherwise continuing to use this service, you agree, you
                 have read, understand and accept Checker&apos;s
                 {' '}
@@ -135,7 +143,7 @@ const Onboarding: FC<OnboardingProps> = ({ onFinish }) => {
                 >
                   Terms of Service
                 </span>.
-              </p>
+              </Paragraph>
             </div>
             <div className='pb-20 bottom-0 px-20'>
               <div className="flex flex-row gap-3 justify-between">
