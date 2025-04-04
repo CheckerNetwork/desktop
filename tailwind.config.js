@@ -24,7 +24,7 @@ module.exports = {
       'title-xs': ['1.75rem', '2.25rem'],
       'title-s': ['2.25rem', '2.75rem'],
       'title-m': ['2.75rem', '3.25rem'],
-      'title-l': ['3.25rem', '4.25rem'],
+      'title-l': ['3.4375rem', '4.4375rem'],
       'body-3xs': ['0.625rem', '0.875rem'],
       'body-2xs': ['0.75rem', '1rem'],
       'body-xs': ['0.875rem', '1.25rem'],
