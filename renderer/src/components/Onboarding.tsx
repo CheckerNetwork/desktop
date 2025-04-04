@@ -58,8 +58,8 @@ const Page = (props: PropsWithChildren<{ page: number; maxWidth?: number }>) => 
   return (
     <div
       className={`
-        w-[100%] max-w-[${props.maxWidth || 640}px] bg-white rounded-[10px]
-        shadow-[0px_5px_25px_rgba(0,0,0,0.1)] onboarding-${props.page}
+        w-[100%] max-w-[${props.maxWidth || 640}px] bg-white rounded-[5px]
+        onboarding-${props.page} backdrop-blur-3xl
       `}
     >
       {props.children}
