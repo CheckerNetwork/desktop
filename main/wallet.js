@@ -2,7 +2,7 @@
 
 const electronLog = require('electron-log')
 const assert = require('assert')
-const { getDestinationWalletAddress } = require('./station-config')
+const { getDestinationWalletAddress } = require('./checker-config')
 const timers = require('node:timers/promises')
 const { format } = require('node:util')
 const Store = require('electron-store')

@@ -6,8 +6,8 @@
 
 ```mermaid
 graph
-  fil-stat-repo(github.com/filecoin-station/desktop) --> fil-stat-main(Station main process)
-  fil-stat-repo --> fil-stat-webui(Station WebUI)
+  fil-stat-repo(github.com/CheckerNetwork/app) --> fil-stat-main(Checker main process)
+  fil-stat-repo --> fil-stat-webui(Checker WebUI)
 
   saturn-l2-repo(https://github.com/filecoin-project/saturn-l2)
   --> saturn-l2-go(Saturn L2 Node binary)
@@ -23,7 +23,7 @@ graph
 
 Repositories:
 
-- https://github.com/filecoin-station/desktop
+- https://github.com/CheckerNetwork/app
 - https://github.com/filecoin-saturn/L2-node
 - https://github.com/filecoin-project/saturn-webui
 
@@ -32,8 +32,8 @@ Repositories:
 1. `filecoin-project/saturn-webui` publishes a new release with WebUI assets
 2. `filecoin-saturn/L2-node` is updated to use the new `saturn-webui` version
 3. `filecoin-saturn/L2-node` publishes a new release
-4. `filecoin-station/desktop` is updated to use the new `L2-node` version
-5. `filecoin-station/desktop` publishes a new release
+4. `CheckerNetwork/app` is updated to use the new `L2-node` version
+5. `CheckerNetwork/app` publishes a new release
 
 ## Development workflow
 

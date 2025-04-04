@@ -1,6 +1,6 @@
 import { ChangeEvent, FormEvent, useEffect, useRef, useState } from 'react'
 import { useDialog } from 'src/components/DialogProvider'
-import useWallet from 'src/hooks/StationWallet'
+import useWallet from 'src/hooks/CheckerWallet'
 import { validateAddress, addressIsF1 } from 'src/lib/utils'
 import ConfirmationDialog from './ConfirmationDialog'
 

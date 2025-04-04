@@ -1,4 +1,4 @@
-appId: io.filecoin.station
+appId: network.checker.app
 generateUpdatesFilesForAllChannels: true
 
 extraMetadata:
@@ -58,8 +58,8 @@ nsis:
 
 linux:
   artifactName: ${name}-${os}-${arch}.${ext}
-  executableName: filecoin-station
-  icon: filecoin-station
+  executableName: checker
+  icon: checker
   category: Network;FileTransfer;P2P
   synopsis: A desktop client for Filecoin Retrieval Markets
   maintainer: changeme@example.com

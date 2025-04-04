@@ -1,7 +1,7 @@
 export const ROUTES = {
   onboarding: '/',
   dashboard: '/dashboard',
-  modules: '/modules',
+  subnets: '/subnets',
   settings: '/settings',
   wallet: '/wallet'
 } as const

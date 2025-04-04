@@ -9,9 +9,9 @@ const assert = require('assert')
 const { getBuildVersion } = require('./build-version')
 
 const appIDs = {
-  darwin: 'app.filstation.desktop',
-  win32: 'Filecoin Station Desktop',
-  linux: 'filecoin-station-desktop'
+  darwin: 'network.checker.app',
+  win32: 'Checker',
+  linux: 'checker'
 }
 
 module.exports = Object.freeze({
@@ -21,7 +21,7 @@ module.exports = Object.freeze({
   IS_MAC: os.platform() === 'darwin',
   IS_WIN: os.platform() === 'win32',
   IS_APPIMAGE: typeof process.env.APPIMAGE !== 'undefined',
-  STATION_VERSION: packageJson.version,
+  CHECKER_VERSION: packageJson.version,
   BUILD_VERSION: getBuildVersion(packageJson),
 
   ELECTRON_VERSION: process.versions.electron
@@ -30,8 +30,8 @@ module.exports = Object.freeze({
 // Replace with `app.get('localUserData')` after this PR is landed & released:
 // https://github.com/electron/electron/pull/34337
 function getCacheRoot () {
-  if (process.env.STATION_ROOT) {
-    return path.join(process.env.STATION_ROOT, 'cache')
+  if (process.env.CHECKER_ROOT) {
+    return path.join(process.env.CHECKER_ROOT, 'cache')
   }
 
   const platform = os.platform()
@@ -55,8 +55,8 @@ function getCacheRoot () {
 }
 
 function getStateRoot () {
-  if (process.env.STATION_ROOT) {
-    return path.join(process.env.STATION_ROOT, 'state')
+  if (process.env.CHECKER_ROOT) {
+    return path.join(process.env.CHECKER_ROOT, 'state')
   }
 
   const platform = os.platform()
@@ -87,8 +87,8 @@ function getStateRoot () {
 
 // Used for migrations
 function getLegacyCacheHome () {
-  if (process.env.STATION_ROOT) {
-    return path.join(process.env.STATION_ROOT, 'cache')
+  if (process.env.CHECKER_ROOT) {
+    return path.join(process.env.CHECKER_ROOT, 'cache')
   }
 
   const platform = os.platform()

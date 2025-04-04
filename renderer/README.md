@@ -1,3 +1,3 @@
 # Renderer
 
-This is the front-end application providing Station Shell UI.
+This is the front-end application providing Checker Shell UI.

@@ -1,6 +1,17 @@
 'use strict'
 
+import mixCssColor from 'mix-css-color'
+
 /** @type {import('tailwindcss').Config} */
+
+const colors = {
+  neptuneBlue: '#4a7dff',
+  neptuneBlueDark: '#2057e3',
+  neptuneBlueLight: '#94b2ff',
+  cassioPeiaPink: '#ed158a',
+  cassioPeiaPinkDark: '#be106e',
+  cassioPeiaPinkLight: '#fc6cba'
+}
 
 module.exports = {
   content: [
@@ -13,12 +24,12 @@ module.exports = {
       'title-xs': ['1.75rem', '2.25rem'],
       'title-s': ['2.25rem', '2.75rem'],
       'title-m': ['2.75rem', '3.25rem'],
-      'title-l': ['3.25rem', '4.25rem'],
+      'title-l': ['3.4375rem', '117%'],
       'body-3xs': ['0.625rem', '0.875rem'],
       'body-2xs': ['0.75rem', '1rem'],
       'body-xs': ['0.875rem', '1.25rem'],
       'body-s': ['1rem', '1.25rem'],
-      'body-m': ['1.25rem', '1.75rem'],
+      'body-m': ['1.375rem', '175%'],
       'body-l': ['2.25rem', '3.25rem'],
       'mono-3xs': ['0.75rem', '1rem'],
       'mono-2xs': ['0.875rem', '1.25rem'],
@@ -30,9 +41,9 @@ module.exports = {
       'mono-2xl': ['2.75rem', '3.25rem']
     },
     fontFamily: {
-      title: ['SuisseIntl', 'sans-serif'],
-      body: ['SpaceGrotesk', 'serif'],
-      mono: ['SpaceMono', 'monospace']
+      title: ['ClashDisplay-Variable', 'sans-serif'],
+      body: ['Lato', 'serif'],
+      mono: ['IBMPlexMono', 'monospace']
     },
     fontWeight: {
       normal: 400,
@@ -77,8 +88,8 @@ module.exports = {
       },
       fradeFromBlue: {
         from: {
-          background: '#E9EFFF',
-          color: '#2a1cf7'
+          background: colors.neptuneBlueLight,
+          color: colors.neptuneBlue
         },
         to: {
           background: 'transparent',
@@ -113,13 +124,14 @@ module.exports = {
     colors: {
       white: '#fff',
       black: '#000',
-      primary: '#2a1cf7',
-      'primary-hover': '#1A1199',
-      'primary-click': '#2317CC',
+      primary: colors.neptuneBlue,
+      'primary-hover': colors.neptuneBlueDark,
+      'primary-click':
+        mixCssColor(colors.neptuneBlue, colors.neptuneBlueDark).hex,
       blue: {
-        50: '#E9EFFF',
-        300: '#8BA4FF',
-        700: '#2A1CF7'
+        50: colors.neptuneBlueLight,
+        300: mixCssColor(colors.neptuneBlue, colors.neptuneBlueLight).hex,
+        700: colors.neptuneBlue
       },
       grayscale: {
         100: '#f0f0f0',
@@ -136,21 +148,12 @@ module.exports = {
         100: '#EAEAEF',
         200: '#D9D9E4',
         400: '#A0A1BA',
-        600: '#7B7799',
         800: '#5F5A73'
       },
-      green: {
-        100: '#33cc9d',
-        200: '#68cc58'
-      },
       red: {
-        100: '#ce5347',
-        200: '#ff4d81',
-        400: '#DC2E1B'
-      },
-      orange: {
-        100: '#f5c451',
-        200: '#f76003'
+        100: colors.cassioPeiaPinkLight,
+        200: colors.cassioPeiaPink,
+        400: colors.cassioPeiaPinkDark
       },
       transparent: '#ffffff00'
     }

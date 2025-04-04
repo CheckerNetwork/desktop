@@ -1,4 +1,4 @@
-import useWallet from 'src/hooks/StationWallet'
+import useWallet from 'src/hooks/CheckerWallet'
 import WalletIcon from 'src/assets/img/icons/wallet.svg?react'
 import { useDialog } from './DialogProvider'
 import { formatFilValue } from 'src/lib/utils'

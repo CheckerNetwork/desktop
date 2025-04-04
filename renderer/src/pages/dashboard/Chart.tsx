@@ -9,7 +9,7 @@ import {
   Chart as ChartType
 } from 'chart.js'
 import { Line } from 'react-chartjs-2'
-import { RewardsRecord, sumAllRewards } from 'src/hooks/StationRewards'
+import { RewardsRecord, sumAllRewards } from 'src/hooks/CheckerRewards'
 import { TimeRange } from './ChartController'
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import {
@@ -36,22 +36,22 @@ ChartJS.register(
   Tooltip
 )
 
-function getRewardValue (data: RewardsRecord['totalRewardsReceived'], moduleId: string) {
-  if (moduleId === 'all') {
+function getRewardValue (data: RewardsRecord['totalRewardsReceived'], subnetId: string) {
+  if (subnetId === 'all') {
     return bigIntFilToNumber(sumAllRewards(data))
   }
 
-  return bigIntFilToNumber(data[moduleId])
+  return bigIntFilToNumber(data[subnetId])
 }
 
 const Chart = ({
   historicalRewards,
   timeRange,
-  moduleId
+  subnetId
 }: {
   historicalRewards: RewardsRecord[];
   timeRange: TimeRange;
-  moduleId: string;
+  subnetId: string;
 }) => {
   const [aspectRatio, setAspectRatio] = useState<number>()
   const containerRef = useRef<HTMLDivElement>(null)
@@ -67,14 +67,14 @@ const Chart = ({
     }>(
       (acc, record, index) => {
         acc.labels.push(new Date(record.timestamp).getTime())
-        acc.totalRewards.push(getRewardValue(record.totalRewardsReceived, moduleId))
-        const isPayout = index > 0 && getRewardValue(record.totalRewardsReceived, moduleId) >
-          getRewardValue(historicalRewards[index - 1].totalRewardsReceived, moduleId)
+        acc.totalRewards.push(getRewardValue(record.totalRewardsReceived, subnetId))
+        const isPayout = index > 0 && getRewardValue(record.totalRewardsReceived, subnetId) >
+          getRewardValue(historicalRewards[index - 1].totalRewardsReceived, subnetId)
         acc.scheduled.push(
           isPayout
-            ? getRewardValue(record.totalRewardsReceived, moduleId)
-            : getRewardValue(record.totalScheduledRewards, moduleId) +
-              getRewardValue(record.totalRewardsReceived, moduleId)
+            ? getRewardValue(record.totalRewardsReceived, subnetId)
+            : getRewardValue(record.totalScheduledRewards, subnetId) +
+              getRewardValue(record.totalRewardsReceived, subnetId)
         )
         return acc
       }, {
@@ -82,7 +82,7 @@ const Chart = ({
         totalRewards: [],
         scheduled: []
       })
-  , [historicalRewards, moduleId])
+  , [historicalRewards, subnetId])
 
   const onTooltipUpdate = useCallback<ExternalToltipHandler>((args) => {
     if (!tooltipRef.current) {

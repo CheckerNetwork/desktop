@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { NavLink } from 'react-router'
 import { ROUTES } from 'src/lib/routes'
 import HomeIcon from 'src/assets/img/icons/home.svg?react'
-import ModulesIcon from 'src/assets/img/icons/modules.svg?react'
+import SubnetsIcon from 'src/assets/img/icons/subnets.svg?react'
 import WalletIcon from 'src/assets/img/icons/wallet.svg?react'
 import SettingsIcon from 'src/assets/img/icons/settings.svg?react'
 import MenuArrow from 'src/assets/img/icons/menu-arrow.svg?react'
@@ -17,9 +17,9 @@ const links = [
     Icon: HomeIcon
   },
   {
-    href: ROUTES.modules,
-    title: 'Modules',
-    Icon: ModulesIcon
+    href: ROUTES.subnets,
+    title: 'Subnets',
+    Icon: SubnetsIcon
   },
   {
     href: ROUTES.wallet,

@@ -1,8 +1,8 @@
-import { FC, useState } from 'react'
+import { FC, useState, PropsWithChildren } from 'react'
 import Back from 'src/assets/img/icons/arrow-left.svg?react'
-import Page from 'src/assets/img/icons/paginator-page.svg?react'
+import PaginatorPage from 'src/assets/img/icons/paginator-page.svg?react'
 import CurrentPage from 'src/assets/img/icons/paginator-current.svg?react'
-import { showTermsOfService } from 'src/lib/station-config'
+import { showTermsOfService } from 'src/lib/checker-config'
 
 interface FooterProps {
   page: number;
@@ -20,12 +20,12 @@ const Footer: FC<FooterProps> = ({ page, pages, next, prev }) => {
         onClick={prev}
         type="button"
       >
-        <i><Back className="btn-icon-primary-small" fill={page === 0 ? '#b3b3b3' : '#2a1cf7'} /></i>
+        <i><Back className="btn-icon-primary-small" fill={page === 0 ? '#b3b3b3' : '#4a7dff'} /></i>
         <span>Back</span>
       </button>
       <div className='flex flex-row items-center space-between gap-3'>
         {[...Array(pages - 1).keys()].map((_, index) => {
-          return index === page ? <CurrentPage key={index} /> : <Page key={index} />
+          return index === page ? <CurrentPage key={index} /> : <PaginatorPage key={index} />
         })}
       </div>
       <button
@@ -34,6 +34,35 @@ const Footer: FC<FooterProps> = ({ page, pages, next, prev }) => {
       >
         <span className="">Continue</span>
       </button>
+    </div>
+  )
+}
+
+const Title = (props: PropsWithChildren) => {
+  return (
+    <h1 className="font-title text-white leading-[3.25rem] text-title-l my-auto">
+      {props.children}
+    </h1>
+  )
+}
+
+const Paragraph = (props: PropsWithChildren) => {
+  return (
+    <p className="text-body-m my-3 tracking-[0.01em] text-justify">
+      {props.children}
+    </p>
+  )
+}
+
+const Page = (props: PropsWithChildren<{ page: number; maxWidth?: number }>) => {
+  return (
+    <div
+      className={`
+        w-[100%] max-w-[${props.maxWidth || 640}px] bg-white rounded-[5px]
+        onboarding-${props.page} backdrop-blur-3xl
+      `}
+    >
+      {props.children}
     </div>
   )
 }
@@ -51,76 +80,63 @@ const Onboarding: FC<OnboardingProps> = ({ onFinish }) => {
   return (
     <div className="onboarding">
       {page === 0 &&
-        <div
-          className={`
-            w-[100%] max-w-[640px] bg-white rounded-[10px] shadow-[0px_5px_25px_rgba(0,0,0,0.1)] onboarding-${page}
-          `}
-        >
+        <Page page={page}>
           <div className='bg-black px-20 py-16  rounded-t-[10px] min-h-[276px] flex'>
-            <h1 className="font-title text-white leading-[3.25rem] text-header-m my-auto">
-              Join the Filecoin Economy.
-            </h1>
+            <Title>
+              Join the Checker Network.
+            </Title>
           </div>
           <div className='min-h-[372px]'>
             <div className='pb-20 px-20 pt-16 min-h-[250px]'>
-              <p className="text-body-s my-3">
-                Station securely connects your computer to Filecoin&apos;s global peer-to-peer network, which
-                rewards you for your participation. Once you&apos;ve connected, you will begin completing network
-                jobs.
-              </p>
+              <Paragraph>
+                Checker securely connects your computer to the global peer-to-peer Checker Network, which rewards
+                you for your participation. Once you&apos;ve connected, you will begin completing checker jobs.
+              </Paragraph>
             </div>
             <div className='pb-20 bottom-0 px-20'>
               <Footer page={page} pages={pages} next={next} prev={prev} />
             </div>
           </div>
-        </div>
+        </Page>
       }
 
       {page === 1 &&
-        <div
-          className={`
-            w-[100%] max-w-[640px] bg-white rounded-[10px] shadow-[0px_5px_25px_rgba(0,0,0,0.1)] onboarding-${page}
-          `}
-        >
+        <Page page={page}>
           <div className='bg-black px-20 py-16  rounded-t-[10px] min-h-[276px] flex'>
-            <h1 className="font-title text-white leading-[3.25rem] text-header-m my-auto">Rewards</h1>
+            <Title>Rewards</Title>
           </div>
           <div className='min-h-[372px]'>
             <div className='pb-20 px-20 pt-16 min-h-[250px]'>
-              <p className="text-body-s my-3">
+              <Paragraph>
                 To get you set up, you will create a new Filecoin Wallet, controlled just by you.
-              </p>
-              <p className="text-body-s my-3">
+              </Paragraph>
+              <Paragraph>
                 FIL will be transferred to your wallet according to your participation in the economy.
-              </p>
+              </Paragraph>
             </div>
             <div className='pb-20 bottom-0 px-20'>
               <Footer page={page} pages={pages} next={next} prev={prev} />
             </div>
           </div>
-        </div>
+        </Page>
       }
 
       {page === 2 &&
-        <div
-          className={`
-            w-[100%] max-w-[940px] bg-white rounded-[10px] shadow-[0px_5px_25px_rgba(0,0,0,0.1)] onboarding-${page}
-          `}
-        >
+        <Page page={page} maxWidth={940}>
           <div className='bg-black px-20 py-16  rounded-t-[10px] min-h-[276px] flex'>
-            <h1 className="font-title text-white leading-[3.25rem] text-header-m my-auto">Before we launch.</h1>
+            <Title>Before we launch.</Title>
           </div>
           <div className='min-h-[372px]'>
             <div className='pb-8 px-20 pt-8 min-h-[250px]'>
-              <p className="text-body-s my-3">
-                Station asks for your consent to use your personal data to store and/or access information on a
+              <Paragraph>
+                Checker asks for your consent to use your personal data to store and/or access information on a
                 device. Your personal data will be processed and information from your device (cookies, unique
                 identifiers, and other device data) may be stored by, accessed by and shared with third party
                 vendors, or used specifically by this app.
-              </p>
-              <p className="text-body-s my-3">
+              </Paragraph>
+              <Paragraph>
                 By clicking {'"'}Create Wallet{'"'} or otherwise continuing to use this service, you agree, you
-                have read, understand and accept Station&apos;s
+                have read, understand and accept Checker&apos;s
                 {' '}
                 <span
                   className="text-primary cursor-pointer"
@@ -128,16 +144,16 @@ const Onboarding: FC<OnboardingProps> = ({ onFinish }) => {
                 >
                   Terms of Service
                 </span>.
-              </p>
+              </Paragraph>
             </div>
             <div className='pb-20 bottom-0 px-20'>
               <div className="flex flex-row gap-3 justify-between">
                 <button
-                  className="btn-secondary-small flex items-center group border-none underline underline-offset-4"
+                  className="btn-secondary-small flex items-center group border-none"
                   title="previous"
                   onClick={prev}
                 >
-                  <i><Back className="btn-icon-primary-small" fill='#2a1cf7' /></i>
+                  <i><Back className="btn-icon-primary-small" fill='#4a7dff' /></i>
                   <span>Back</span>
                 </button>
                 <button
@@ -149,7 +165,7 @@ const Onboarding: FC<OnboardingProps> = ({ onFinish }) => {
               </div>
             </div>
           </div>
-        </div>
+        </Page>
       }
 
     </div>
