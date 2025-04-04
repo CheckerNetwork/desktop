@@ -38,6 +38,14 @@ const Footer: FC<FooterProps> = ({ page, pages, next, prev }) => {
   )
 }
 
+const Title: FC<{ children: string }> = ({ children }) => {
+  return (
+    <h1 className="font-title text-white leading-[3.25rem] text-title-l my-auto">
+      {children}
+    </h1>
+  )
+}
+
 interface OnboardingProps {
   onFinish: () => void;
 }
@@ -57,9 +65,9 @@ const Onboarding: FC<OnboardingProps> = ({ onFinish }) => {
           `}
         >
           <div className='bg-black px-20 py-16  rounded-t-[10px] min-h-[276px] flex'>
-            <h1 className="font-title text-white leading-[3.25rem] text-header-m my-auto">
+            <Title>
               Join the Checker Network.
-            </h1>
+            </Title>
           </div>
           <div className='min-h-[372px]'>
             <div className='pb-20 px-20 pt-16 min-h-[250px]'>
@@ -82,7 +90,7 @@ const Onboarding: FC<OnboardingProps> = ({ onFinish }) => {
           `}
         >
           <div className='bg-black px-20 py-16  rounded-t-[10px] min-h-[276px] flex'>
-            <h1 className="font-title text-white leading-[3.25rem] text-header-m my-auto">Rewards</h1>
+            <Title>Rewards</Title>
           </div>
           <div className='min-h-[372px]'>
             <div className='pb-20 px-20 pt-16 min-h-[250px]'>
@@ -107,7 +115,7 @@ const Onboarding: FC<OnboardingProps> = ({ onFinish }) => {
           `}
         >
           <div className='bg-black px-20 py-16  rounded-t-[10px] min-h-[276px] flex'>
-            <h1 className="font-title text-white leading-[3.25rem] text-header-m my-auto">Before we launch.</h1>
+            <Title>Before we launch.</Title>
           </div>
           <div className='min-h-[372px]'>
             <div className='pb-8 px-20 pt-8 min-h-[250px]'>
