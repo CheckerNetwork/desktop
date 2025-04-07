@@ -5,12 +5,16 @@ import mixCssColor from 'mix-css-color'
 /** @type {import('tailwindcss').Config} */
 
 const colors = {
+  green: '#4CC4A3',
+  greenLight: '#4FF8CA',
   neptuneBlue: '#4a7dff',
   neptuneBlueDark: '#2057e3',
   neptuneBlueLight: '#94b2ff',
   cassioPeiaPink: '#ed158a',
   cassioPeiaPinkDark: '#be106e',
-  cassioPeiaPinkLight: '#fc6cba'
+  cassioPeiaPinkLight: '#fc6cba',
+  purple: '#BB7BFF',
+  gray: '#A4A4A4'
 }
 
 module.exports = {
@@ -124,7 +128,7 @@ module.exports = {
     colors: {
       white: '#fff',
       black: '#000',
-      primary: colors.neptuneBlue,
+      primary: colors.greenLight,
       'primary-hover': colors.neptuneBlueDark,
       'primary-click':
         mixCssColor(colors.neptuneBlue, colors.neptuneBlueDark).hex,
@@ -155,6 +159,9 @@ module.exports = {
         200: colors.cassioPeiaPink,
         400: colors.cassioPeiaPinkDark
       },
+      green: colors.green,
+      purple: colors.purple,
+      gray: colors.gray,
       transparent: '#ffffff00'
     }
   },

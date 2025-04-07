@@ -15,12 +15,12 @@ const ToggleGroupButton = ({
 ) => {
   return (
     <Item
-      className={`p-1 min-w-[30px] data-[state=on]:bg-blue-50
-      hover:bg-blue-50 hover:outline-none focus-visible:outline-slate-400`}
+      className={`p-1 min-w-[30px] data-[state=on]:bg-purple
+      hover:bg-blue-50`}
       value={value}
       {...props}
     >
-      <Text font='mono' size='3xs'>{children}</Text>
+      <Text font='mono' size='3xs' color={props.disabled ? 'white' : 'gray'}>{children}</Text>
     </Item>
   )
 }
@@ -33,7 +33,7 @@ const ToggleGroup = ({
 }: ToggleGroupProps) => {
   return (
     <Root
-      className='flex gap-2 p-1 rounded border border-slate-400 border-dashed bg-white'
+      className='flex gap-2 p-1'
       type='single'
       {...props}
     >

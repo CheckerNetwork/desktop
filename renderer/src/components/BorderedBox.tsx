@@ -13,10 +13,10 @@ const BorderedBox = ({
 }: BorderedBoxProps) => {
   const className = classNames(
     {
-      'first:rounded-t-lg last:rounded-b-lg border-t-0 first:border-t': isGrouped,
-      'rounded-lg': !isGrouped
+      'first:rounded-t-md last:rounded-b-md border-t-0 first:border-t': isGrouped,
+      'rounded-md': !isGrouped
     },
-    'bg-slate-50 border border-dashed border-slate-400',
+    'bg-[#3A3A3A59] bg-opacity-35 backdrop-blur-3xl',
     props.className
   )
 

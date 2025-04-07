@@ -169,12 +169,12 @@
   }
 
   .nav-button {
-    @apply rounded outline-dashed outline-1 bg-slate-50 outline-slate-50
+    @apply rounded outline-slate-50 text-white
   }
   .nav-button.active {
-    @apply bg-slate-200 text-primary outline-slate-400
+    @apply bg-green
   }
   .nav-button:not(.active):hover, .nav-button:not(.active):focus-visible {
-    @apply bg-slate-100 text-black  outline-slate-400
+    @apply bg-slate-100 text-black
   }
 }

@@ -24,7 +24,7 @@ const RewardsInfo = ({
               included in this dashboard. Data will be backfilled soon.`}
           />
         </Text>
-        <Text as='p' font='mono' size='xl' data-testid="earnings-counter">
+        <Text as='p' font='mono' size='xl' data-testid="earnings-counter" color="white">
           {formatFilValue(totalRewardsReceived.toString())}{' '}FIL
         </Text>
       </div>
@@ -44,7 +44,7 @@ const RewardsInfo = ({
             />
 
           </Text>
-          <Text as='p' font='mono' size='s'>
+          <Text as='p' font='mono' size='s' color='white'>
             {formatFilValue(scheduledRewards)}{' '}FIL
           </Text>
         </div>

@@ -8,7 +8,7 @@ type TextOwnProps<C> = {
   size?: '3xs' | '2xs' | 'xs' | 's' | 'm' | 'l' | 'xl' | '2xl';
   font?: 'title' | 'body' | 'mono';
   bold?: boolean;
-  color?: 'black' | 'secondary' | 'primary' | 'white' | 'red';
+  color?: 'black' | 'secondary' | 'primary' | 'white' | 'red' | 'gray';
   uppercase?: boolean;
   as?: C;
   children: ReactNode;

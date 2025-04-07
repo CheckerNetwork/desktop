@@ -43,7 +43,7 @@ const ActivityInfo = () => {
         <Text as='h3' font='mono' size='3xs' color='primary' uppercase className='mb-3'>
             &#47;&#47; Jobs completed ... :
         </Text>
-        <Text font='mono' size='s' data-testid="jobs-counter">{totalJobs.toLocaleString()}</Text>
+        <Text font='mono' size='s' data-testid="jobs-counter" color="white">{totalJobs.toLocaleString()}</Text>
       </BorderedBox>
       <div className='h-full flex flex-col relative'>
         <BorderedBox className='py-4 px-5' isGrouped>

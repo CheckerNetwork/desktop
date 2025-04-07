@@ -38,7 +38,7 @@ const Sidebar = () => {
 
   return (
     <section className={classNames(
-      'sticky top-0 group pt-9 bg-slate-50 outline-slate-400 outline-dashed outline-1 transition-all',
+      'sticky top-0 group pt-9 transition-all',
       isOpen ? 'w-[142px]' : 'w-[80px]'
     )}
     >
