@@ -57,10 +57,10 @@
   }
 
   .app-bg {
-    background-image: url('./assets/img/bg-pattern.svg');
+    background: url('./assets/img/Mesh color background.png'), black;
     background-repeat: no-repeat;
-    background-size: 86vw;
-    background-position: 10vw 80%;
+    background-size: 100vw;
+    background-position: bottom;
   }
 
   .custom-scrollbar {
