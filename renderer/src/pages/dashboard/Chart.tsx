@@ -164,7 +164,7 @@ const Chart = ({
                       size: 12
                     },
                     padding: 10,
-                    color: colors.black
+                    color: colors.white
                   },
                   border: {
                     dash: [4, 4],

@@ -37,7 +37,7 @@ const Text = <C extends ElementType = typeof DEFAULT_ELEMENT>({
       uppercase,
       'font-bold': bold && (font === 'title' || font === 'mono'),
       'font-medium': bold && font === 'body',
-      'text-slate-800': color === 'secondary',
+      'text-gray': color === 'secondary',
       'text-red-400': color === 'red'
     },
     props.className
