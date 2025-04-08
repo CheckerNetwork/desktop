@@ -20,7 +20,7 @@ type TextProps<C extends ElementType = typeof DEFAULT_ELEMENT>
 const Text = <C extends ElementType = typeof DEFAULT_ELEMENT>({
   size = 's',
   font = 'body',
-  color = 'black',
+  color = 'white',
   uppercase,
   bold,
   as,

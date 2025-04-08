@@ -30,7 +30,7 @@ const StatusWrapper = ({
 
 const TransactionStatusIndicator = ({
   transaction,
-  theme = 'light'
+  theme = 'dark'
 }: {
   transaction?: FILTransactionProcessing;
   theme?: 'light' | 'dark';
