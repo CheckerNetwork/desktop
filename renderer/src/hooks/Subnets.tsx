@@ -100,7 +100,6 @@ export const subnets = {
     description: 'Spark is a trustless protocol for sampling retrievals from Filecoin Storage Providers. Spark aims to drive improvements in the retrievability of data stored on Filecoin.',
     contractAddress: '0x8460766Edc62B525fc1FA4D628FC79229dC73031',
     logo: SparkLogo,
-    logoBackgroundColor: 'white',
     stats: {
       totalJobs: 0, // TODO: Get this from spark-stats once available
       totalRewards: 0,
@@ -117,7 +116,6 @@ export const subnets = {
     description: 'Voyager tests retrievability of content stored on the Saturn decentralized CDN, which is revolutionizing Web3 content delivery. ',
     contractAddress: '0xc524b83bf85021e674a7c9f18f5381179fabaf6c',
     logo: SaturnLogo,
-    logoBackgroundColor: 'black',
     stats: {
       totalJobs: 0, // TODO: Updater after data export
       totalRewards: 1359.54,

@@ -48,7 +48,7 @@ const SubnetCard = ({ subnet }: {subnet: Subnet}) => {
         <figure
           className={
             `flex w-[140px] shrink-0 py-9 px-5 border-l border-dashed border-[#6B6B6B] border-opacity-70
-            bg-${subnet.logoBackgroundColor} rounded-tr-xl
+            rounded-tr-xl
           `}
         >
           <img src={subnet.logo} alt={`${subnet.name}'s logo`} className='max-w-[100px] m-auto' />
