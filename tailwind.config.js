@@ -23,6 +23,7 @@ module.exports = {
   ],
   theme: {
     fontSize: {
+      'title-4xs': ['1.125rem', '1.35rem'],
       'title-3xs': ['1.25rem', '1.5rem'],
       'title-2xs': ['1.5rem', '1.75rem'],
       'title-xs': ['1.75rem', '2.25rem'],
@@ -168,7 +169,7 @@ module.exports = {
   plugins: [],
   safelist: [
     {
-      pattern: /text-(title|body|mono)-(3xs|2xs|xs|s|m|l|xl|2xl)/
+      pattern: /text-(title|body|mono)-(4xs|3xs|2xs|xs|s|m|l|xl|2xl)/
     },
     {
       pattern: /text-(black|secondary|primary|white)/

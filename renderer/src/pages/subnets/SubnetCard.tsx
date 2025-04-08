@@ -35,7 +35,7 @@ const subnetStatus = {
 const SubnetCard = ({ subnet }: {subnet: Subnet}) => {
   return (
     <BorderedBox className='animate-fadeIn'>
-      <div className='h-[276px] flex border-b border-dashed border-slate-400'>
+      <div className='h-[276px] flex border-b border-dashed border-[#6B6B6B] border-opacity-70'>
         <div className='py-9 px-5 flex flex-col gap-3 justify-between'>
           <Text as='h2' size="l" font='mono'>{subnet.name}</Text>
           <Text as='p' size="xs" className='text-pretty no-overflow-text line-clamp-6'>
@@ -47,7 +47,7 @@ const SubnetCard = ({ subnet }: {subnet: Subnet}) => {
         </div>
         <figure
           className={
-            `flex w-[140px] shrink-0 py-9 px-5 border-l border-dashed border-slate-400
+            `flex w-[140px] shrink-0 py-9 px-5 border-l border-dashed border-[#6B6B6B] border-opacity-70
             bg-${subnet.logoBackgroundColor} rounded-tr-xl
           `}
         >
