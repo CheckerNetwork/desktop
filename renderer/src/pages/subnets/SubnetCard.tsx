@@ -7,6 +7,7 @@ import DocsIcon from 'src/assets/img/icons/docs.svg?react'
 import ExplorerIcon from 'src/assets/img/icons/explorer.svg?react'
 import { openExplorerLink } from 'src/lib/utils'
 import { openExternalURL } from 'src/lib/checker-config'
+import BorderedBox from 'src/components/BorderedBox'
 
 const SubnetLink = ({ children, onClick }: {children: ReactNode; onClick: () => void}) => (
   <Text
@@ -33,7 +34,7 @@ const subnetStatus = {
 
 const SubnetCard = ({ subnet }: {subnet: Subnet}) => {
   return (
-    <div className='bg-slate-50 border border-dashed border-slate-400 rounded-xl animate-fadeIn'>
+    <BorderedBox className='animate-fadeIn'>
       <div className='h-[276px] flex border-b border-dashed border-slate-400'>
         <div className='py-9 px-5 flex flex-col gap-3 justify-between'>
           <Text as='h2' size="l" font='mono'>{subnet.name}</Text>
@@ -83,7 +84,7 @@ const SubnetCard = ({ subnet }: {subnet: Subnet}) => {
           </SubnetLink>
         </div>
       </div>
-    </div>
+    </BorderedBox>
   )
 }
 
