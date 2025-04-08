@@ -48,7 +48,7 @@ const Sidebar = () => {
         <button
           type='button'
           onClick={() => setIsOpen(!isOpen)}
-          className='nav-button absolute right-0 top-16 translate-x-[50%] outline-slate-400
+          className='nav-button absolute right-0 top-16 translate-x-[50%]
           opacity-0 group-hover:opacity-100 focus:opacity-100'
         >
           <div className={classNames('text-primary', {

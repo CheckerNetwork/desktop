@@ -175,6 +175,6 @@
     @apply bg-green
   }
   .nav-button:not(.active):hover, .nav-button:not(.active):focus-visible {
-    @apply bg-slate-100 text-white
+    @apply bg-green
   }
 }
