@@ -31,7 +31,7 @@
   }
 
   body {
-    @apply font-body text-black overflow-x-hidden;
+    @apply font-body text-white overflow-x-hidden;
     -webkit-user-select: none;
   }
 
@@ -175,6 +175,6 @@
     @apply bg-green
   }
   .nav-button:not(.active):hover, .nav-button:not(.active):focus-visible {
-    @apply bg-slate-100 text-black
+    @apply bg-slate-100 text-white
   }
 }

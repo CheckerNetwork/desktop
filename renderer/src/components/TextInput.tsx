@@ -9,7 +9,7 @@ type TextInputProps = {
 } & ComponentPropsWithRef<'input'>
 
 const variantClassNames = {
-  primary: `text-black placeholder:text-secondary focus:outline-none rounded-sm 
+  primary: `text-white placeholder:text-secondary focus:outline-none rounded-sm
   placeholder-shown:focus-visible:ring-2 placeholder-shown:focus-visible:ring-slate-400`,
   secondary: `px-5 text-white placeholder:text-white border bg-black
   focus:ring-0 ring-0 focus:outline-1 rounded-[4px]`
