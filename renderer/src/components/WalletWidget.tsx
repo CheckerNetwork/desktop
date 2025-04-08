@@ -30,11 +30,11 @@ const WalletWidget = () => {
         data-testid='wallet-widget'
         type='button'
         onClick={handleClick}
-        className={`flex items-center gap-3 text-black no-drag-area z-10
+        className={`flex items-center gap-3 text-white no-drag-area z-10
         focus-visible:outline-slate-400 focus:outline-slate-400 p-1`}
       >
         <WalletIcon />
-        <Text font='mono' size='xs' bold className="text-black">{formatFilValue(walletBalance)} FIL</Text>
+        <Text size='2xs' className="text-white">{formatFilValue(walletBalance)} FIL</Text>
       </button>
     </div>
   )
