@@ -5,7 +5,7 @@ import Text from 'src/components/Text'
 import SendIcon from 'src/assets/img/icons/send.svg?react'
 import ReceiveIcon from 'src/assets/img/icons/receive.svg?react'
 import classNames from 'classnames'
-import stationIllustration from 'src/assets/img/station-illustration.png'
+import CheckerIllustration from 'src/assets/img/Group 138681.svg?react'
 import LinkOut from 'src/assets/img/icons/link-out.svg?react'
 import { useEffect, useRef, useState } from 'react'
 import Transition from 'src/components/Transition'
@@ -82,7 +82,7 @@ const TransactionHistory = ({
         : (
           <div className='flex flex-col items-center justify-center text-center flex-1'>
             <figure className='flex mb-[5%]'>
-              <img src={stationIllustration} alt='Station' className='m-auto' />
+              <CheckerIllustration className='m-auto' />
             </figure>
             <Text as="p" size='m' bold className='mb-1'>No transfers yet</Text>
             <Text as="p" className='max-w-[210px]' size='xs'>
