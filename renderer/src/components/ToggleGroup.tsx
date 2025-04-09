@@ -16,7 +16,7 @@ const ToggleGroupButton = ({
   return (
     <Item
       className={`p-1 min-w-[30px] data-[state=on]:bg-purple
-      hover:bg-blue-50`}
+      hover:bg-purple`}
       value={value}
       {...props}
     >
