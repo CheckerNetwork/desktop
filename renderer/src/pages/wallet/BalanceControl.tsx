@@ -110,6 +110,7 @@ const BalanceControl = ({
                   variant='primary'
                   onClick={() => setIsShowingConfirm(true)}
                   disabled={!hasSufficientBalance}
+                  className='bg-purple'
                 >
                 Transfer
                 </Button>
