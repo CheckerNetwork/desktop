@@ -33,7 +33,7 @@ const ToggleGroup = ({
 }: ToggleGroupProps) => {
   return (
     <Root
-      className='flex gap-2 p-1'
+      className='flex gap-2 p-1 border border-gray'
       type='single'
       {...props}
     >

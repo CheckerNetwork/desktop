@@ -15,8 +15,8 @@ const Select = ({
 } & SelectRootProps) => {
   return (
     <Root {...rest}>
-      <Trigger className={`group focus-visible:outline-slate-400
-                            border border-slate-400 min-w-[197px] text-left uppercase`}
+      <Trigger className={`group focus-visible:outline-gray
+                            border border-gray min-w-[197px] text-left uppercase`}
       >
         <div className='font-mono text-body-xs px-4 py-[6px] flex items-center'>
           <Value placeholder={label} />
@@ -30,7 +30,7 @@ const Select = ({
         <Content
           position='popper'
           sideOffset={8}
-          className={'bg-black group border border-slate-400 min-w-[197px] text-left'}
+          className={'bg-black group border border-gray min-w-[197px] text-left'}
         >
           <Viewport>
             {children}
@@ -55,7 +55,7 @@ const SelectItem = ({
     <Item
       value={value}
       className={`px-4 py-[6px] hover:bg-purple
-                  hover:outline-none focus-within:outline-slate-400 hover:ring-0`}
+                  hover:outline-none focus-within:outline-gray hover:ring-0`}
     >
       <ItemText >
         <Text size='xs'>{label}</Text>
