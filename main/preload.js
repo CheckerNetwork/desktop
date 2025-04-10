@@ -47,6 +47,7 @@ contextBridge.exposeInMainWorld('electron', {
       ipcRenderer.invoke('station:toggleOpenAtLogin'),
     isOpenAtLogin: () => ipcRenderer.invoke('station:isOpenAtLogin'),
     exportSeedPhrase: () => ipcRenderer.invoke('station:exportSeedPhrase'),
+    importSeedPhrase: () => ipcRenderer.invoke('station:importSeedPhrase'),
     saveModuleLogsAs: () => ipcRenderer.invoke('station:saveModuleLogsAs'),
     checkForUpdates: () => ipcRenderer.invoke('station:checkForUpdates')
   },
