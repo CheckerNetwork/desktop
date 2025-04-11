@@ -29,7 +29,7 @@ const RewardsInfo = ({
         </Text>
       </div>
 
-      <div className='border-l border-b border-slate-400 border-dashed rounded-bl-lg flex p-5 min-w-[237px]'>
+      <div className='border-l border-b border-[#6B6B6B] border-opacity-50 rounded-bl-lg flex p-5 min-w-[237px]'>
         <div className='flex flex-col gap-2 m-auto'>
           <Text as="p" font='mono' size='3xs' color='primary' uppercase className='flex'>
             &#47;&#47; Next payout ... :
