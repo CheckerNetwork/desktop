@@ -13,7 +13,7 @@ export const colors = {
   xAxisText: '#FFF', // white
   totalRewardsLine: '#4a7dff', // Neptune Blue
   totalRewardsBg: '#b0c4f5', // Variant of Neptune Blue
-  scheduledBg: '#dfe4f2', // Variant of Neptune Blue
+  scheduledBg: 'rgba(74, 125, 255, 0.5)', // Neptune Blue
   crossLine: '#A0A1BA' // slate-400
 }
 
