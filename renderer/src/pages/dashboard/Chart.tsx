@@ -170,11 +170,6 @@ const Chart = ({
                     dash: [4, 4],
                     display: false
                   },
-                  grid: {
-                    color: colors.xLine,
-                    drawTicks: false,
-                    drawOnChartArea: hasDataInRange
-                  },
                   min: 0
                 },
                 x: {

@@ -10,7 +10,6 @@ type DateTimeFormat = keyof typeof dateTimeFormatters
 export const colors = {
   black: '#000',
   white: '#FFF',
-  xLine: '#D9D9E4', // slate-200
   xAxisText: '#FFF', // white
   totalRewardsLine: '#4a7dff', // Neptune Blue
   totalRewardsBg: '#b0c4f5', // Variant of Neptune Blue
