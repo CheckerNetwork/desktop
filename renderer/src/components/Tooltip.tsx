@@ -7,7 +7,7 @@ const sizeClassNames = {
   m: 'p-4 w-[232px] text-body-xs'
 }
 const bgClassNames = {
-  light: 'bg-white text-black',
+  light: 'bg-white text-white',
   dark: 'bg-black text-white'
 }
 

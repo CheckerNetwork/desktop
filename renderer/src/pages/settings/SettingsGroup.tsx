@@ -16,7 +16,7 @@ export const SettingsGroupItem = (
   return (
     <BorderedBox className='flex justify-between items-center py-5 px-9' isGrouped>
       <div className='flex flex-col gap-3 max-w-[485px]'>
-        <Text size='s' bold>{title}</Text>
+        <Text size='4xs' font='title'>{title}</Text>
         {description && (
           <Text size='s'>{description}</Text>
         )}
@@ -36,7 +36,7 @@ const SettingsGroup = (
   }) => {
   return (
     <section>
-      <Text as='h2' font='body' size='m' className='mb-5'>{name}</Text>
+      <Text as='h2' font='title' size='3xs' className='mb-5'>{name}</Text>
       <div>
         {children}
       </div>

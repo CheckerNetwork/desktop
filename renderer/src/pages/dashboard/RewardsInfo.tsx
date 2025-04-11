@@ -24,7 +24,7 @@ const RewardsInfo = ({
               included in this dashboard. Data will be backfilled soon.`}
           />
         </Text>
-        <Text as='p' font='mono' size='xl' data-testid="earnings-counter">
+        <Text as='p' font='mono' size='xl' data-testid="earnings-counter" color="white">
           {formatFilValue(totalRewardsReceived.toString())}{' '}FIL
         </Text>
       </div>
@@ -39,12 +39,12 @@ const RewardsInfo = ({
               }
               style={{ maxWidth: '230px' }}
               content={`This is the reward total you have accrued since your last payout.
-              Scheduled earning will be sent to your Station Wallet approximately once a week,
+              Scheduled earning will be sent to your Checker Wallet approximately once a week,
               provided you have earned more than the payout threshold.`}
             />
 
           </Text>
-          <Text as='p' font='mono' size='s'>
+          <Text as='p' font='mono' size='s' color='white'>
             {formatFilValue(scheduledRewards)}{' '}FIL
           </Text>
         </div>

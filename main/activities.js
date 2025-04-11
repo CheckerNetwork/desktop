@@ -7,7 +7,7 @@ class Activities {
   /** @type {Activity[]} */
   #activities = []
   #online = {
-    spark: false,
+    spark: true,
     voyager: false
   }
 

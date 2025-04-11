@@ -101,14 +101,32 @@ class WalletBackend {
   }
 
   /**
+   * @param {string} service
+   */
+  async maybeMigrateSeedPhrase (service) {
+    try {
+      await keytar.getPassword(service, 'seed')
+      return
+    } catch {}
+    let seed
+    try {
+      seed = await keytar.getPassword('filecoin-station-wallet-0x', 'seed')
+    } catch {}
+    if (seed) {
+      await keytar.setPassword(service, 'seed', seed)
+    }
+  }
+
+  /**
    * @returns {Promise<WalletSeed>}
    */
   async getSeedPhrase () {
-    const service = 'filecoin-station-wallet-0x'
+    const service = 'checker-wallet-0x'
     let seed
     if (!this.disableKeytar) {
       log.info('Reading the seed phrase from the keychain...')
       try {
+        await this.maybeMigrateSeedPhrase(service)
         seed = await keytar.getPassword(service, 'seed')
       } catch (err) {
         throw new Error(

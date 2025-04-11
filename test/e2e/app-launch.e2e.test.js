@@ -23,8 +23,8 @@ test.describe.serial('Application launch', async () => {
     test.slow()
 
     // Launch Electron app against sandbox fake HOME dir
-    const stationRootDir = tmp.dirSync({
-      prefix: 'station-',
+    const checkerRootDir = tmp.dirSync({
+      prefix: 'checker-',
       unsafeCleanup: true
     }).name
     electronApp = await electron.launch({
@@ -32,7 +32,7 @@ test.describe.serial('Application launch', async () => {
       env: {
         ...process.env,
         NODE_ENV: 'test',
-        STATION_ROOT: stationRootDir,
+        CHECKER_ROOT: checkerRootDir,
         DISABLE_KEYTAR: 'true'
       },
       timeout: 30000 * TIMEOUT_MULTIPLIER

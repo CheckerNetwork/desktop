@@ -1,6 +1,6 @@
 import BorderedBox from 'src/components/BorderedBox'
 import Text from 'src/components/Text'
-import useStationActivity from 'src/hooks/StationActivity'
+import useCheckerActivity from 'src/hooks/CheckerActivity'
 import WarningIcon from 'src/assets/img/icons/warning.svg?react'
 import JobIcon from 'src/assets/img/icons/job.svg?react'
 import { Activity } from 'shared/typings'
@@ -24,7 +24,7 @@ const ActivityItem = ({ activity }: {activity: Activity}) => {
 }
 
 const ActivityInfo = () => {
-  const { totalJobs, activities } = useStationActivity()
+  const { totalJobs, activities } = useCheckerActivity()
 
   const activitiesByDate = useMemo(() => activities
     .sort((x, y) => y.timestamp.getTime() - x.timestamp.getTime())
@@ -43,7 +43,7 @@ const ActivityInfo = () => {
         <Text as='h3' font='mono' size='3xs' color='primary' uppercase className='mb-3'>
             &#47;&#47; Jobs completed ... :
         </Text>
-        <Text font='mono' size='s' data-testid="jobs-counter">{totalJobs.toLocaleString()}</Text>
+        <Text font='mono' size='s' data-testid="jobs-counter" color="white">{totalJobs.toLocaleString()}</Text>
       </BorderedBox>
       <div className='h-full flex flex-col relative'>
         <BorderedBox className='py-4 px-5' isGrouped>
