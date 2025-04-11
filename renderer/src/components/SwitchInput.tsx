@@ -20,7 +20,11 @@ const SwitchInput = ({
   const id = useId()
 
   return (
-    <div className='flex gap-5 items-center focus-within:ring-2 ring-slate-400 rounded-sm w-[84px]'>
+    <div className={`
+      flex gap-5 items-center border border-primary focus-within:ring-2
+      ring-slate-400 rounded-xl w-[84px]
+    `}
+    >
       <Root
         id={id}
         {...props}
