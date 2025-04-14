@@ -31,7 +31,7 @@ const Settings = () => {
   return (
     <main className='px-9 mt-28 flex flex-col w-[1000px] max-w-full mx-auto'>
       <header className='mb-9'>
-        <Text as='h1' font='mono' size='xs' color='primary' uppercase>&#47;&#47; Settings ... :</Text>
+        <Text as='h1' font='mono' size='xs' color='primary' uppercase>Settings ... :</Text>
       </header>
       <div className='flex flex-col gap-7 animate-fadeIn'>
         <SettingsGroup name='General'>

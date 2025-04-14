@@ -14,7 +14,7 @@ const RewardsInfo = ({
     <section className="flex justify-between">
       <div className='p-5 flex flex-col gap-2'>
         <Text as="p" font='mono' size='3xs' color='primary' uppercase className='flex'>
-            &#47;&#47; REWARDS RECEIVED SINCE JUNE 13TH 2024 ... :
+            REWARDS RECEIVED SINCE JUNE 13TH 2024 ... :
           <Tooltip
             trigger={
               <i><InfoIcon className='text-primary relative -top-3' /></i>
@@ -32,7 +32,7 @@ const RewardsInfo = ({
       <div className='border-l border-b border-[#6B6B6B] border-opacity-50 rounded-bl-lg flex p-5 min-w-[237px]'>
         <div className='flex flex-col gap-2 m-auto'>
           <Text as="p" font='mono' size='3xs' color='primary' uppercase className='flex'>
-            &#47;&#47; Next payout ... :
+            Next payout ... :
             <Tooltip
               trigger={
                 <i><InfoIcon className='text-primary relative -top-3' /></i>

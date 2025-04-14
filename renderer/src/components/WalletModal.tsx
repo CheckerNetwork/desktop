@@ -32,7 +32,7 @@ const WalletModal = () => {
         </button>
       </BorderedBox>
       <BorderedBox isGrouped className='p-5'>
-        <Text as='p' font='mono' size='3xs' color='primary' uppercase>&#47;&#47; Checker address ... :</Text>
+        <Text as='p' font='mono' size='3xs' color='primary' uppercase>Checker address ... :</Text>
         <div className='flex gap-5 items-center mt-4'>
           <Address address={checkerAddress} />
           <Address address={checkerAddress0x} />
@@ -46,7 +46,7 @@ const WalletModal = () => {
         </div>
       </BorderedBox>
       <BorderedBox isGrouped className='p-5'>
-        <Text as='p' font='mono' size='3xs' color='primary' uppercase>&#47;&#47; Balance ... :</Text>
+        <Text as='p' font='mono' size='3xs' color='primary' uppercase>Balance ... :</Text>
         <div className='flex mt-4 items-center justify-between'>
           <Text as='p' font='mono' size='s' uppercase>
             {formatFilValue(walletBalance)} FIL

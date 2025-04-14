@@ -8,7 +8,7 @@ const Subnets = () => {
   return (
     <main className='px-9 mt-28 flex flex-col w-[1000px] max-w-full mx-auto'>
       <header className='mb-9'>
-        <Text as='h1' font='mono' size='xs' color='primary' uppercase>&#47;&#47; Subnets ... :</Text>
+        <Text as='h1' font='mono' size='xs' color='primary' uppercase>Subnets ... :</Text>
       </header>
       <section className='grid gap-8 grid-cols-2'>
         {subnets?.map(subnet => <SubnetCard subnet={subnet} key={subnet.id} />)}

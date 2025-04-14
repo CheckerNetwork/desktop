@@ -57,7 +57,7 @@ const SubnetCard = ({ subnet }: {subnet: Subnet}) => {
       <div className='flex py-9 px-5'>
         <div className='w-3/5 flex flex-col gap-5'>
           <div className='flex flex-col'>
-            <Text font='mono' size="3xs" color='primary' uppercase>&#47;&#47; Rewards given ... :</Text>
+            <Text font='mono' size="3xs" color='primary' uppercase>Rewards given ... :</Text>
             <Text font='mono' size="xs">
               {subnet.stats.rewardsEnabled
                 ? `${subnet.stats.totalRewards || '...'} FIL`
@@ -65,7 +65,7 @@ const SubnetCard = ({ subnet }: {subnet: Subnet}) => {
             </Text>
           </div>
           <div className='flex flex-col'>
-            <Text font='mono' size="3xs" color='primary' uppercase>&#47;&#47; # Jobs done ... :</Text>
+            <Text font='mono' size="3xs" color='primary' uppercase># Jobs done ... :</Text>
             <Text font='mono' size="xs">{subnet.stats.totalJobs || (<sub>coming soon</sub>)}</Text>
           </div>
         </div>

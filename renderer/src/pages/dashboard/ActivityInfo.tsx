@@ -41,14 +41,14 @@ const ActivityInfo = () => {
     <>
       <BorderedBox className='p-5'>
         <Text as='h3' font='mono' size='3xs' color='primary' uppercase className='mb-3'>
-            &#47;&#47; Jobs completed ... :
+            Jobs completed ... :
         </Text>
         <Text font='mono' size='s' data-testid="jobs-counter" color="white">{totalJobs.toLocaleString()}</Text>
       </BorderedBox>
       <div className='h-full flex flex-col relative'>
         <BorderedBox className='py-[20px] px-5' isGrouped>
           <Text as='h3' font='mono' size='3xs' color='primary' uppercase>
-              &#47;&#47; Activity ... :
+              Activity ... :
           </Text>
         </BorderedBox>
         <BorderedBox
