@@ -13,7 +13,7 @@ const SubnetLink = ({ children, onClick }: {children: ReactNode; onClick: () => 
   <Text
     as='button'
     type='button'
-    size='xs'
+    size='3xs'
     className='flex items-center gap-2'
     onClick={onClick}
   >
@@ -65,7 +65,7 @@ const SubnetCard = ({ subnet }: {subnet: Subnet}) => {
             </Text>
           </div>
           <div className='flex flex-col'>
-            <Text font='mono' size="3xs" color='primary' uppercase># Jobs done ... :</Text>
+            <Text font='mono' size="3xs" color='primary' uppercase>Jobs done ... :</Text>
             <Text font='mono' size="xs">{subnet.stats.totalJobs || (<sub>coming soon</sub>)}</Text>
           </div>
         </div>
