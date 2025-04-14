@@ -14,11 +14,17 @@ export const SettingsGroupItem = (
   }
 ) => {
   return (
-    <BorderedBox className='flex justify-between items-center py-5 px-9' isGrouped>
+    <BorderedBox
+      className={`
+        flex justify-between items-center py-5 px-10
+        border-b-2 last-of-type:border-0 border-dotted border-[#6B6B6B] border-opacity-30
+      `}
+      isGrouped
+    >
       <div className='flex flex-col gap-3 max-w-[485px]'>
         <Text size='4xs' font='title'>{title}</Text>
         {description && (
-          <Text size='s'>{description}</Text>
+          <Text size='xs'>{description}</Text>
         )}
       </div>
       {input}

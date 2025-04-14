@@ -30,8 +30,8 @@ const Settings = () => {
 
   return (
     <main className='px-9 mt-28 flex flex-col w-[1000px] max-w-full mx-auto'>
-      <header className='mb-9'>
-        <Text as='h1' font='mono' size='xs' color='primary' uppercase>Settings ... :</Text>
+      <header className='mb-2'>
+        <Text as='h1' font='mono' size='3xs' color='primary' uppercase>Settings ... :</Text>
       </header>
       <div className='flex flex-col gap-7 animate-fadeIn'>
         <SettingsGroup name='General'>
@@ -55,6 +55,7 @@ const Settings = () => {
                 variant='secondary'
                 icon={<UpdateIcon />}
                 onClick={checkForUpdates}
+                className="text-mono-3xs"
               >
                   Check for updates
               </Button>
@@ -71,6 +72,7 @@ const Settings = () => {
                 variant='secondary'
                 icon={<SaveIcon />}
                 onClick={saveSubnetLogsAs}
+                className="text-mono-3xs"
               >
                   Save subnet logs as...
               </Button>
@@ -88,6 +90,7 @@ const Settings = () => {
                 variant='secondary'
                 icon={<ExportIcon />}
                 onClick={exportSeedPhrase}
+                className="text-mono-3xs"
               >
                     Export seed phrase
               </Button>
