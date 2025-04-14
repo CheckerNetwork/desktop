@@ -53,7 +53,7 @@ const Wallet = () => {
         processingTransaction={processingTransaction}
       />
 
-      <div className='px-9 flex flex-col my-5'>
+      <div className='px-9 flex flex-col my-5 mb-10'>
         <BorderedBox className='p-5 flex flex-col gap-2' isGrouped tabIndex={2}>
           <Text font='mono' size='3xs' color='primary' uppercase>
                 Transaction history ... :
