@@ -11,12 +11,12 @@ const ActivityItem = ({ activity }: {activity: Activity}) => {
   return (
     <div className="flex gap-[10px] py-2" key={activity.id} data-testid="activity-item">
       {activity.type === 'info'
-        ? <JobIcon className="btn-icon-primary-small icon-primary" />
-        : <WarningIcon className="btn-icon-primary-small icon-error" />}
+        ? <JobIcon className="btn-icon-primary-small" />
+        : <WarningIcon className="btn-icon-primary-small" />}
 
       <div className='flex-1 relative top-[1px] flex flex-col gap-1'>
         <Text size='2xs' >{activity.message}</Text>
-        <Text size='2xs' color='secondary'>{dayjs(activity.timestamp).format('HH:mm')}</Text>
+        <Text size='3xs' color='secondary'>{dayjs(activity.timestamp).format('HH:mm')}</Text>
       </div>
 
     </div>
@@ -46,7 +46,7 @@ const ActivityInfo = () => {
         <Text font='mono' size='s' data-testid="jobs-counter" color="white">{totalJobs.toLocaleString()}</Text>
       </BorderedBox>
       <div className='h-full flex flex-col relative'>
-        <BorderedBox className='py-4 px-5' isGrouped>
+        <BorderedBox className='py-[20px] px-5' isGrouped>
           <Text as='h3' font='mono' size='3xs' color='primary' uppercase>
               &#47;&#47; Activity ... :
           </Text>
@@ -58,7 +58,7 @@ const ActivityInfo = () => {
         >
           {Object.entries(activitiesByDate).map(([date, log]) => (
             <div key={date}>
-              <Text size='2xs' color='secondary'>{date}</Text>
+              <Text size='3xs' color='secondary'>{date}</Text>
               {log.map(activity => <ActivityItem activity={activity} key={activity.id} />)}
             </div>
           ))}

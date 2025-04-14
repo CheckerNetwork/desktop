@@ -1,6 +1,6 @@
 import Text from 'src/components/Text'
 import { formatFilValue } from 'src/lib/utils'
-import InfoIcon from 'src/assets/img/icons/info.svg?react'
+import InfoIcon from 'src/assets/img/icons/icon info.svg?react'
 import Tooltip from 'src/components/Tooltip'
 
 const RewardsInfo = ({
