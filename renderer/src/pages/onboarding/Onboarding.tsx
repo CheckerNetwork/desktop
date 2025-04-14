@@ -6,6 +6,7 @@ import Onboarding from 'src/components/Onboarding'
 import StationLogoLight from 'src/assets/img/station-logo-light.svg?react'
 import { ROUTES } from 'src/lib/routes'
 import CheckerLogo from 'src/assets/img/checker-logo.svg?react'
+import OnboardingIllustration from 'src/assets/img/Onboarding Illustration.svg?react'
 
 const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms))
 
@@ -22,7 +23,7 @@ const Loading = () => {
 const OnboardingPage = (): JSX.Element => {
   const navigate = useNavigate()
   const [isLoading, setIsLoading] = useState<boolean>(true)
-  const [isOnboardingCompleted, setIsOnboardingCompleted] = useState<boolean|null>()
+  const [isOnboardingCompleted, setIsOnboardingCompleted] = useState<boolean|null>(false)
 
   useEffect(() => {
     (async () => {
@@ -48,8 +49,9 @@ const OnboardingPage = (): JSX.Element => {
   }
 
   return (
-    <div className="fixed bg-grayscale-200 w-full h-full top-0 left-0">
+    <div className="fixed onboarding-bg w-full h-full top-0 left-0">
       <CheckerLogo className="absolute top-[82px] left-[82px] w-[238px]" />
+      <OnboardingIllustration className="absolute bottom-[82px] left-0 w-[735px]" />
       <div className="flex justify-center items-center h-full">
         <Onboarding onFinish={onFinishOnboarding} />
       </div>

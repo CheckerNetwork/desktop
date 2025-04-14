@@ -63,6 +63,13 @@
     background-position: bottom;
   }
 
+  .onboarding-bg {
+    background: url('./assets/img/Onboarding Background.png'), black;
+    background-repeat: no-repeat;
+    background-size: 100vw;
+    background-position: top;
+  }
+
   .custom-scrollbar {
     scrollbar-width: thin;
     scrollbar-color: #A0A1BA #F1F1F5;
@@ -118,7 +125,7 @@
   }
 
   .btn-primary-small {
-    @apply py-2 px-4 rounded-full font-body text-body-s text-white
+    @apply py-2 px-4 rounded-full font-body text-body-s text-black
     bg-primary hover:bg-primary-hover visited:bg-primary-click
     disabled:bg-grayscale-500 disabled:text-grayscale-700;
   }
