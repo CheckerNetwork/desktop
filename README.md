@@ -4,9 +4,9 @@
 [![](https://img.shields.io/badge/project-Filecoin-blue.svg?style=flat-square)](https://filecoin.io/)
 [![ci](https://github.com/CheckerNetwork/app/actions/workflows/ci.yml/badge.svg)](https://github.com/CheckerNetwork/app/actions/workflows/ci.yml)
 
-Checker is a desktop app that connects your computer’s idle resources
-to the Filecoin network and rewards you with Filecoin. Taking part is simple,
-just launch the app and start earning. Learn more at
+Checker is a desktop app that connects your computer’s idle resources to the
+Filecoin network and rewards you with Filecoin. Taking part is simple, just
+launch the app and start earning. Learn more at
 [app.checker.network](https://app.checker.network).
 
 ## Install
