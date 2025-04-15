@@ -58,7 +58,6 @@ const EditDestinationAddressForm = ({
 
         <div className='relative'>
           <Tooltip
-            bg='light'
             open={showTooltip}
             trigger={<div className='absolute h-0 bottom-0 w-full'></div>}
             content="Saved"

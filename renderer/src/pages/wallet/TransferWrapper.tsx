@@ -37,7 +37,10 @@ const TransferWrapper = ({
   return (
     <section
       data-testid="transfer-wrapper"
-      className='row-span-2 col-start-2 bg-black relative flex flex-col overflow-hidden'
+      className={`
+        row-span-2 col-start-2 bg-[#3A3A3A59] bg-opacity-35 backdrop-blur-3xl relative flex flex-col
+        overflow-hidden
+      `}
       style={{ '--factor': 1 } as CSSProperties}
     >
       <GridCanvas
