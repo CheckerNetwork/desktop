@@ -53,7 +53,7 @@ const EditDestinationAddressForm = ({
     <div className='absolute left-0 right-0 mx-auto top-[30%] scale-95 -translate-y-[50%]'>
       <form onSubmit={handleSubmit} className="flex flex-col w-[80%] max-w-[480px] mx-auto z-10">
         <Transition on className='absolute -top-[32px]'>
-          <Text uppercase font="mono" size="3xs" className='text-slate-50'>Destination address</Text>
+          <Text uppercase font="mono" size="3xs" color="primary">Destination address ... :</Text>
         </Transition>
 
         <div className='relative'>

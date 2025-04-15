@@ -21,6 +21,7 @@ const allowedURLs = [
   'https://github.com/CheckerNetwork/spark',
   'https://beryx.io',
   'https://docs.checker.network/checker-network-terms-conditions',
+  'https://docs.checker.network/your-checker-wallet',
   'https://checker.network',
   'https://docs.checker.network',
   'https://blog.checker.network/posts/why-web3-needs-the-checker-network'

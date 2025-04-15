@@ -44,7 +44,7 @@ const Address = ({
             ref={triggerRef}
             onClick={handleClick}
             type='button'
-            className='hover:bg-slate-100 focus:bg-slate-100 focus:ring-0 focus-visible:outline-none'
+            className='focus:bg-slate-100 focus:ring-0 focus-visible:outline-none'
           >
             <CopyIcon />
           </button>
@@ -53,10 +53,10 @@ const Address = ({
       <Tooltip
         content={address}
         trigger={
-          <div className='leading-none hover:bg-slate-100 focus:bg-slate-100
+          <div className='leading-none focus:bg-slate-100
                           focus:ring-0 focus-visible:outline-none'
           >
-            <Text size="s">{truncateString(address)}</Text>
+            <Text size="2xs" font="mono">{truncateString(address)}</Text>
           </div>
         }
       />

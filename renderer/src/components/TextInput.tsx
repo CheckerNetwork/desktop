@@ -12,7 +12,7 @@ const variantClassNames = {
   primary: `text-white placeholder:text-secondary focus:outline-none rounded-sm
   placeholder-shown:focus-visible:ring-2 placeholder-shown:focus-visible:ring-slate-400`,
   secondary: `px-5 text-white placeholder:text-white border bg-black
-  focus:ring-0 ring-0 focus:outline-1 rounded-[4px]`
+  focus:ring-0 ring-0 focus:outline-1 rounded-3xl`
 }
 
 const TextInput = forwardRef<HTMLInputElement, TextInputProps>(function ({
@@ -23,10 +23,10 @@ const TextInput = forwardRef<HTMLInputElement, TextInputProps>(function ({
   const inputClassName = classNames(
     variantClassNames[variant],
     {
-      'border-dashed border-white focus:outline-slate-400': variant === 'secondary' && !error,
+      'border-dashed border-primary focus:outline-slate-400': variant === 'secondary' && !error,
       'border-solid border-red-400 focus:outline-red-400': variant === 'secondary' && error
     },
-    'py-2 text-body-s w-full peer',
+    'py-2 text-body-xs w-full peer',
     props.className
   )
 

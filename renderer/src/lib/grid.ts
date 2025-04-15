@@ -148,7 +148,7 @@ export class Grid {
 
   renderMidLine () {
     this.ctx.lineWidth = 0.8
-    this.ctx.strokeStyle = '#ffffff'
+    this.ctx.strokeStyle = '#4FF8CA'
     this.ctx.beginPath()
     this.ctx.moveTo(this.midLine.x, this.warp.y)
     this.ctx.lineTo(this.midLine.x, this.midLine.y)
@@ -168,8 +168,8 @@ export class Grid {
 
   renderTargetCircles () {
     this.ctx.lineWidth = 0.8
-    this.ctx.strokeStyle = '#ffffff'
-    this.ctx.fillStyle = '#ffffff'
+    this.ctx.strokeStyle = '#4FF8CA'
+    this.ctx.fillStyle = '#4FF8CA'
     this.ctx.setLineDash([4])
     this.ctx.beginPath()
     this.renderCricle(this.target.x, this.target.y, 4)

@@ -45,7 +45,7 @@ const BalanceControl = ({
   return (
     <Transition
       on={!isShowingConfirm}
-      inClass='w-[260px] h-[260px] rounded-[130px] border-slate-50 bg-black'
+      inClass='w-[260px] h-[260px] rounded-[130px] border-primary bg-black'
       outClass='bg-white w-[500px] max-w-[80%] p-5 rounded-[8px] h-[132px]'
       className='border border-dashed mx-auto balance-control'
       data-testid='balance-control'
@@ -92,8 +92,7 @@ const BalanceControl = ({
         >
           <div className='flex flex-col justify-end h-[55%]'>
             <Text
-              font="mono"
-              size="xl"
+              size="m"
               bold
               className={classNames('text-slate-50 text-center',
                 formatFilValue(walletBalance).length > 8 ? 'text-[1.85rem]' : 'text-[2rem]'

@@ -84,8 +84,8 @@ const TransactionHistory = ({
             <figure className='flex mb-[5%]'>
               <CheckerIllustration className='m-auto' />
             </figure>
-            <Text as="p" size='m' bold className='mb-1'>No transfers yet</Text>
-            <Text as="p" className='max-w-[210px]' size='xs'>
+            <Text as="p" size='2xs' className='mb-1 opacity-50' font='title'>No transfers yet</Text>
+            <Text as="p" className='max-w-[210px] opacity-50' size='2xs'>
             After your first transaction you will be able to view it here
             </Text>
           </div>
