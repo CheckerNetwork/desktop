@@ -204,7 +204,7 @@ export class Grid {
 
   renderGrid () {
     this.ctx.lineWidth = 0.5
-    this.ctx.strokeStyle = '#6B6B6B40'
+    this.ctx.strokeStyle = 'rgba(107,107,107,0.6)'
     this.calcGridLines()
     this.renderDimension(this.rows, 'row')
     this.renderDimension(this.cols, 'col')

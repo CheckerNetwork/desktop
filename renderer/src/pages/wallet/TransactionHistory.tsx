@@ -47,7 +47,7 @@ const TransactionHistory = ({
             className={classNames({
               'pr-4': completeTransactions?.length > 5,
               'animate-fradeFromBlue': transaction.isNew
-            }, 'flex gap-4 text-left px-5 py-2 group hover:bg-slate-100 focus:bg-slate-100 focus:outline-none')}
+            }, 'flex gap-4 text-left px-5 py-2 group')}
           >
             <div className="text-inherit">
               {transaction.outgoing ? <SendIcon /> : <ReceiveIcon />}

@@ -57,7 +57,7 @@ const BalanceControl = ({
           delayIn={200}
           className='flex flex-col gap-5 text-center m-auto'
         >
-          <Text as="p" size='s'>
+          <Text as="p" size='s' color="black">
               Send <strong>{formatFilValue(walletBalance)} FIL</strong> to {' '}
             <strong>{truncateString(destinationFilAddress || '')}</strong>?
           </Text>
@@ -68,11 +68,12 @@ const BalanceControl = ({
               onClick={() => setIsShowingConfirm(false)}
               className='bg-white text-primary'
             >
-              <Text font='mono' size='2xs' color='primary'>Cancel</Text>
+              <Text font='mono' size='2xs' color='secondary'>Cancel</Text>
             </Button>
             <Button
               type='button'
               variant='primary'
+              className='bg-purple'
               onClick={() => {
                 transferAllFundsToDestinationWallet()
                 setIsShowingConfirm(false)
@@ -93,7 +94,7 @@ const BalanceControl = ({
           <div className='flex flex-col justify-end h-[55%]'>
             <Text
               size="m"
-              bold
+              font="mono"
               className={classNames('text-slate-50 text-center',
                 formatFilValue(walletBalance).length > 8 ? 'text-[1.85rem]' : 'text-[2rem]'
               )}

@@ -44,22 +44,17 @@ const Address = ({
             ref={triggerRef}
             onClick={handleClick}
             type='button'
-            className='focus:bg-slate-100 focus:ring-0 focus-visible:outline-none'
+            className='focus:ring-0 focus-visible:outline-none'
           >
             <CopyIcon />
           </button>
         }
       />
-      <Tooltip
-        content={address}
-        trigger={
-          <div className='leading-none focus:bg-slate-100
-                          focus:ring-0 focus-visible:outline-none'
-          >
-            <Text size="2xs" font="mono">{truncateString(address)}</Text>
-          </div>
-        }
-      />
+      <div className='leading-none focus:bg-slate-100
+                      focus:ring-0 focus-visible:outline-none'
+      >
+        <Text size="2xs" font="mono">{truncateString(address)}</Text>
+      </div>
     </div>
   )
 }

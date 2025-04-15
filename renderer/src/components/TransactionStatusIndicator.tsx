@@ -53,7 +53,7 @@ const TransactionStatusIndicator = ({
         theme={theme}
         icon={
           <CheckmarkIcon
-            className={classNames(theme === 'light' ? 'text-white fill-primary' : 'text-white fill-white')}
+            className={classNames(theme === 'light' ? 'text-white fill-primary' : 'text-white fill-black')}
           />
         }
         text={transaction?.outgoing ? 'Sent' : 'Received'}

@@ -51,7 +51,3 @@ export async function validateAddress (input: string) {
     return false
   }
 }
-
-export function addressIsF1 (address: string) {
-  return address.startsWith('f1')
-}
