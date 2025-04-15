@@ -106,7 +106,7 @@ export const subnets = {
       rewardsEnabled: true
     },
     links: {
-      github: 'https://github.com/filecoin-station/spark',
+      github: 'https://github.com/CheckerNetwork/spark',
       docs: 'https://filspark.com/'
     },
     status: 'active'
@@ -122,7 +122,7 @@ export const subnets = {
       rewardsEnabled: true
     },
     links: {
-      github: 'https://github.com/filecoin-station/voyager',
+      github: 'https://github.com/CheckerNetwork/voyager',
       docs: 'https://saturn.tech/'
     },
     status: 'ended'

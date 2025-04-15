@@ -24,7 +24,8 @@ const allowedURLs = [
   'https://docs.checker.network/your-checker-wallet',
   'https://checker.network',
   'https://docs.checker.network',
-  'https://blog.checker.network/posts/why-web3-needs-the-checker-network'
+  'https://blog.checker.network/posts/why-web3-needs-the-checker-network',
+  'https://saturn.tech'
 ].map(str => new URL(str))
 
 const allowedURLsRegEx = [
