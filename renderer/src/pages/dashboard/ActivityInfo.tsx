@@ -46,22 +46,21 @@ const ActivityInfo = () => {
         <Text font='mono' size='s' data-testid="jobs-counter" color="white">{totalJobs.toLocaleString()}</Text>
       </BorderedBox>
       <div className='h-full flex flex-col relative'>
-        <BorderedBox className='py-[20px] px-5' isGrouped>
-          <Text as='h3' font='mono' size='3xs' color='primary' uppercase>
-              Activity ... :
-          </Text>
-        </BorderedBox>
         <BorderedBox
-          className='p-5 h-full overflow-y-scroll custom-scrollbar flex-1 max-h-[calc(100%_-_50px)]
-          bottom-0 activity-log absolute'
+          className='p-5 flex-1 activity-log overflow-hidden'
           isGrouped
         >
-          {Object.entries(activitiesByDate).map(([date, log]) => (
-            <div key={date}>
-              <Text size='3xs' color='secondary'>{date}</Text>
-              {log.map(activity => <ActivityItem activity={activity} key={activity.id} />)}
-            </div>
-          ))}
+          <Text as='h3' font='mono' size='3xs' color='primary' uppercase>
+            Activity ... :
+          </Text>
+          <div className="overflow-y-scroll custom-scrollbar h-full bottom-0 absolute top-[50px]">
+            {Object.entries(activitiesByDate).map(([date, log]) => (
+              <div key={date}>
+                <Text size='3xs' color='secondary'>{date}</Text>
+                {log.map(activity => <ActivityItem activity={activity} key={activity.id} />)}
+              </div>
+            ))}
+          </div>
         </BorderedBox>
       </div>
     </>
