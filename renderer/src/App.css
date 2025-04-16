@@ -126,7 +126,7 @@
 
   .btn-primary-small {
     @apply py-2 px-4 rounded-full font-body text-body-s text-black
-    bg-primary hover:bg-primary-hover visited:bg-primary-click
+    bg-primary
     disabled:bg-grayscale-500 disabled:text-grayscale-700;
   }
 
@@ -159,7 +159,7 @@
   .btn-secondary-small {
     @apply py-2 px-4 rounded-full font-body text-body-xs bg-opacity-0 border border-solid
      border-primary border-opacity-25  text-primary
-     hover:border-primary-hover hover:border-opacity-25 hover:text-primary-hover
+     hover:border-primary-hover hover:border-opacity-25
      visited:border-primary-click visited:border-opacity-25 visited:text-primary-click 
      disabled:border-grayscale-500 disabled:text-grayscale-500;  
   }
