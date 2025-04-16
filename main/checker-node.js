@@ -139,7 +139,7 @@ async function start (ctx) {
         }
         default: {
           const err = new Error(
-            `Unknown Station Checker Node event type "${event.type}": ${line}`
+            `Unknown Checker Node event type "${event.type}": ${line}`
           )
           log.error(format(err))
           Sentry.captureException(err)
