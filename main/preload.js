@@ -10,80 +10,80 @@
 const { contextBridge, ipcRenderer } = require('electron')
 
 contextBridge.exposeInMainWorld('electron', {
-  stationBuildVersion: process.env.STATION_BUILD_VERSION,
+  checkerBuildVersion: process.env.CHECKER_BUILD_VERSION,
 
-  getActivities: () => ipcRenderer.invoke('station:getActivities'),
+  getActivities: () => ipcRenderer.invoke('checker:getActivities'),
   getTotalJobsCompleted: () =>
-    ipcRenderer.invoke('station:getTotalJobsCompleted'),
-  getUpdaterStatus: () => ipcRenderer.invoke('station:getUpdaterStatus'),
-  restartToUpdate: () => ipcRenderer.invoke('station:restartToUpdate'),
-  openReleaseNotes: () => ipcRenderer.invoke('station:openReleaseNotes'),
+    ipcRenderer.invoke('checker:getTotalJobsCompleted'),
+  getUpdaterStatus: () => ipcRenderer.invoke('checker:getUpdaterStatus'),
+  restartToUpdate: () => ipcRenderer.invoke('checker:restartToUpdate'),
+  openReleaseNotes: () => ipcRenderer.invoke('checker:openReleaseNotes'),
 
   getScheduledRewards: () =>
-    ipcRenderer.invoke('station:getScheduledRewards'),
+    ipcRenderer.invoke('checker:getScheduledRewards'),
 
-  stationConfig: {
+  checkerConfig: {
     getOnboardingCompleted: () =>
-      ipcRenderer.invoke('station:getOnboardingCompleted'),
+      ipcRenderer.invoke('checker:getOnboardingCompleted'),
     setOnboardingCompleted: () =>
-      ipcRenderer.invoke('station:setOnboardingCompleted'),
-    getStationWalletAddress: () =>
-      ipcRenderer.invoke('station:getStationWalletAddress'),
+      ipcRenderer.invoke('checker:setOnboardingCompleted'),
+    getCheckerWalletAddress: () =>
+      ipcRenderer.invoke('checker:getCheckerWalletAddress'),
     getDestinationWalletAddress: () =>
-      ipcRenderer.invoke('station:getDestinationWalletAddress'),
+      ipcRenderer.invoke('checker:getDestinationWalletAddress'),
     setDestinationWalletAddress: (/** @type {string | undefined} */ address) =>
-      ipcRenderer.invoke('station:setDestinationWalletAddress', address),
-    getStationWalletBalance: () =>
-      ipcRenderer.invoke('station:getStationWalletBalance'),
-    getStationWalletTransactionsHistory: () =>
-      ipcRenderer.invoke('station:getStationWalletTransactionsHistory'),
+      ipcRenderer.invoke('checker:setDestinationWalletAddress', address),
+    getCheckerWalletBalance: () =>
+      ipcRenderer.invoke('checker:getCheckerWalletBalance'),
+    getCheckerWalletTransactionsHistory: () =>
+      ipcRenderer.invoke('checker:getCheckerWalletTransactionsHistory'),
     transferAllFundsToDestinationWallet: () =>
-      ipcRenderer.invoke('station:transferAllFundsToDestinationWallet'),
+      ipcRenderer.invoke('checker:transferAllFundsToDestinationWallet'),
     openExternalURL: (/** @type {string } */ url) =>
-      ipcRenderer.invoke('station:openExternalURL', url),
+      ipcRenderer.invoke('checker:openExternalURL', url),
     getScheduledRewards: () =>
-      ipcRenderer.invoke('station:getScheduledRewards'),
+      ipcRenderer.invoke('checker:getScheduledRewards'),
     toggleOpenAtLogin: () =>
-      ipcRenderer.invoke('station:toggleOpenAtLogin'),
-    isOpenAtLogin: () => ipcRenderer.invoke('station:isOpenAtLogin'),
-    exportSeedPhrase: () => ipcRenderer.invoke('station:exportSeedPhrase'),
-    saveModuleLogsAs: () => ipcRenderer.invoke('station:saveModuleLogsAs'),
-    checkForUpdates: () => ipcRenderer.invoke('station:checkForUpdates')
+      ipcRenderer.invoke('checker:toggleOpenAtLogin'),
+    isOpenAtLogin: () => ipcRenderer.invoke('checker:isOpenAtLogin'),
+    exportSeedPhrase: () => ipcRenderer.invoke('checker:exportSeedPhrase'),
+    saveSubnetLogsAs: () => ipcRenderer.invoke('checker:saveSubnetLogsAs'),
+    checkForUpdates: () => ipcRenderer.invoke('checker:checkForUpdates')
   },
-  stationEvents: {
+  checkerEvents: {
     onActivityLogged: (/** @type {(value: Activity) => void} */ callback) => {
       /** @type {(event: IpcRendererEvent, ...args: any[]) => void} */
       const listener = (_event, activities) => callback(activities)
-      ipcRenderer.on('station:activity-logged', listener)
+      ipcRenderer.on('checker:activity-logged', listener)
       return () =>
-        ipcRenderer.removeListener('station:activity-logged', listener)
+        ipcRenderer.removeListener('checker:activity-logged', listener)
     },
     onJobProcessed: (/** @type {(value: number) => void} */ callback) => {
       /** @type {(event: IpcRendererEvent, ...args: any[]) => void} */
       const listener = (_event, totalJobCount) => callback(totalJobCount)
-      ipcRenderer.on('station:job-stats-updated', listener)
+      ipcRenderer.on('checker:job-stats-updated', listener)
       return () =>
-        ipcRenderer.removeListener('station:job-stats-updated', listener)
+        ipcRenderer.removeListener('checker:job-stats-updated', listener)
     },
     onEarningsChanged: (/** @type {(value: number) => void} */ callback) => {
       /** @type {(event: IpcRendererEvent, ...args: any[]) => void} */
       const listener = (_event, totalEarnings) => callback(totalEarnings)
-      ipcRenderer.on('station:earnings-counter', listener)
+      ipcRenderer.on('checker:earnings-counter', listener)
       return () =>
-        ipcRenderer.removeListener('station:earnings-counter', listener)
+        ipcRenderer.removeListener('checker:earnings-counter', listener)
     },
     onReadyToUpdate: (/** @type {() => void} */ callback) => {
       const listener = () => callback()
-      ipcRenderer.on('station:ready-to-update', listener)
+      ipcRenderer.on('checker:ready-to-update', listener)
       return () =>
-        ipcRenderer.removeListener('station:ready-to-update', listener)
+        ipcRenderer.removeListener('checker:ready-to-update', listener)
     },
     onBalanceUpdate: (/** @type {(value: string) => void} */ callback) => {
       /** @type {(event: IpcRendererEvent, ...args: any[]) => void} */
       const listener = (_event, balance) => callback(balance)
-      ipcRenderer.on('station:wallet-balance-update', listener)
+      ipcRenderer.on('checker:wallet-balance-update', listener)
       return () =>
-        ipcRenderer.removeListener('station:wallet-balance-update', listener)
+        ipcRenderer.removeListener('checker:wallet-balance-update', listener)
     },
     onTransactionUpdate: (
       /** @type {
@@ -93,9 +93,9 @@ contextBridge.exposeInMainWorld('electron', {
     ) => {
       /** @type {(event: IpcRendererEvent, ...args: any[]) => void} */
       const listener = (_event, transactions) => callback(transactions)
-      ipcRenderer.on('station:transaction-update', listener)
+      ipcRenderer.on('checker:transaction-update', listener)
       return () =>
-        ipcRenderer.removeListener('station:transaction-update', listener)
+        ipcRenderer.removeListener('checker:transaction-update', listener)
     },
 
     onScheduledRewardsUpdate: (
@@ -103,9 +103,9 @@ contextBridge.exposeInMainWorld('electron', {
     ) => {
     /** @type {(event: IpcRendererEvent, ...args: any[]) => void} */
       const listener = (_event, balance) => callback(balance)
-      ipcRenderer.on('station:scheduled-rewards-update', listener)
+      ipcRenderer.on('checker:scheduled-rewards-update', listener)
       return () =>
-        ipcRenderer.removeListener('station:scheduled-rewards-update', listener)
+        ipcRenderer.removeListener('checker:scheduled-rewards-update', listener)
     }
   }
 })

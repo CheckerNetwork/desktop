@@ -2,97 +2,97 @@
 
 const { ipcMain } = require('electron')
 
-const stationConfig = require('./station-config')
+const checkerConfig = require('./checker-config')
 const wallet = require('./wallet')
 
 /** @typedef {import('./typings').Context} Context */
 
 const ipcMainEvents = Object.freeze({
-  ACTIVITY_LOGGED: 'station:activity-logged',
-  JOB_STATS_UPDATED: 'station:job-stats-updated',
+  ACTIVITY_LOGGED: 'checker:activity-logged',
+  JOB_STATS_UPDATED: 'checker:job-stats-updated',
 
-  UPDATE_CHECK_STARTED: 'station:update-check:started',
-  UPDATE_CHECK_FINISHED: 'station:update-check:finished',
-  READY_TO_UPDATE: 'station:ready-to-update',
+  UPDATE_CHECK_STARTED: 'checker:update-check:started',
+  UPDATE_CHECK_FINISHED: 'checker:update-check:finished',
+  READY_TO_UPDATE: 'checker:ready-to-update',
 
-  TRANSACTION_UPDATE: 'station:transaction-update',
-  BALANCE_UPDATE: 'station:wallet-balance-update',
-  SCHEDULED_REWARDS_UPDATE: 'station:scheduled-rewards-update'
+  TRANSACTION_UPDATE: 'checker:transaction-update',
+  BALANCE_UPDATE: 'checker:wallet-balance-update',
+  SCHEDULED_REWARDS_UPDATE: 'checker:scheduled-rewards-update'
 })
 
 function setupIpcMain (/** @type {Context} */ ctx) {
-  // Station-wide config
+  // Checker-wide config
   ipcMain.handle(
-    'station:getOnboardingCompleted',
-    stationConfig.getOnboardingCompleted
+    'checker:getOnboardingCompleted',
+    checkerConfig.getOnboardingCompleted
   )
   ipcMain.handle(
-    'station:setOnboardingCompleted',
-    (_event) => stationConfig.setOnboardingCompleted()
+    'checker:setOnboardingCompleted',
+    (_event) => checkerConfig.setOnboardingCompleted()
   )
   // Wallet-wide config
-  ipcMain.handle('station:getStationWalletAddress', wallet.getAddress)
+  ipcMain.handle('checker:getCheckerWalletAddress', wallet.getAddress)
   ipcMain.handle(
-    'station:getDestinationWalletAddress',
-    stationConfig.getDestinationWalletAddress
+    'checker:getDestinationWalletAddress',
+    checkerConfig.getDestinationWalletAddress
   )
   ipcMain.handle(
-    'station:setDestinationWalletAddress',
-    (_event, address) => stationConfig.setDestinationWalletAddress(address)
+    'checker:setDestinationWalletAddress',
+    (_event, address) => checkerConfig.setDestinationWalletAddress(address)
   )
-  ipcMain.handle('station:getStationWalletBalance', wallet.getBalance)
+  ipcMain.handle('checker:getCheckerWalletBalance', wallet.getBalance)
   ipcMain.handle(
-    'station:getScheduledRewards',
+    'checker:getScheduledRewards',
     ctx.getScheduledRewardsForAddress
   )
   ipcMain.handle(
-    'station:getStationWalletTransactionsHistory',
+    'checker:getCheckerWalletTransactionsHistory',
     wallet.listTransactions
   )
   ipcMain.handle(
-    'station:transferAllFundsToDestinationWallet',
+    'checker:transferAllFundsToDestinationWallet',
     (_event, _args) => wallet.transferAllFundsToDestinationWallet())
   ipcMain.handle(
-    'station:getActivities',
+    'checker:getActivities',
     (_event, _args) => ctx.getActivities())
   ipcMain.handle(
-    'station:getTotalJobsCompleted',
+    'checker:getTotalJobsCompleted',
     (_event, _args) => ctx.getTotalJobsCompleted())
 
   ipcMain.handle(
-    'station:restartToUpdate',
+    'checker:restartToUpdate',
     (_event, _args) => ctx.restartToUpdate()
   )
   ipcMain.handle(
-    'station:openReleaseNotes',
+    'checker:openReleaseNotes',
     (_event) => ctx.openReleaseNotes()
   )
   ipcMain.handle(
-    'station:getUpdaterStatus',
+    'checker:getUpdaterStatus',
     (_events, _args) => ctx.getUpdaterStatus()
   )
   ipcMain.handle(
-    'station:openExternalURL',
+    'checker:openExternalURL',
     (_events, url) => ctx.openExternalURL(url)
   )
   ipcMain.handle(
-    'station:toggleOpenAtLogin',
+    'checker:toggleOpenAtLogin',
     (_events) => ctx.toggleOpenAtLogin()
   )
   ipcMain.handle(
-    'station:isOpenAtLogin',
+    'checker:isOpenAtLogin',
     (_events) => ctx.isOpenAtLogin()
   )
   ipcMain.handle(
-    'station:exportSeedPhrase',
+    'checker:exportSeedPhrase',
     (_events) => ctx.exportSeedPhrase()
   )
   ipcMain.handle(
-    'station:saveModuleLogsAs',
-    (_events) => ctx.saveModuleLogsAs()
+    'checker:saveSubnetLogsAs',
+    (_events) => ctx.saveSubnetLogsAs()
   )
   ipcMain.handle(
-    'station:checkForUpdates',
+    'checker:checkForUpdates',
     (_events) => ctx.manualCheckForUpdates()
   )
 }

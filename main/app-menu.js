@@ -11,8 +11,8 @@ function setupAppMenu (/** @type {import('./typings').Context} */ ctx) {
 
   // File menu
   menu.items[1].submenu?.insert(0, new MenuItem({
-    label: 'Save Module Logs As…',
-    click: () => { ctx.saveModuleLogsAs() }
+    label: 'Save Subnet Logs As…',
+    click: () => { ctx.saveSubnetLogsAs() }
   }))
 
   Menu.setApplicationMenu(menu)
@@ -37,7 +37,7 @@ function setupCheckForUpdatesMenuItem (ctx, menu) {
     visible: false
   })
 
-  // Filecoin Station menu
+  // Checker menu
   menu.items[0].submenu?.insert(1, checkForUpdates)
   menu.items[0].submenu?.insert(2, checkingForUpdates)
 }

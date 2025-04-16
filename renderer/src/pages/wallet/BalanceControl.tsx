@@ -1,7 +1,7 @@
 import Button from 'src/components/Button'
 import Text from 'src/components/Text'
 import { formatFilValue, truncateString } from 'src/lib/utils'
-import { Wallet } from 'src/hooks/StationWallet'
+import { Wallet } from 'src/hooks/CheckerWallet'
 import Tooltip from 'src/components/Tooltip'
 import { ReactNode, useState } from 'react'
 import Transition from 'src/components/Transition'
@@ -45,7 +45,7 @@ const BalanceControl = ({
   return (
     <Transition
       on={!isShowingConfirm}
-      inClass='w-[260px] h-[260px] rounded-[130px] border-slate-50 bg-black'
+      inClass='w-[260px] h-[260px] rounded-[130px] border-primary bg-black'
       outClass='bg-white w-[500px] max-w-[80%] p-5 rounded-[8px] h-[132px]'
       className='border border-dashed mx-auto balance-control'
       data-testid='balance-control'
@@ -57,7 +57,7 @@ const BalanceControl = ({
           delayIn={200}
           className='flex flex-col gap-5 text-center m-auto'
         >
-          <Text as="p" size='s'>
+          <Text as="p" size='s' color="black">
               Send <strong>{formatFilValue(walletBalance)} FIL</strong> to {' '}
             <strong>{truncateString(destinationFilAddress || '')}</strong>?
           </Text>
@@ -68,11 +68,12 @@ const BalanceControl = ({
               onClick={() => setIsShowingConfirm(false)}
               className='bg-white text-primary'
             >
-              <Text font='mono' size='2xs' color='primary'>Cancel</Text>
+              <Text font='mono' size='2xs' color='secondary'>Cancel</Text>
             </Button>
             <Button
               type='button'
               variant='primary'
+              className='bg-purple'
               onClick={() => {
                 transferAllFundsToDestinationWallet()
                 setIsShowingConfirm(false)
@@ -92,9 +93,8 @@ const BalanceControl = ({
         >
           <div className='flex flex-col justify-end h-[55%]'>
             <Text
+              size="m"
               font="mono"
-              size="xl"
-              bold
               className={classNames('text-slate-50 text-center',
                 formatFilValue(walletBalance).length > 8 ? 'text-[1.85rem]' : 'text-[2rem]'
               )}
@@ -110,6 +110,7 @@ const BalanceControl = ({
                   variant='primary'
                   onClick={() => setIsShowingConfirm(true)}
                   disabled={!hasSufficientBalance}
+                  className='bg-purple'
                 >
                 Transfer
                 </Button>

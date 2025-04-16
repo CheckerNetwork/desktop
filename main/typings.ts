@@ -41,7 +41,7 @@ export interface Context {
   isShowingUI: boolean;
   loadWebUIFromDist: import('electron-serve').loadURL;
   manualCheckForUpdates: () => void;
-  saveModuleLogsAs: () => Promise<void>;
+  saveSubnetLogsAs: () => Promise<void>;
 
   openReleaseNotes: () => void;
   restartToUpdate: () => void;

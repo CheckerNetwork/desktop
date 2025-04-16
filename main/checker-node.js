@@ -35,9 +35,9 @@ let totalJobsCompleted = 0
  * @param {Context} ctx
  */
 async function setup (ctx) {
-  ctx.saveModuleLogsAs = async () => {
+  ctx.saveSubnetLogsAs = async () => {
     const opts = {
-      defaultPath: `station-modules-${(new Date()).getTime()}.log`
+      defaultPath: `checker-subnets-${(new Date()).getTime()}.log`
     }
     // The dialog might not show if the UI is hidden
     ctx.showUI()
@@ -67,9 +67,41 @@ function maybeReportErrorToSentry (err, scopeFn) {
   if (now - lastCrashReportedAt < 4 /* HOURS */ * 3600_000) return
   lastCrashReportedAt = now
   log.error(
-    'Reporting the problem to Sentry for inspection by the Station team.'
+    'Reporting the problem to Sentry for inspection by the Checker team.'
   )
   Sentry.captureException(err, scopeFn)
+}
+
+async function maybeMigrateStateRoot () {
+  try {
+    await fs.stat(consts.STATE_ROOT)
+  } catch (err) {
+    if (
+      typeof err === 'object' &&
+      err !== null &&
+      'code' in err &&
+      err.code !== 'ENOENT'
+    ) {
+      throw err
+    }
+    try {
+      await fs.stat(consts.LEGACY_STATE_ROOT)
+    } catch (err) {
+      if (
+        typeof err === 'object' &&
+        err !== null &&
+        'code' in err &&
+        err.code !== 'ENOENT'
+      ) {
+        throw err
+      }
+      return
+    }
+    log.info('Migrating Checker Node state folder from legacy location...')
+    await fs.cp(consts.LEGACY_STATE_ROOT, consts.STATE_ROOT, {
+      recursive: true
+    })
+  }
 }
 
 /**
@@ -78,6 +110,7 @@ function maybeReportErrorToSentry (err, scopeFn) {
 async function start (ctx) {
   log.info('Starting Checker Node...')
 
+  await maybeMigrateStateRoot()
   const childProcess = fork(
     checkerNodePath,
     ['--json', '--recreateCheckerIdOnError'],
@@ -139,7 +172,7 @@ async function start (ctx) {
         }
         default: {
           const err = new Error(
-            `Unknown Station Checker Node event type "${event.type}": ${line}`
+            `Unknown Checker Node event type "${event.type}": ${line}`
           )
           log.error(format(err))
           Sentry.captureException(err)
