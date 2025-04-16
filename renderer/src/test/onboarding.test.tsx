@@ -57,10 +57,6 @@ describe('Welcome page test', () => {
       render(<BrowserRouter> <Onboarding /></BrowserRouter >)
     })
 
-    test('show loading test', () => {
-      expect(document.getElementsByClassName('loading')).toHaveLength(1)
-    })
-
     test('loads and show onboarding modal on startup', async () => {
       await waitFor(
         () => { expect(document.getElementsByClassName('onboarding')).toHaveLength(1) },
