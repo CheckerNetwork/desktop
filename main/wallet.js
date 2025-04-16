@@ -1,5 +1,6 @@
 'use strict'
 
+const { app } = require('electron')
 const electronLog = require('electron-log')
 const assert = require('assert')
 const { getDestinationWalletAddress } = require('./station-config')
@@ -264,6 +265,16 @@ async function getSeedPhrase () {
 }
 
 /**
+ * @param {string} seed
+ * @returns {Promise<void>}
+ */
+async function setSeedPhrase (seed) {
+  await backend.setSeedPhrase(seed)
+  app.relaunch()
+  app.exit(0)
+}
+
+/**
  * @param {string | ethers.utils.Bytes} message
  * @returns {Promise<string>}
  */
@@ -283,5 +294,6 @@ module.exports = {
   signMessage,
   transferAllFundsToDestinationWallet,
   getTransactionsForUI,
-  getSeedPhrase
+  getSeedPhrase,
+  setSeedPhrase
 }
