@@ -72,12 +72,45 @@ function maybeReportErrorToSentry (err, scopeFn) {
   Sentry.captureException(err, scopeFn)
 }
 
+async function maybeMigrateStateRoot () {
+  try {
+    await fs.stat(consts.STATE_ROOT)
+  } catch (err) {
+    if (
+      typeof err === 'object' &&
+      err !== null &&
+      'code' in err &&
+      err.code !== 'ENOENT'
+    ) {
+      throw err
+    }
+    try {
+      await fs.stat(consts.LEGACY_STATE_ROOT)
+    } catch (err) {
+      if (
+        typeof err === 'object' &&
+        err !== null &&
+        'code' in err &&
+        err.code !== 'ENOENT'
+      ) {
+        throw err
+      }
+      return
+    }
+    log.info('Migrating Checker Node state folder from legacy location...')
+    await fs.cp(consts.LEGACY_STATE_ROOT, consts.STATE_ROOT, {
+      recursive: true
+    })
+  }
+}
+
 /**
  * @param {Context} ctx
  */
 async function start (ctx) {
   log.info('Starting Checker Node...')
 
+  await maybeMigrateStateRoot()
   const childProcess = fork(
     checkerNodePath,
     ['--json', '--recreateCheckerIdOnError'],

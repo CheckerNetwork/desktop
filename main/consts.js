@@ -8,7 +8,7 @@ const assert = require('assert')
 
 const { getBuildVersion } = require('./build-version')
 
-const appIDs = {
+const defaultAppIDs = {
   darwin: 'network.checker.app',
   win32: 'Checker',
   linux: 'checker'
@@ -17,6 +17,11 @@ const appIDs = {
 module.exports = Object.freeze({
   CACHE_ROOT: getCacheRoot(),
   STATE_ROOT: getStateRoot(),
+  LEGACY_STATE_ROOT: getStateRoot({
+    darwin: 'app.filstation.desktop',
+    win32: 'Filecoin Station Desktop',
+    linux: 'filecoin-station-desktop'
+  }),
   IS_MAC: os.platform() === 'darwin',
   IS_WIN: os.platform() === 'win32',
   IS_APPIMAGE: typeof process.env.APPIMAGE !== 'undefined',
@@ -28,7 +33,7 @@ module.exports = Object.freeze({
 
 // Replace with `app.get('localUserData')` after this PR is landed & released:
 // https://github.com/electron/electron/pull/34337
-function getCacheRoot () {
+function getCacheRoot (appIDs = defaultAppIDs) {
   if (process.env.CHECKER_ROOT) {
     return path.join(process.env.CHECKER_ROOT, 'cache')
   }
@@ -53,7 +58,7 @@ function getCacheRoot () {
   }
 }
 
-function getStateRoot () {
+function getStateRoot (appIDs = defaultAppIDs) {
   if (process.env.CHECKER_ROOT) {
     return path.join(process.env.CHECKER_ROOT, 'state')
   }
