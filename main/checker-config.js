@@ -5,11 +5,11 @@ const Store = require('electron-store')
 const log = require('electron-log').scope('config')
 
 const ConfigKeys = {
-  OnboardingCompleted: 'checker.OnboardingCompleted',
-  TrayOperationExplained: 'checker.TrayOperationExplained',
-  CheckerID: 'checker.CheckerID',
-  FilAddress: 'checker.FilAddress',
-  DestinationFilAddress: 'checker.DestinationFilAddress'
+  OnboardingCompleted: 'station.OnboardingCompleted',
+  TrayOperationExplained: 'station.TrayOperationExplained',
+  CheckerID: 'station.CheckerID',
+  FilAddress: 'station.FilAddress',
+  DestinationFilAddress: 'station.DestinationFilAddress'
 }
 
 // Use this to test migrations
@@ -18,31 +18,6 @@ const ConfigKeys = {
 
 const configStore = new Store({
   migrations: {
-    '>=3.0.0': store => {
-      const migration = [
-        {
-          from: 'station.OnboardingCompleted',
-          to: ConfigKeys.OnboardingCompleted
-        }, {
-          from: 'station.TrayOperationExplained',
-          to: ConfigKeys.TrayOperationExplained
-        }, {
-          from: 'station.stationID',
-          to: ConfigKeys.CheckerID
-        }, {
-          from: 'station.FilAddress',
-          to: ConfigKeys.FilAddress
-        }, {
-          from: 'station.DestinationFilAddress',
-          to: ConfigKeys.DestinationFilAddress
-        }
-      ]
-      for (const { from, to } of migration) {
-        if (store.has(from)) {
-          store.set(to, store.get(from))
-        }
-      }
-    },
     '>=0.9.0': store => {
       if (store.has('station.onboardingCompleted')) {
         store.set(
