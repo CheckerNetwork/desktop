@@ -105,8 +105,9 @@ class WalletBackend {
    */
   async maybeMigrateSeedPhrase (service) {
     try {
-      await keytar.getPassword(service, 'seed')
-      return
+      if (await keytar.getPassword(service, 'seed')) {
+        return
+      }
     } catch {}
     let seed
     try {
