@@ -54,7 +54,7 @@
     "@sentry/node": "^9.13.0",
     "@sentry/react": "^9.13.0",
     "@sentry/tracing": "^7.120.3",
-    "chart.js": "^4.4.8",
+    "chart.js": "^4.4.9",
     "classnames": "^2.5.1",
     "dayjs": "^1.11.13",
     "electron-log": "^5.3.3",
