@@ -50,7 +50,7 @@
     "@radix-ui/react-select": "^2.1.7",
     "@radix-ui/react-switch": "^1.2.2",
     "@radix-ui/react-toggle-group": "^1.1.7",
-    "@radix-ui/react-tooltip": "^1.2.0",
+    "@radix-ui/react-tooltip": "^1.2.4",
     "@sentry/node": "^9.13.0",
     "@sentry/react": "^9.13.0",
     "@sentry/tracing": "^7.120.3",
