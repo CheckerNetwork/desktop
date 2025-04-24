@@ -7,24 +7,13 @@ import { ROUTES } from 'src/lib/routes'
 import CheckerLogo from 'src/assets/img/checker-logo.svg?react'
 import OnboardingIllustration from 'src/assets/img/Onboarding Illustration.svg?react'
 
-const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms))
-
 const OnboardingPage = (): JSX.Element => {
   const navigate = useNavigate()
   const [isOnboardingCompleted, setIsOnboardingCompleted] = useState<boolean|null>()
 
   useEffect(() => {
     (async () => {
-      let isOnboardingCompleted
-      while (true) {
-        try {
-          isOnboardingCompleted = await getOnboardingCompleted()
-          break
-        } catch (err) {
-          await sleep(100)
-        }
-      }
-      setIsOnboardingCompleted(isOnboardingCompleted)
+      setIsOnboardingCompleted(await getOnboardingCompleted())
     })()
   }, [navigate])
 

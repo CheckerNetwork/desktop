@@ -227,9 +227,9 @@ async function run () {
     if (process.platform === 'darwin') {
       await setupAppMenu(ctx)
     }
+    await setupIpcMain(ctx)
     await setupUI(ctx)
     await setupUpdater(ctx)
-    await setupIpcMain(ctx)
 
     await wallet.setup(ctx)
     await telemetry.setup()
