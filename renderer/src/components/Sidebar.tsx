@@ -39,7 +39,7 @@ const Sidebar = () => {
   return (
     <section className={classNames(
       'sticky top-0 group pt-9 transition-all',
-      isOpen ? 'w-[142px]' : 'w-[80px]'
+      isOpen ? 'w-[155px]' : 'w-[80px]'
     )}
     >
       <div className='flex flex-col items-center gap-9 px-4 pt-5'>
@@ -76,7 +76,7 @@ const Sidebar = () => {
                 as='span'
                 on={isOpen}
                 delayIn={100}
-                className='uppercase text-body-3xs'
+                className='uppercase text-body-2xs'
               >
                 {title}
               </Transition>

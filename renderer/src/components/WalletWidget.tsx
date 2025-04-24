@@ -34,7 +34,7 @@ const WalletWidget = () => {
         focus-visible:outline-slate-400 focus:outline-slate-400 p-1`}
       >
         <WalletIcon />
-        <Text size='2xs' className="text-white">{formatFilValue(walletBalance)} FIL</Text>
+        <Text size='xs' className="text-white">{formatFilValue(walletBalance)} FIL</Text>
       </button>
     </div>
   )

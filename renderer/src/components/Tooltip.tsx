@@ -3,7 +3,7 @@ import classNames from 'classnames'
 import { ComponentProps, ReactNode, useEffect, useState } from 'react'
 
 const sizeClassNames = {
-  s: 'py-1 px-2 w-fit text-body-xxs',
+  s: 'py-3 px-4 w-fit text-body-2xs',
   m: 'p-4 w-[232px] text-body-xs'
 }
 const bgClassNames = {
@@ -26,7 +26,7 @@ const Tooltip = ({
   content,
   trigger,
   size = 's',
-  bg = 'dark',
+  bg = 'light',
   keepOpenOnClick,
   ...contentProps
 }: TooltipProps) => {
@@ -35,7 +35,7 @@ const Tooltip = ({
   const contentClassName = classNames(
     sizeClassNames[size],
     bgClassNames[bg],
-    ` rounded select-none pointer-events-none z-10
+    ` rounded rounded-lg select-none pointer-events-none z-10
      data-[state=delayed-open]:animate-fadeIn data-[state=closed]:animate-fadeOut`
   )
 
