@@ -53,7 +53,7 @@ const ActivityInfo = () => {
           <Text as='h3' font='mono' size='3xs' color='primary' uppercase>
             Activity ... :
           </Text>
-          <div className="overflow-y-scroll custom-scrollbar h-full bottom-0 absolute top-[50px]">
+          <div className="overflow-y-auto custom-scrollbar h-full bottom-0 absolute top-[50px]">
             {Object.entries(activitiesByDate).map(([date, log]) => (
               <div key={date}>
                 <Text size='3xs' color='secondary'>{date}</Text>

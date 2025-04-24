@@ -36,7 +36,7 @@ const TransactionHistory = ({
   return (
     <Transition
       on={!!walletTransactions}
-      className='absolute inset-0 top-2 flex flex-col h-[98%] overflow-y-scroll custom-scrollbar'
+      className='absolute inset-0 top-2 flex flex-col h-[98%] overflow-y-auto custom-scrollbar'
     >
       {completeTransactions && completeTransactions?.length > 0
         ? completeTransactions?.map((transaction) => (
