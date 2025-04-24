@@ -6,8 +6,7 @@
 
 Checker is a desktop app that connects your computer’s idle resources to the
 Filecoin network and rewards you with Filecoin. Taking part is simple, just
-launch the app and start earning. Learn more at
-[app.checker.network](https://app.checker.network).
+launch the app and start earning. [Learn more](https://docs.checker.network/running-a-checker)
 
 ## Install
 
