@@ -104,7 +104,7 @@ process.on('uncaughtException', err => {
 
 async function maybeMigrateFromFilecoinStationConfig () {
   const checkerConfigPath = path.join(app.getPath('userData'), 'config.json')
-  console.log('Checker config path', checkerConfigPath)
+  log.info('Checker config path', checkerConfigPath)
   const filecoinStationConfigPath = checkerConfigPath.replace(
     'Checker',
     'Filecoin Station'
