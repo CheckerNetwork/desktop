@@ -42,7 +42,7 @@
     "@checkernetwork/node": "^22.2.0",
     "@filecoin-station/spark-impact-evaluator": "^1.2.4",
     "@glif/filecoin-address": "4.0.0",
-    "@glif/filecoin-message": "^3.0.5",
+    "@glif/filecoin-message": "^4.0.0",
     "@glif/filecoin-number": "^3.0.3",
     "@glif/filecoin-wallet-provider": "^3.0.15",
     "@influxdata/influxdb-client": "^1.35.0",
