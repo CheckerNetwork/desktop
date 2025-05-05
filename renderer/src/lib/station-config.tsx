@@ -88,6 +88,10 @@ export function exportSeedPhrase () {
   return window.electron.stationConfig.exportSeedPhrase()
 }
 
+export function importSeedPhrase () {
+  return window.electron.stationConfig.importSeedPhrase()
+}
+
 export function saveModuleLogsAs () {
   return window.electron.stationConfig.saveModuleLogsAs()
 }
