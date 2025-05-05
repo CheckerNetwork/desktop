@@ -1,7 +1,7 @@
 import BorderedBox from 'src/components/BorderedBox'
 import Button from 'src/components/Button'
 import Text from 'src/components/Text'
-import { Wallet } from 'src/hooks/StationWallet'
+import { Wallet } from 'src/hooks/CheckerWallet'
 import { formatFilValue } from 'src/lib/utils'
 
 const ConfirmTransfer = ({

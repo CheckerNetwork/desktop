@@ -1,12 +1,14 @@
 'use strict'
 
+// Only import stable core dependencies here, everything else should come
+// after Sentry has been initialized
 const { app, dialog, shell } = require('electron')
 const electronLog = require('electron-log')
 const path = require('node:path')
 const { format } = require('node:util')
-
 console.log('Log file:', electronLog.transports.file.getFile().path)
 const log = electronLog.scope('main')
+const fs = require('node:fs/promises')
 
 // Override the place where we look for config files when running the end-to-end
 // test suite.
@@ -14,8 +16,8 @@ const log = electronLog.scope('main')
 // store.
 // https://www.npmjs.com/package/electron-store
 // https://www.electronjs.org/docs/latest/api/app#appgetpathname
-if (process.env.STATION_ROOT) {
-  app.setPath('userData', path.join(process.env.STATION_ROOT, 'user-data'))
+if (process.env.CHECKER_ROOT) {
+  app.setPath('userData', path.join(process.env.CHECKER_ROOT, 'user-data'))
 
   // Also set 'localUserData' after this PR is landed & released:
   // We are using localUserData for Saturn L2 cache
@@ -24,27 +26,24 @@ if (process.env.STATION_ROOT) {
 
 require('./setup-sentry')
 
-const { ipcMainEvents, setupIpcMain } = require('./ipc')
+// Import everything except app libraries here, as those could import
+// `electron-store`. We need to run `maybeMigrateFromFilecoinStationConfig()`
+// before importing it for the first time, as it otherwise already will have
+// created a new config file.
 const { BUILD_VERSION } = require('./consts')
 const { ipcMain } = require('electron/main')
 const os = require('os')
-const checkerNode = require('./checker-node')
-const wallet = require('./wallet')
-const settings = require('./settings')
 const serve = require('electron-serve')
-const { setupAppMenu } = require('./app-menu')
-const setupTray = require('./tray')
-const setupUI = require('./ui')
-const setupUpdater = require('./updater')
 const Sentry = require('@sentry/node')
-const telemetry = require('./telemetry')
-const { validateExternalURL } = require('./utils')
 
 const inTest = (process.env.NODE_ENV === 'test')
 const isDev = !app.isPackaged && !inTest
+const uiServer = serve({
+  directory: path.resolve(__dirname, '../renderer/dist')
+})
 
 log.info(format(
-  'Filecoin Station build version: %s %s-%s%s%s',
+  'Checker build version: %s %s-%s%s%s',
   BUILD_VERSION,
   os.platform(),
   os.arch(),
@@ -65,7 +64,7 @@ if (app.runningUnderARM64Translation) {
 }
 
 // Expose additional metadata for Electron preload script
-process.env.STATION_BUILD_VERSION = BUILD_VERSION
+process.env.CHECKER_BUILD_VERSION = BUILD_VERSION
 
 function handleError (/** @type {any} */ err) {
   Sentry.captureException(err)
@@ -83,69 +82,12 @@ process.on('unhandledRejection', handleError)
 // appUserModelID
 // See https://www.electronjs.org/docs/tutorial/notifications#windows
 if (process.platform === 'win32') {
-  app.setAppUserModelId('io.filecoin.station')
+  app.setAppUserModelId('network.checker.app')
 }
 
 // Only one instance can run at a time
 if (!inTest && !app.requestSingleInstanceLock()) {
   app.quit()
-}
-
-// When the user attempts to start the app and didn't notice the Station icon in
-// the tray, help them out by showing the main window
-app.on('second-instance', () => {
-  ctx.showUI()
-})
-
-/** @type {import('./typings').Context} */
-const ctx = {
-  getActivities: () => checkerNode.getActivities(),
-
-  recordActivity: activity => {
-    ipcMain.emit(ipcMainEvents.ACTIVITY_LOGGED, activity)
-  },
-
-  getTotalJobsCompleted: () => checkerNode.getTotalJobsCompleted(),
-  setTotalJobsCompleted: (count) => {
-    ipcMain.emit(
-      ipcMainEvents.JOB_STATS_UPDATED,
-      count
-    )
-  },
-  getScheduledRewardsForAddress: () => wallet.getScheduledRewards(),
-  setScheduledRewardsForAddress: (balance) => {
-    ipcMain.emit(
-      ipcMainEvents.SCHEDULED_REWARDS_UPDATE,
-      balance
-    )
-  },
-
-  getScheduledRewards: () => wallet.getScheduledRewards(),
-  getWalletBalance: () => wallet.getBalance(),
-
-  manualCheckForUpdates: () => { throw new Error('never get here') },
-  saveModuleLogsAs: () => { throw new Error('never get here') },
-  toggleOpenAtLogin: () => { throw new Error('never get here') },
-  isOpenAtLogin: () => { throw new Error('never get here') },
-  exportSeedPhrase: () => { throw new Error('never get here') },
-  showUI: () => { throw new Error('never get here') },
-  isShowingUI: false,
-  loadWebUIFromDist: serve({
-    directory: path.resolve(__dirname, '../renderer/dist')
-  }),
-  restartToUpdate: () => { throw new Error('never get here') },
-  openReleaseNotes: () => { throw new Error('never get here') },
-  getUpdaterStatus: () => { throw new Error('never get here') },
-  openExternalURL: (/** @type {string} */ url) => {
-    validateExternalURL(url)
-    shell.openExternal(url)
-  },
-  transactionUpdate: (transactions) => {
-    ipcMain.emit(ipcMainEvents.TRANSACTION_UPDATE, transactions)
-  },
-  balanceUpdate: (balance) => {
-    ipcMain.emit(ipcMainEvents.BALANCE_UPDATE, balance)
-  }
 }
 
 app.on('before-quit', () => {
@@ -160,7 +102,119 @@ process.on('uncaughtException', err => {
   process.exitCode = 1
 })
 
+async function maybeMigrateFromFilecoinStationConfig () {
+  const checkerConfigPath = path.join(app.getPath('userData'), 'config.json')
+  log.info('Checker config path', checkerConfigPath)
+  const filecoinStationConfigPath = checkerConfigPath.replace(
+    'Checker',
+    'Filecoin Station'
+  )
+  try {
+    await fs.stat(checkerConfigPath)
+    log.info('Checker config found')
+  } catch (err) {
+    if (
+      typeof err !== 'object' ||
+      err == null ||
+      !('code' in err) ||
+      err.code !== 'ENOENT'
+    ) {
+      throw err
+    }
+    log.info('Checker config not found')
+    log.info('Checking for Filecoin Station config')
+    try {
+      await fs.stat(filecoinStationConfigPath)
+      log.info('Migrating from Filecoin Station config')
+      await fs.cp(
+        filecoinStationConfigPath,
+        checkerConfigPath,
+        { recursive: true }
+      )
+      log.info('Filecoin Station config migrated to Checker config')
+    } catch (err) {
+      if (
+        typeof err !== 'object' ||
+        err == null ||
+        !('code' in err) ||
+        err.code !== 'ENOENT'
+      ) {
+        throw err
+      }
+      log.info('Filecoin Station config also not found')
+    }
+  }
+}
+
 async function run () {
+  await maybeMigrateFromFilecoinStationConfig()
+
+  const { ipcMainEvents, setupIpcMain } = require('./ipc')
+  const checkerNode = require('./checker-node')
+  const wallet = require('./wallet')
+  const settings = require('./settings')
+  const { setupAppMenu } = require('./app-menu')
+  const setupTray = require('./tray')
+  const setupUI = require('./ui')
+  const setupUpdater = require('./updater')
+  const telemetry = require('./telemetry')
+  const { validateExternalURL } = require('./utils')
+
+  /** @type {import('./typings').Context} */
+  const ctx = {
+    getActivities: () => checkerNode.getActivities(),
+
+    recordActivity: activity => {
+      ipcMain.emit(ipcMainEvents.ACTIVITY_LOGGED, activity)
+    },
+
+    getTotalJobsCompleted: () => checkerNode.getTotalJobsCompleted(),
+    setTotalJobsCompleted: (count) => {
+      ipcMain.emit(
+        ipcMainEvents.JOB_STATS_UPDATED,
+        count
+      )
+    },
+    getScheduledRewardsForAddress: () => wallet.getScheduledRewards(),
+    setScheduledRewardsForAddress: (balance) => {
+      ipcMain.emit(
+        ipcMainEvents.SCHEDULED_REWARDS_UPDATE,
+        balance
+      )
+    },
+
+    getScheduledRewards: () => wallet.getScheduledRewards(),
+    getWalletBalance: () => wallet.getBalance(),
+
+    manualCheckForUpdates: () => { throw new Error('never get here') },
+    saveSubnetLogsAs: () => { throw new Error('never get here') },
+    toggleOpenAtLogin: () => { throw new Error('never get here') },
+    isOpenAtLogin: () => { throw new Error('never get here') },
+    exportSeedPhrase: () => { throw new Error('never get here') },
+    showUI: () => { throw new Error('never get here') },
+    isShowingUI: false,
+    loadWebUIFromDist: uiServer,
+    restartToUpdate: () => { throw new Error('never get here') },
+    openReleaseNotes: () => { throw new Error('never get here') },
+    getUpdaterStatus: () => { throw new Error('never get here') },
+    openExternalURL: (/** @type {string} */ url) => {
+      validateExternalURL(url)
+      shell.openExternal(url)
+    },
+    transactionUpdate: (transactions) => {
+      ipcMain.emit(ipcMainEvents.TRANSACTION_UPDATE, transactions)
+    },
+    balanceUpdate: (balance) => {
+      ipcMain.emit(ipcMainEvents.BALANCE_UPDATE, balance)
+    }
+  }
+
+  // When the user attempts to start the app and didn't notice the Checker
+  // icon in the tray, help them out by showing the main window
+  app.on('second-instance', () => {
+    ctx.showUI()
+  })
+
   try {
     await app.whenReady()
   } catch (e) {
@@ -173,9 +227,9 @@ async function run () {
     if (process.platform === 'darwin') {
       await setupAppMenu(ctx)
     }
+    await setupIpcMain(ctx)
     await setupUI(ctx)
     await setupUpdater(ctx)
-    await setupIpcMain(ctx)
 
     await wallet.setup(ctx)
     await telemetry.setup()

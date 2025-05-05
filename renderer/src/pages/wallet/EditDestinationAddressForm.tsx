@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import Text from 'src/components/Text'
 import TextInput from 'src/components/TextInput'
-import useWallet from 'src/hooks/StationWallet'
+import useWallet from 'src/hooks/CheckerWallet'
 import EditIcon from 'src/assets/img/icons/edit.svg?react'
 import Button from 'src/components/Button'
 import useAddressValidation from 'src/hooks/useAddressValidation'
@@ -53,12 +53,11 @@ const EditDestinationAddressForm = ({
     <div className='absolute left-0 right-0 mx-auto top-[30%] scale-95 -translate-y-[50%]'>
       <form onSubmit={handleSubmit} className="flex flex-col w-[80%] max-w-[480px] mx-auto z-10">
         <Transition on className='absolute -top-[32px]'>
-          <Text uppercase font="mono" size="3xs" className='text-slate-50'>Destination address</Text>
+          <Text uppercase font="mono" size="3xs" color="primary">Destination address ... :</Text>
         </Transition>
 
         <div className='relative'>
           <Tooltip
-            bg='light'
             open={showTooltip}
             trigger={<div className='absolute h-0 bottom-0 w-full'></div>}
             content="Saved"

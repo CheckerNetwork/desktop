@@ -5,31 +5,33 @@
 @layer base {
 
   @font-face {
-    font-family: "SuisseIntl";
-    src: url('assets/fonts/SuisseIntl/SuisseIntl-Regular.ttf');
+    font-family: "Lato";
+    src: url('assets/fonts/Lato/Lato-Regular.ttf');
   }
   @font-face {
-    font-family: "SpaceGrotesk";
-    src: url('assets/fonts/SpaceGrotesk/SpaceGrotesk-Regular.ttf');
-  }
-  @font-face {
-    font-family: "SpaceGrotesk";
+    font-family: "Lato";
     font-weight: 500;
-    src: url('assets/fonts/SpaceGrotesk/SpaceGrotesk-Medium.ttf');
+    src: url('assets/fonts/Lato/Lato-Bold.ttf');
   }
   @font-face {
-    font-family: "SpaceMono";
+    font-family: "IBMPlexMono";
     font-weight: 400;
-    src: url('assets/fonts/SpaceMono/SpaceMono-Regular.ttf');
+    src: url('assets/fonts/IBMPlexMono/IBMPlexMono-Regular.ttf');
   }
   @font-face {
-    font-family: "SpaceMono";
+    font-family: "IBMPlexMono";
     font-weight: 700;
-    src: url('assets/fonts/SpaceMono/SpaceMono-Bold.ttf');
+    src: url('assets/fonts/IBMPlexMono/IBMPlexMono-Bold.ttf');
+  }
+  @font-face {
+    font-family: 'ClashDisplay-Variable';
+    src: url('assets/fonts/ClashDisplay_Complete/Fonts/TTF/ClashDisplay-Variable.ttf');
+    font-display: swap;
+    font-style: normal;
   }
 
   body {
-    @apply font-body text-black overflow-x-hidden;
+    @apply font-body text-white overflow-x-hidden;
     -webkit-user-select: none;
   }
 
@@ -55,10 +57,17 @@
   }
 
   .app-bg {
-    background-image: url('./assets/img/bg-pattern.svg');
+    background: url('./assets/img/Mesh color background.png'), black;
     background-repeat: no-repeat;
-    background-size: 86vw;
-    background-position: 10vw 80%;
+    background-size: 100vw;
+    background-position: bottom;
+  }
+
+  .onboarding-bg {
+    background: url('./assets/img/Onboarding Background.png'), black;
+    background-repeat: no-repeat;
+    background-size: 100vw;
+    background-position: top;
   }
 
   .custom-scrollbar {
@@ -116,8 +125,8 @@
   }
 
   .btn-primary-small {
-    @apply py-2 px-4 rounded-full font-body text-body-s text-white
-    bg-primary hover:bg-primary-hover visited:bg-primary-click
+    @apply py-2 px-4 rounded-full font-body text-body-s text-black
+    bg-primary
     disabled:bg-grayscale-500 disabled:text-grayscale-700;
   }
 
@@ -132,11 +141,6 @@
 
   .icon-primary-white path {
     @apply fill-white
-  }
-
-  .icon-warning path {
-    @apply fill-orange-200 group-hover:fill-orange-200 group-visited:fill-orange-200
-    group-disabled:fill-grayscale-500
   }
 
   .icon-error path {
@@ -155,7 +159,7 @@
   .btn-secondary-small {
     @apply py-2 px-4 rounded-full font-body text-body-xs bg-opacity-0 border border-solid
      border-primary border-opacity-25  text-primary
-     hover:border-primary-hover hover:border-opacity-25 hover:text-primary-hover
+     hover:border-primary-hover hover:border-opacity-25
      visited:border-primary-click visited:border-opacity-25 visited:text-primary-click 
      disabled:border-grayscale-500 disabled:text-grayscale-500;  
   }
@@ -172,12 +176,12 @@
   }
 
   .nav-button {
-    @apply rounded outline-dashed outline-1 bg-slate-50 outline-slate-50
+    @apply rounded outline-slate-50 text-white
   }
   .nav-button.active {
-    @apply bg-slate-200 text-primary outline-slate-400
+    @apply bg-green
   }
   .nav-button:not(.active):hover, .nav-button:not(.active):focus-visible {
-    @apply bg-slate-100 text-black  outline-slate-400
+    @apply bg-green
   }
 }

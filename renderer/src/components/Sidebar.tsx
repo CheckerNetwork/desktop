@@ -2,8 +2,8 @@ import { useState } from 'react'
 import { NavLink } from 'react-router'
 import { ROUTES } from 'src/lib/routes'
 import HomeIcon from 'src/assets/img/icons/home.svg?react'
-import ModulesIcon from 'src/assets/img/icons/modules.svg?react'
-import WalletIcon from 'src/assets/img/icons/wallet.svg?react'
+import SubnetsIcon from 'src/assets/img/icons/subnets.svg?react'
+import WalletIcon from 'src/assets/img/icons/menu-wallet.svg?react'
 import SettingsIcon from 'src/assets/img/icons/settings.svg?react'
 import MenuArrow from 'src/assets/img/icons/menu-arrow.svg?react'
 import Logo from 'src/assets/img/icons/logo-symbol.svg?react'
@@ -17,9 +17,9 @@ const links = [
     Icon: HomeIcon
   },
   {
-    href: ROUTES.modules,
-    title: 'Modules',
-    Icon: ModulesIcon
+    href: ROUTES.subnets,
+    title: 'Subnets',
+    Icon: SubnetsIcon
   },
   {
     href: ROUTES.wallet,
@@ -38,7 +38,7 @@ const Sidebar = () => {
 
   return (
     <section className={classNames(
-      'sticky top-0 group pt-9 bg-slate-50 outline-slate-400 outline-dashed outline-1 transition-all',
+      'sticky top-0 group pt-9 transition-all',
       isOpen ? 'w-[142px]' : 'w-[80px]'
     )}
     >
@@ -48,7 +48,7 @@ const Sidebar = () => {
         <button
           type='button'
           onClick={() => setIsOpen(!isOpen)}
-          className='nav-button absolute right-0 top-16 translate-x-[50%] outline-slate-400
+          className='nav-button absolute right-0 top-16 translate-x-[50%]
           opacity-0 group-hover:opacity-100 focus:opacity-100'
         >
           <div className={classNames('text-primary', {

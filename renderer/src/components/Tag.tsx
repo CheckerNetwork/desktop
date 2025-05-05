@@ -7,8 +7,8 @@ type TagProps = {
 }
 
 const typeClassName = {
-  primary: 'bg-primary text-white',
-  secondary: 'bg-slate-800 text-white',
+  primary: 'bg-primary text-black',
+  secondary: 'text-gray border border-gray',
   dashed: 'bg-white border border-dashed border-primary text-primary'
 }
 
@@ -18,7 +18,7 @@ const Tag = ({
 }: TagProps) => {
   const className = classNames(
     typeClassName[type],
-    'py-1 px-2 w-fit text-center rounded-[36px] text-mono-3xs font-mono'
+    'py-1 px-4 w-fit text-center rounded-[36px] text-mono-3xs font-mono'
   )
 
   return (

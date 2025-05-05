@@ -5,10 +5,10 @@ import classNames from 'classnames'
 const DEFAULT_ELEMENT = 'span'
 
 type TextOwnProps<C> = {
-  size?: '3xs' | '2xs' | 'xs' | 's' | 'm' | 'l' | 'xl' | '2xl';
+  size?: '4xs' | '3xs' | '2xs' | 'xs' | 's' | 'm' | 'l' | 'xl' | '2xl';
   font?: 'title' | 'body' | 'mono';
   bold?: boolean;
-  color?: 'black' | 'secondary' | 'primary' | 'white' | 'red';
+  color?: 'black' | 'secondary' | 'primary' | 'white' | 'red' | 'gray';
   uppercase?: boolean;
   as?: C;
   children: ReactNode;
@@ -20,7 +20,7 @@ type TextProps<C extends ElementType = typeof DEFAULT_ELEMENT>
 const Text = <C extends ElementType = typeof DEFAULT_ELEMENT>({
   size = 's',
   font = 'body',
-  color = 'black',
+  color = 'white',
   uppercase,
   bold,
   as,
@@ -37,7 +37,7 @@ const Text = <C extends ElementType = typeof DEFAULT_ELEMENT>({
       uppercase,
       'font-bold': bold && (font === 'title' || font === 'mono'),
       'font-medium': bold && font === 'body',
-      'text-slate-800': color === 'secondary',
+      'text-gray': color === 'secondary',
       'text-red-400': color === 'red'
     },
     props.className

@@ -2,7 +2,7 @@ import Button from 'src/components/Button'
 import Text from 'src/components/Text'
 import TextInput from 'src/components/TextInput'
 import Transition from 'src/components/Transition'
-import { Wallet } from 'src/hooks/StationWallet'
+import { Wallet } from 'src/hooks/CheckerWallet'
 import useAddressValidation from 'src/hooks/useAddressValidation'
 
 const DestinationAddressForm = ({
@@ -41,7 +41,7 @@ const DestinationAddressForm = ({
         outClass='h-[0]'
         className='overflow-hidden destination-address-form-info'
       >
-        <Text as='p' bold size='s'>Enter a destination to transfer your FIL</Text>
+        <Text as='p' bold size='s' color='black'>Enter a destination to transfer your FIL</Text>
       </Transition>
 
       <TextInput
@@ -49,7 +49,7 @@ const DestinationAddressForm = ({
         variant={hasAddressSaved ? 'secondary' : 'primary'}
         placeholder='Destination address'
         name='destinationAddress'
-        className='destination-address-form-input '
+        className='destination-address-form-input'
         onChange={validateOnChange}
         error={inputState.error}
         spellCheck={false}

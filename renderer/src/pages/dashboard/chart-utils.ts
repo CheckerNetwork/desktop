@@ -9,18 +9,17 @@ type DateTimeFormat = keyof typeof dateTimeFormatters
 
 export const colors = {
   black: '#000',
-  white: '#000',
-  xLine: '#D9D9E4',
-  xAxisText: '#5F5A73',
-  totalRewardsLine: '#2A1CF7',
-  totalRewardsBg: '#b5b2f6',
-  scheduledBg: '#dddcf5',
-  crossLine: '#A0A1BA'
+  white: '#FFF',
+  xAxisText: '#FFF', // white
+  totalRewardsLine: '#4a7dff', // Neptune Blue
+  totalRewardsBg: 'rgba(74, 125, 255, 0.9)', // Neptune Blue
+  scheduledBg: 'rgba(74, 125, 255, 0.5)', // Neptune Blue
+  crossLine: '#A0A1BA' // slate-400
 }
 
 export const fonts = {
-  body: 'SpaceGrotesk, serif',
-  mono: 'SpaceMono, mono'
+  body: 'Lato, serif',
+  mono: 'IBMPlexMono, mono'
 }
 
 export const chartPadding = {

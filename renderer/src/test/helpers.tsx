@@ -8,7 +8,7 @@ import { vi } from 'vitest'
 
 export function stubGlobalElectron () {
   vi.stubGlobal('electron', {
-    stationEvents: {
+    checkerEvents: {
       onActivityLogged: vi.fn(),
       onEarningsChanged: vi.fn(),
       onJobProcessed: vi.fn(),
