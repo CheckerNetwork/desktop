@@ -43,7 +43,7 @@
     "@filecoin-station/spark-impact-evaluator": "^1.2.4",
     "@glif/filecoin-address": "4.0.0",
     "@glif/filecoin-message": "^4.0.0",
-    "@glif/filecoin-number": "^3.0.3",
+    "@glif/filecoin-number": "^4.0.0",
     "@glif/filecoin-wallet-provider": "^3.0.15",
     "@influxdata/influxdb-client": "^1.35.0",
     "@radix-ui/react-dialog": "^1.1.11",
