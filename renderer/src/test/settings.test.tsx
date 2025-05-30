@@ -1,5 +1,11 @@
 import { act, fireEvent, render, screen, waitFor } from '@testing-library/react'
-import { checkForUpdates, exportSeedPhrase, isOpenAtLogin, saveModuleLogsAs } from 'src/lib/station-config'
+import {
+  checkForUpdates,
+  exportSeedPhrase,
+  importSeedPhrase,
+  isOpenAtLogin,
+  saveModuleLogsAs
+} from 'src/lib/station-config'
 import Settings from 'src/pages/settings/Settings'
 import { describe, expect, test, vi } from 'vitest'
 
@@ -9,6 +15,7 @@ const mocks = vi.hoisted(() => {
   return {
     checkForUpdates: vi.fn(),
     exportSeedPhrase: vi.fn(),
+    importSeedPhrase: vi.fn(),
     saveModuleLogsAs: vi.fn()
   }
 })
@@ -33,6 +40,7 @@ describe('Settings page', () => {
     beforeAll(() => {
       vi.mocked(checkForUpdates).mockImplementation(mocks.checkForUpdates)
       vi.mocked(exportSeedPhrase).mockImplementation(mocks.exportSeedPhrase)
+      vi.mocked(importSeedPhrase).mockImplementation(mocks.importSeedPhrase)
       vi.mocked(saveModuleLogsAs).mockImplementation(mocks.saveModuleLogsAs)
 
       render(<Settings />)
@@ -43,12 +51,14 @@ describe('Settings page', () => {
         act(() => fireEvent.click(screen.getByText('Save module logs as...')))
         act(() => fireEvent.click(screen.getByText('Check for updates')))
         act(() => fireEvent.click(screen.getByText('Export seed phrase')))
+        act(() => fireEvent.click(screen.getByText('Import seed phrase')))
       })
 
       await waitFor(() => {
         expect(mocks.saveModuleLogsAs).toHaveBeenCalledOnce()
         expect(mocks.checkForUpdates).toHaveBeenCalledOnce()
         expect(mocks.exportSeedPhrase).toHaveBeenCalledOnce()
+        expect(mocks.importSeedPhrase).toHaveBeenCalledOnce()
       })
     })
   })
