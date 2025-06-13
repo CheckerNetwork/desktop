@@ -39,7 +39,7 @@
   },
   "homepage": "https://github.com/filecoin-station/desktop#readme",
   "dependencies": {
-    "@checkernetwork/node": "^22.2.0",
+    "@checkernetwork/node": "^22.3.1",
     "@filecoin-station/spark-impact-evaluator": "^1.2.4",
     "@glif/filecoin-address": "4.0.0",
     "@glif/filecoin-message": "^4.0.0",
