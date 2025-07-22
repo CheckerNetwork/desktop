@@ -4,6 +4,13 @@
 [![](https://img.shields.io/badge/project-Filecoin-blue.svg?style=flat-square)](https://filecoin.io/)
 [![ci](https://github.com/filecoin-station/desktop/actions/workflows/ci.yml/badge.svg)](https://github.com/filecoin-station/desktop/actions/workflows/ci.yml)
 
+> [!CAUTION]
+>
+> **This repository is no longer mantained.**
+>
+> Filecoin Spark and Checker Network continue to operate in a permissioned architecture.
+> See the [announcement](https://x.com/FilecoinCDN/status/1932472254245298504) for more details.
+
 Filecoin Station is a desktop app that connects your computer’s idle resources
 to the Filecoin network and rewards you with Filecoin. Taking part is simple,
 just launch the app and start earning. Learn more at
